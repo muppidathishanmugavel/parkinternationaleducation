@@ -3296,6 +3296,27 @@ summary:focus-visible {
 
 
   </style>
+
+  <!-- Intelligent Image Resolver: automatically loads images across assets/, assets/images/, or root -->
+  <script>
+    document.addEventListener("error", function(e) {
+      if (e.target && e.target.tagName === "IMG") {
+        var img = e.target;
+        var retry = parseInt(img.dataset.try || "0", 10);
+        if (retry >= 3) return;
+        img.dataset.try = (retry + 1).toString();
+        var src = img.getAttribute("src") || "";
+        var filename = src.substring(src.lastIndexOf("/") + 1);
+        if (retry === 0) {
+          img.src = "assets/" + filename;
+        } else if (retry === 1) {
+          img.src = filename;
+        } else if (retry === 2) {
+          img.src = "assets/images/" + filename;
+        }
+      }
+    }, true);
+  </script>
 </head>
 <body>
 
@@ -3343,7 +3364,7 @@ summary:focus-visible {
     <div class="container header-inner">
             <!-- Logo & Brand Identity -->
       <a href="#home" class="nav-brand" aria-label="PARK International Education Home">
-        <img src="assets/images/logo.png" alt="PARK International Education" class="brand-logo-img" width="165" height="46">
+        <img src="assets/logo.png" onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='logo.png';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='assets/images/logo.png';}" alt="PARK International Education" class="brand-logo-img" width="165" height="46">
       </a>
 
       <!-- Desktop Navigation -->
@@ -3456,7 +3477,7 @@ summary:focus-visible {
           <!-- Hero Visual Column -->
           <div class="hero-visual">
             <div class="hero-image-card">
-              <img src="assets/images/students-parents.jpg" alt="Students and parents receiving education guidance at PARK International Education" width="600" height="450" loading="eager">
+              <img src="assets/students-parents.jpg" onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='students-parents.jpg';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='assets/images/students-parents.jpg';}" alt="Students and parents receiving education guidance at PARK International Education" width="600" height="450" loading="eager">
               <div class="hero-image-caption">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                 <span>Students and parents guided together, every step of the way.</span>
@@ -3783,13 +3804,13 @@ summary:focus-visible {
 
           <div class="gallery-grid">
             <div class="gallery-card">
-              <img src="assets/images/students-parents.jpg" alt="Students and parents receiving admission guidance at PARK International Education" width="600" height="300" loading="lazy">
+              <img src="assets/students-parents.jpg" onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='students-parents.jpg';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='assets/images/students-parents.jpg';}" alt="Students and parents receiving admission guidance at PARK International Education" width="600" height="300" loading="lazy">
               <div class="gallery-card-caption">
                 Comprehensive profile counselling with parents to ensure informed academic choices.
               </div>
             </div>
             <div class="gallery-card">
-              <img src="assets/images/students-parents.jpg" alt="Medical students undergoing clinical hospital training" width="600" height="300" loading="lazy">
+              <img src="assets/clinical-training.jpg" onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='clinical-training.jpg';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='assets/images/clinical-training.jpg';}" alt="Medical students undergoing clinical hospital training" width="600" height="300" loading="lazy">
               <div class="gallery-card-caption">
                 From medical school to international clinical hospital training and licensing pathways.
               </div>
@@ -4552,7 +4573,7 @@ summary:focus-visible {
             </p>
             <div class="branches-social-grid">
               <div class="qr-connect-box">
-                <img src="assets/images/instagram-qr.png" alt="Instagram QR Code - @park.abroad" loading="lazy">
+                <img src="assets/instagram-qr.png" onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='instagram-qr.png';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='assets/images/instagram-qr.png';}else{this.style.display='none';}" alt="Instagram QR Code - @park.abroad" loading="lazy">
                 <div class="qr-connect-info">
                   <div class="qr-connect-title">Instagram (@park.abroad)</div>
                   <div class="qr-connect-desc">Follow our official feed for live student reels, foreign campus tours, hostel walks, and medical updates.</div>
@@ -4563,7 +4584,7 @@ summary:focus-visible {
               </div>
 
               <div class="qr-connect-box">
-                <img src="assets/images/whatsapp-qr.png" alt="WhatsApp Business QR Code - Park Education" loading="lazy">
+                <img src="assets/whatsapp-qr.png" onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='whatsapp-qr.png';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='assets/images/whatsapp-qr.png';}else{this.style.display='none';}" alt="WhatsApp Business QR Code - Park Education" loading="lazy">
                 <div class="qr-connect-info">
                   <div class="qr-connect-title">WhatsApp Business Desk</div>
                   <div class="qr-connect-desc">Chat directly with senior counsellors at our Tirunelveli Head Office. Receive free fee sheets &amp; brochures in 10 minutes.</div>
@@ -4852,7 +4873,7 @@ summary:focus-visible {
           <!-- Instagram Card with QR Preview -->
           <a href="https://www.instagram.com/park.abroad/" target="_blank" rel="noopener noreferrer" class="social-channel-card ig-card" title="Follow @park.abroad on Instagram">
             <div class="social-channel-thumb">
-              <img src="assets/images/instagram-qr.png" alt="Instagram QR Code - @park.abroad" loading="lazy">
+              <img src="assets/instagram-qr.png" onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='instagram-qr.png';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='assets/images/instagram-qr.png';}else{this.style.display='none';}" alt="Instagram QR Code - @park.abroad" loading="lazy">
             </div>
             <div class="social-channel-info">
               <span class="social-channel-tag">Instagram (@park.abroad)</span>
@@ -4864,7 +4885,7 @@ summary:focus-visible {
           <!-- WhatsApp Business Card with QR Preview -->
           <a href="https://wa.me/918110087722?text=Hello%20PARK%20Education%2C%20I%20would%20like%20guidance%20for%20admissions" target="_blank" rel="noopener noreferrer" class="social-channel-card wa-card" title="Chat on WhatsApp Business">
             <div class="social-channel-thumb">
-              <img src="assets/images/whatsapp-qr.png" alt="WhatsApp Business QR Code" loading="lazy">
+              <img src="assets/whatsapp-qr.png" onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='whatsapp-qr.png';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='assets/images/whatsapp-qr.png';}else{this.style.display='none';}" alt="WhatsApp Business QR Code" loading="lazy">
             </div>
             <div class="social-channel-info">
               <span class="social-channel-tag">WhatsApp Business</span>
