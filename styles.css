@@ -183,12 +183,9 @@ summary:focus-visible {
   outline-offset: 2px;
 }
 
-/* Language Toggle Logic */
-.ta { display: none; }
-body.tm .ta { display: inline; }
-body.tm .en { display: none; }
-body.tm div.ta, body.tm p.ta, body.tm h1.ta, body.tm h2.ta, body.tm h3.ta { display: block; }
-body.tm { font-family: var(--font-tamil); }
+/* Language Configuration: English Default (Pure English UI) */
+.ta { display: none !important; }
+.en { display: inline; }
 
 /* ==========================================================================
    LAYOUT CONTAINERS & UTILITIES
@@ -495,11 +492,14 @@ body.tm { font-family: var(--font-tamil); }
 }
 
 .brand-logo-img {
-  height: 40px;
+  height: 44px;
+  max-height: calc(var(--header-height) - 16px);
   width: auto;
+  object-fit: contain;
   border-radius: var(--radius-xs);
   background: var(--color-white);
   flex-shrink: 0;
+  display: block;
 }
 
 .brand-text {
@@ -533,8 +533,8 @@ body.tm { font-family: var(--font-tamil); }
     display: none !important;
   }
   .brand-logo-img {
-    height: 35px;
-    max-width: 110px;
+    height: 38px;
+    max-width: 175px;
   }
   .nav-brand {
     gap: 0;
@@ -571,271 +571,18 @@ body.tm { font-family: var(--font-tamil); }
   font-weight: 600;
 }
 
-/* Compact Tamil navigation to prevent any horizontal overflow */
-body.tm .nav-link {
-  padding: 5px 6px;
-  font-size: 12.8px;
-  letter-spacing: -0.02em;
-}
-
-body.tm .main-nav {
-  gap: 1px;
-}
-
-/* Header Action Controls - Always firmly pinned to the right */
+/* Header Action Controls */
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
-  flex-shrink: 0 !important;
+  gap: 12px;
+  flex-shrink: 0;
   margin-left: auto;
-  z-index: 10;
-}
-
-/* Prominent Dual-Pill Language Switcher (Always Clear & 1-Click Visible) */
-.lang-pill-toggle {
-  display: inline-flex;
-  align-items: center;
-  background-color: #FFFFFF;
-  border: 1.5px solid #CBD5E1;
-  border-radius: var(--radius-full);
-  padding: 3px 4px;
-  gap: 2px;
-  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
-  flex-shrink: 0 !important;
-  transition: all var(--transition-fast);
-}
-
-.lang-pill-toggle:hover {
-  border-color: var(--color-primary);
-  background-color: #FFFFFF;
-  box-shadow: 0 2px 10px rgba(21, 52, 91, 0.16);
-}
-
-.lang-globe-icon {
-  display: inline-flex;
-  align-items: center;
-  color: var(--color-primary);
-  padding-left: 6px;
-  padding-right: 2px;
-  flex-shrink: 0;
-}
-
-.lang-pill-choice {
-  background: transparent;
-  border: 1px solid transparent;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 700;
-  color: #64748B;
-  padding: 5px 11px;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  line-height: 1;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-}
-
-.lang-pill-choice:hover {
-  color: var(--color-primary);
-  background-color: rgba(21, 52, 91, 0.06);
-}
-
-.lang-pill-choice.active {
-  background-color: var(--color-primary);
-  color: #FFFFFF !important;
-  font-weight: 800;
-  border-color: var(--color-primary);
-  box-shadow: 0 2px 6px rgba(21, 52, 91, 0.32);
-}
-
-/* When in Tamil, highlight English 'EN' button with high contrast so it's impossible to miss */
-body.tm .lang-pill-choice[data-lang="en"] {
-  color: var(--color-primary);
-  background-color: #EDF2F7;
-  border-color: #CBD5E1;
-  font-weight: 800;
-}
-
-body.tm .lang-pill-choice[data-lang="en"]:hover {
-  background-color: var(--color-primary);
-  color: #FFFFFF !important;
-  border-color: var(--color-primary);
-}
-
-/* When in English mode, style Tamil choice cleanly */
-body:not(.tm) .lang-pill-choice[data-lang="ta"] {
-  color: #475569;
-}
-
-body:not(.tm) .lang-pill-choice[data-lang="ta"]:hover {
-  background-color: rgba(21, 52, 91, 0.06);
-  color: var(--color-primary);
-}
-
-.lang-pill-sep {
-  font-size: 11px;
-  color: #CBD5E1;
-  font-weight: 300;
-  user-select: none;
-}
-
-/* Top Announcement Bar Language Switcher (Right Top Corner) */
-.top-bar-lang {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  background: rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: var(--radius-full);
-  padding: 2px 5px;
-  font-size: 12px;
-  color: #FFFFFF;
-  margin-left: 8px;
-  flex-shrink: 0 !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-.top-bar-lang svg {
-  color: #2ED1BF;
-  flex-shrink: 0;
-  margin-left: 3px;
-}
-
-.top-lang-btn {
-  background: transparent;
-  border: 1px solid transparent;
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 700;
-  color: #D3E0EA;
-  cursor: pointer;
-  padding: 3px 7px;
-  border-radius: var(--radius-full);
-  transition: all var(--transition-fast);
-  line-height: 1;
-}
-
-.top-lang-btn:hover {
-  color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.top-lang-btn.active {
-  color: #15345B !important;
-  font-weight: 800;
-  background: #2ED1BF;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-}
-
-/* When in Tamil, highlight English in the top bar with bright white badge */
-body.tm .top-lang-btn[data-lang="en"] {
-  background: #FFFFFF;
-  color: #15345B !important;
-  font-weight: 800;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-}
-
-body.tm .top-lang-btn[data-lang="en"]:hover {
-  background: #E2E8F0;
-}
-
-/* Mobile Drawer Language Switcher */
-.mobile-lang-drawer-wrap {
-  padding: 12px 14px;
-  background: var(--color-bg);
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  margin-bottom: var(--space-3);
-}
-
-.mobile-lang-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--color-primary);
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.mobile-lang-pill-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.mobile-lang-btn {
-  background: var(--color-white);
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 8px 10px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--color-text-main);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  text-align: center;
-}
-
-.mobile-lang-btn.active {
-  background: var(--color-primary);
-  color: #FFFFFF;
-  border-color: var(--color-primary);
-  font-weight: 700;
-  box-shadow: 0 2px 6px rgba(21, 52, 91, 0.2);
-}
-
-.lang-btn {
-  background: var(--color-bg-alt);
-  color: var(--color-primary);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 7px 12px;
-  font-size: 13.5px;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  transition: background-color var(--transition-fast), border-color var(--transition-fast);
-}
-
-.lang-btn:hover {
-  background-color: var(--color-white);
-  border-color: var(--color-secondary);
 }
 
 @media (max-width: 580px) {
   .header-actions {
-    gap: 4px;
-    flex-shrink: 0 !important;
-  }
-  .lang-pill-toggle {
-    padding: 2px 3px;
-    gap: 1px;
-  }
-  .lang-pill-choice {
-    padding: 4px 7px;
-    font-size: 11.5px;
-  }
-  .lang-globe-icon {
-    padding-left: 3px;
-    padding-right: 1px;
-  }
-  .lang-globe-icon svg {
-    width: 12px;
-    height: 12px;
-  }
-  .mobile-nav-toggle {
-    padding: 6px;
-  }
-  .lang-btn {
-    padding: 6px 10px;
-    font-size: 13px;
+    gap: 8px;
   }
 }
 
