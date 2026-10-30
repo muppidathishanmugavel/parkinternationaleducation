@@ -50,19 +50,21 @@
     Vietnam: `<svg viewBox="0 0 60 40" class="country-flag-svg" role="img" aria-label="Flag of Vietnam"><rect width="60" height="40" fill="#da251d"/><polygon points="30,8 33.5,17.5 43.5,17.5 35.5,23.5 38.5,33 30,27 21.5,33 24.5,23.5 16.5,17.5 26.5,17.5" fill="#ff0"/></svg>`,
     Russia: `<svg viewBox="0 0 60 40" class="country-flag-svg" role="img" aria-label="Flag of Russia"><rect width="60" height="14" fill="#fff"/><rect y="13" width="60" height="14" fill="#0039a6"/><rect y="26" width="60" height="14" fill="#d52b1e"/></svg>`,
     Georgia: `<svg viewBox="0 0 60 40" class="country-flag-svg" role="img" aria-label="Flag of Georgia"><rect width="60" height="40" fill="#fff"/><rect x="26" width="8" height="40" fill="#f00"/><rect y="16" width="60" height="8" fill="#f00"/><g fill="#f00"><path transform="translate(13 8) scale(1.5)" d="M-1-3h2v2h2v2h-2v2h-2v-2h-2v-2h2z"/><path transform="translate(47 8) scale(1.5)" d="M-1-3h2v2h2v2h-2v2h-2v-2h-2v-2h2z"/><path transform="translate(13 32) scale(1.5)" d="M-1-3h2v2h2v2h-2v2h-2v-2h-2v-2h2z"/><path transform="translate(47 32) scale(1.5)" d="M-1-3h2v2h2v2h-2v2h-2v-2h-2v-2h2z"/></g></svg>`,
-    TimorLeste: `<svg viewBox="0 0 60 40" class="country-flag-svg" role="img" aria-label="Flag of Timor-Leste"><rect width="60" height="40" fill="#dc241f"/><path d="M0 0L30 20L0 40Z" fill="#ffc726"/><path d="M0 0L20 20L0 40Z" fill="#000"/><polygon points="7,15 8.2,18.8 12,18.8 9,21 10.1,24.8 7,22.5 3.9,24.8 5,21 2,18.8 5.8,18.8" fill="#fff"/></svg>`
+        TimorLeste: `<svg viewBox="0 0 60 40" class="country-flag-svg" role="img" aria-label="Flag of Timor-Leste"><rect width="60" height="40" fill="#dc241f"/><path d="M0 0L30 20L0 40Z" fill="#ffc726"/><path d="M0 0L20 20L0 40Z" fill="#000"/><polygon points="7,15 8.2,18.8 12,18.8 9,21 10.1,24.8 7,22.5 3.9,24.8 5,21 2,18.8 5.8,18.8" fill="#fff"/></svg>`,
+    Mongolia: `<svg viewBox="0 0 60 40" class="country-flag-svg" role="img" aria-label="Flag of Mongolia"><rect width="20" height="40" fill="#e4002b"/><rect x="20" width="20" height="40" fill="#0033a0"/><rect x="40" width="20" height="40" fill="#e4002b"/><circle cx="10" cy="14" r="3" fill="#ffd100"/><polygon points="10,6 8,11 12,11" fill="#ffd100"/><rect x="7" y="19" width="6" height="2" fill="#ffd100"/><rect x="7" y="27" width="6" height="2" fill="#ffd100"/><rect x="5" y="18" width="1.5" height="12" fill="#ffd100"/><rect x="13.5" y="18" width="1.5" height="12" fill="#ffd100"/></svg>`
   };
 
-  // 1. Pages for Navigation
+    // 1. Pages for Navigation
   const PAGES = [
-    { id: "home", en: "Home", ta: "முகப்பு" },
-    { id: "courses", en: "Courses", ta: "படிப்புகள்" },
-    { id: "services", en: "Services", ta: "சேவைகள்" },
-    { id: "countries", en: "Countries", ta: "நாடுகள்" },
-    { id: "universities", en: "Universities", ta: "பல்கலைக்கழகம்" },
-    { id: "process", en: "Admission", ta: "சேர்க்கை" },
-    { id: "branches", en: "Branches", ta: "கிளைகள்" },
-    { id: "apply", en: "Apply", ta: "விண்ணப்பம்" }
+    { id: "home", en: "Home" },
+    { id: "about", en: "About" },
+    { id: "courses", en: "Courses" },
+    { id: "services", en: "Services" },
+    { id: "countries", en: "Countries" },
+    { id: "universities", en: "Universities" },
+    { id: "process", en: "Admission" },
+    { id: "branches", en: "Branches" },
+    { id: "apply", en: "Apply" }
   ];
 
   // 2. The 10 Official Course Categories
@@ -70,283 +72,128 @@
     {
       icon: ICONS.stethoscope,
       titleEn: "Medicine (MBBS)",
-      titleTa: "மருத்துவம் (MBBS)",
       descEn: "Undergraduate medical degrees (MBBS/MD) in top government and recognized international universities meeting NMC criteria.",
-      descTa: "NMC விதிமுறைகளுக்கு உட்பட்ட சிறந்த அரசு மற்றும் சர்வதேச மருத்துவப் பல்கலைக்கழகங்களில் MBBS பட்டப்படிப்புகள்.",
       duration: "5.5 to 6 Years (incl. internship)"
     },
     {
       icon: ICONS.engineering,
       titleEn: "Engineering",
-      titleTa: "பொறியியல் (B.E / B.Tech)",
       descEn: "B.E. and B.Tech degree programs across premier engineering institutes with specialization guidance.",
-      descTa: "சிறந்த பொறியியல் கல்லூரிகளில் கம்ப்யூட்டர், மெக்கானிக்கல், சிவில் உள்ளிட்ட பி.இ / பி.டெக் படிப்புகள்.",
       duration: "4 Years"
     },
     {
       icon: ICONS.nursing,
       titleEn: "Nursing",
-      titleTa: "செவிலியர் படிப்பு (Nursing)",
       descEn: "B.Sc Nursing, Post Basic B.Sc, and GNM programs with hospital clinical exposure and global placement opportunities.",
-      descTa: "மருத்துவமனை நேரடிப் பயிற்சியுடன் கூடிய B.Sc நர்சிங் மற்றும் GNM பட்டயப் படிப்புகள்.",
       duration: "3 to 4 Years"
     },
     {
       icon: ICONS.law,
       titleEn: "Law (LL.B / Integrated)",
-      titleTa: "சட்டப் படிப்பு (Law)",
       descEn: "Bar Council of India approved 3-year LL.B and 5-year integrated B.A./BBA LL.B degree programs.",
-      descTa: "பார் கவுன்சில் அங்கீகாரம் பெற்ற 3 ஆண்டு எல்.எல்.பி மற்றும் 5 ஆண்டு ஒருங்கிணைந்த சட்டப் படிப்புகள்.",
       duration: "3 or 5 Years"
     },
     {
       icon: ICONS.paramedical,
       titleEn: "Paramedical Sciences",
-      titleTa: "பாராமெடிக்கல் படிப்புகள்",
       descEn: "Essential clinical programs including Dialysis Technology, OT & Anaesthesia, Medical Radiography, and Emergency Care.",
-      descTa: "டயாலிசிஸ், அறுவை சிகிச்சை அரங்கு, எக்ஸ்-ரே உள்ளிட்ட உடனடி வேலைவாய்ப்பு கொண்ட மருத்துவத் தொழில்நுட்பப் படிப்புகள்.",
       duration: "2 to 4 Years"
     },
     {
       icon: ICONS.alliedHealth,
       titleEn: "Allied Health Science",
-      titleTa: "அலைடு ஹெல்த் சயின்ஸ்",
       descEn: "Advanced health-science degrees like Medical Laboratory Technology, Cardiac Care, and Physician Assistant programs.",
-      descTa: "மருத்துவ ஆய்வகத் தொழில்நுட்பம், இருதயப் பராமரிப்பு உள்ளிட்ட உயர் மருத்துவ அறிவியல் பட்டப்படிப்புகள்.",
       duration: "3 to 4 Years"
     },
     {
       icon: ICONS.pharmacy,
       titleEn: "Pharmacy",
-      titleTa: "பார்மசி (D.Pharm / B.Pharm)",
       descEn: "PCI-approved D.Pharm, B.Pharm, and Pharm.D programs providing career pathways in clinical and industrial pharmacy.",
-      descTa: "மருந்து உற்பத்தி மற்றும் மருத்துவமனை ஆராய்ச்சிப் பணிகளுக்கான டி.பார்ம், பி.பார்ம் படிப்புகள்.",
       duration: "2, 4 or 6 Years"
     },
     {
       icon: ICONS.aviation,
       titleEn: "Aviation & Aerospace",
-      titleTa: "ஏவியேஷன் படிப்புகள்",
       descEn: "Commercial pilot license guidance, B.Sc Aviation, Aircraft Maintenance Engineering, and airport management.",
-      descTa: "விமானி பயிற்சி, ஏர்-கிராப்ட் பராமரிப்பு மற்றும் விமான நிலைய மேலாண்மை தொடர்பான சிறப்புப் படிப்புகள்.",
       duration: "Varies by Programme"
     },
     {
       icon: ICONS.artsScience,
       titleEn: "Arts & Science",
-      titleTa: "கலை மற்றும் அறிவியல்",
       descEn: "Undergraduate collegiate programs in Commerce (B.Com), Computer Applications (BCA), BBA, and pure sciences.",
-      descTa: "பி.காம், பிசிஏ, பிபிஏ, பி.எஸ்சி உள்ளிட்ட முன்னணி கலை மற்றும் அறிவியல் பட்டப்படிப்புகள்.",
       duration: "3 Years"
     },
     {
       icon: ICONS.bpt,
       titleEn: "BPT (Physiotherapy)",
-      titleTa: "பிசியோதெரபி (BPT)",
       descEn: "Bachelor of Physiotherapy with rigorous clinical training in physical rehabilitation, orthopedics, and sports medicine.",
-      descTa: "உடல் மறுவாழ்வு மற்றும் எலும்பியல் சிகிச்சைக்கான 4.5 ஆண்டு இளங்கலை பிசியோதெரபி படிப்பு.",
       duration: "4.5 Years (incl. 6-mo internship)"
     }
   ];
 
-  // 3. MBBS Study Destinations (8 Countries)
+    // 3. MBBS Study Destinations
   const COUNTRIES = [
     {
       key: "Uzbekistan",
       flag: FLAGS.Uzbekistan,
       nameEn: "Uzbekistan",
-      nameTa: "உஸ்பெகிஸ்தான்",
-      descEn: "Rapidly growing MBBS destination offering 5+1 year programs, modern medical campuses, high clinical exposure, and direct flight connectivity from India.",
-      descTa: "இந்தியாவில் இருந்து நேரடி விமான வசதி, நவீன ஆய்வகங்கள் மற்றும் சிறந்த அரசு மருத்துவமனைகளைக் கொண்ட 5+1 ஆண்டு மருத்துவப் படிப்பு."
+      descEn: "Rapidly growing MBBS destination offering 5+1 year programs, modern medical campuses, high clinical exposure, and direct flight connectivity from India."
     },
     {
       key: "Philippines",
       flag: FLAGS.Philippines,
       nameEn: "Philippines",
-      nameTa: "பிலிப்பைன்ஸ்",
-      descEn: "Known for English-medium instruction, US-aligned curriculum, high FMGE success track record, and extensive tropical disease clinical exposure.",
-      descTa: "முழு ஆங்கில வழி கல்வி, அமெரிக்க பாடத்திட்டம் மற்றும் இந்திய மருத்துவ கவுன்சில் தேர்வுகளில் சிறந்த வெற்றி விகிதம் கொண்ட நாடு."
+      descEn: "Known for English-medium instruction, US-aligned curriculum, high FMGE success track record, and extensive tropical disease clinical exposure."
     },
     {
-      key: "Kazakhstan",
-      flag: FLAGS.Kazakhstan,
-      nameEn: "Kazakhstan",
-      nameTa: "கஜகஸ்தான்",
-      descEn: "Established national and state universities offering 5-year MBBS programs, globally recognized degrees, and welcoming Indian student communities.",
-      descTa: "மலிவான கல்விக் கட்டணம், 5 வருட பாடத்திட்டம் மற்றும் ஆயிரக்கணக்கான இந்திய மாணவர்கள் பயிலும் மத்திய ஆசிய நாடு."
+      key: "Mongolia",
+      flag: FLAGS.Mongolia,
+      nameEn: "Mongolia",
+      descEn: "Premier national medical education in capital Ulaanbaatar, 6-year WHO and WFME-accredited English-medium MD degree with modern university teaching hospitals."
     },
     {
       key: "Kyrgyzstan",
       flag: FLAGS.Kyrgyzstan,
       nameEn: "Kyrgyzstan",
-      nameTa: "கிர்கிஸ்தான்",
-      descEn: "One of the most budget-friendly international MBBS destinations with affordable tuition, comfortable hostels, and Indian mess facilities.",
-      descTa: "குறைந்த கட்டணத்தில் உயர்தர மருத்துவக் கல்வி, சிறந்த விடுதி மற்றும் இந்திய உணவு வசதி கொண்ட முன்னணி நாடு."
-    },
-    {
-      key: "Vietnam",
-      flag: FLAGS.Vietnam,
-      nameEn: "Vietnam",
-      nameTa: "வியட்நாம்",
-      descEn: "Emerging Southeast Asian medical education destination featuring English-taught medical programs, welcoming culture, and modern hospital infrastructure.",
-      descTa: "தென்கிழக்கு ஆசியாவில் அதிவேகமாக வளர்ந்து வரும் ஆங்கில வழி மருத்துவக் கல்வி மற்றும் உயர் மருத்துவமனை வசதிகள்."
-    },
-    {
-      key: "Russia",
-      flag: FLAGS.Russia,
-      nameEn: "Russia",
-      nameTa: "ரஷ்யா",
-      descEn: "Century-old government medical academies listed with WHO and WDOMS, offering comprehensive European medical training with subsidised fee structures.",
-      descTa: "நூற்றாண்டு பாரம்பரியம் கொண்ட அரசு மருத்துவப் பல்கலைக்கழகங்கள் மற்றும் உலக சுகாதார நிறுவனத்தால் அங்கீகரிக்கப்பட்ட பட்டங்கள்."
-    },
-    {
-      key: "Georgia",
-      flag: FLAGS.Georgia,
-      nameEn: "Georgia",
-      nameTa: "ஜார்ஜியா",
-      descEn: "European-standard clinical education following ECTS credit guidelines, safe university towns, and excellent preparation for international licensing exams.",
-      descTa: "ஐரோப்பிய மருத்துவத் தரம், பாதுகாப்பான கல்விச் சூழல் மற்றும் உலகளாவிய மருத்துவர் தகுதித் தேர்வுகளுக்கான வழிகாட்டுதல்."
+      descEn: "One of the most budget-friendly international MBBS destinations with affordable tuition, comfortable hostels, and Indian mess facilities."
     },
     {
       key: "TimorLeste",
       flag: FLAGS.TimorLeste,
       nameEn: "Timor-Leste",
-      nameTa: "திமோர்-லெஸ்தே",
-      descEn: "Emerging tropical island medical destination with focused classroom ratios, dedicated clinical faculty, and NMC-compliant curriculum options.",
-      descTa: "சிறிய வகுப்பறை விகிதம் மற்றும் அர்ப்பணிப்புடன் கூடிய மருத்துவ ஆசிரியர்களைக் கொண்ட வளரும் சர்வதேச மருத்துவ வாய்ப்பு."
+      descEn: "Emerging tropical island medical destination with focused classroom ratios, dedicated clinical faculty, and NMC-compliant curriculum options."
+    },
+    {
+      key: "Kazakhstan",
+      flag: FLAGS.Kazakhstan,
+      nameEn: "Kazakhstan",
+      descEn: "Established national and state universities offering 5-year MBBS programs, globally recognized degrees, and welcoming Indian student communities."
+    },
+    {
+      key: "Russia",
+      flag: FLAGS.Russia,
+      nameEn: "Russia",
+      descEn: "Century-old government medical academies listed with WHO and WDOMS, offering comprehensive European medical training with subsidised fee structures."
+    },
+    {
+      key: "Georgia",
+      flag: FLAGS.Georgia,
+      nameEn: "Georgia",
+      descEn: "European-standard clinical education following ECTS credit guidelines, safe university towns, and excellent preparation for international licensing exams."
+    },
+    {
+      key: "Vietnam",
+      flag: FLAGS.Vietnam,
+      nameEn: "Vietnam",
+      descEn: "Emerging Southeast Asian medical education destination featuring English-taught medical programs, welcoming culture, and modern hospital infrastructure."
     }
   ];
 
   // 3b. Medical Universities Grouped Under Countries
+    // 3b. Medical Universities Grouped Under Countries (Active Verified List)
   const UNIVERSITIES_DATA = {
     Uzbekistan: [
-      {
-        id: "kokand",
-        name: "Kokand Medical University",
-        subtitle: "Kokand Abu Ali Ibn Sino Public Health Technical School",
-        city: "Kokand, Fergana Valley",
-        country: "Uzbekistan",
-        type: "Government Medical University",
-        est: "2005 (Legacy 1925)",
-        legacyNote: "Established in 1925 as a nursing & midwifery training center. Received official status as Kokand Medical Educational Institution in 1954, renamed Abu Ali Ibn Sino Public Health Technical School in 2003, and elevated to modern university status in 2005 with state-of-the-art clinical bases.",
-        duration: "6 Years (5 Yrs Academic + 1 Yr Clinical Internship)",
-        medium: "100% English Medium",
-        nationalRank: 7,
-        worldRank: 5882,
-        tuitionFeeUSD: 3500,
-        hostelFeeUSD: 600,
-        totalAnnualUSD: 4100,
-        approxAnnualINR: "₹3,40,000 / year",
-        neetRequired: "Mandatory (Qualifying marks)",
-        ieltsRequired: "Not Required",
-        eligibility: "50% in PCB (General), 45% (Reserved Category). Age: 17 to 25 years. NEET qualification mandatory.",
-        recognitions: ["NMC (India)", "WHO Listed", "UNESCO Approved", "Ministry of Health Uzbekistan"],
-        collaborations: [
-          "Seoul National University (South Korea)",
-          "Humboldt University (Berlin, Germany)",
-          "Russian State Medical University",
-          "Samara State Medical University",
-          "Moscow State Medical University",
-          "Family Medicine Residency Centre",
-          "Chonnam State University (Korea)"
-        ],
-        faculties: [
-          "Faculty of General Medicine (MBBS)",
-          "Faculty of Dentistry",
-          "Faculty of Pharmacy",
-          "Faculty of Neuroscience",
-          "Faculty of Pediatrics",
-          "Faculty of Surgery",
-          "Faculty of Postgraduate Residency Programs"
-        ],
-        highlights: [
-          "Direct NMC & WHO recognition with 100% English medium curriculum.",
-          "Strict ragging-free campus ensuring safe learning for male & female students.",
-          "5 student dormitories with a capacity of 1,700 students equipped with turnstile security.",
-          "On-campus Indian mess providing authentic South & North Indian food.",
-          "Affordable tuition fee ($3,500/year) guaranteed in writing with no hidden extras.",
-          "Global collaborations with leading medical faculties in Germany, Korea & Russia."
-        ],
-        feeSchedule: [
-          { year: "Year 1", tuition: "$3,500", hostel: "$600", total: "$4,100" },
-          { year: "Year 2", tuition: "$3,500", hostel: "$600", total: "$4,100" },
-          { year: "Year 3", tuition: "$3,500", hostel: "$600", total: "$4,100" },
-          { year: "Year 4", tuition: "$3,500", hostel: "$600", total: "$4,100" },
-          { year: "Year 5", tuition: "$3,500", hostel: "$600", total: "$4,100" },
-          { year: "Year 6 (Internship)", tuition: "$3,500", hostel: "$600", total: "$4,100" }
-        ],
-        admissionProcess: [
-          "Submit academic profile & NEET scorecard through PARK Education desk.",
-          "Formal application submission addressed to the rector with language preferences.",
-          "Issuance of official University Invitation / Admission Statement.",
-          "Notarized document translation (Russian/Uzbek) & student visa processing.",
-          "Airport reception in Uzbekistan, campus check-in & hostel room allotment."
-        ],
-        requiredDocs: [
-          "Valid International Passport copy",
-          "10th & 12th Grade Marksheets (Min 50% PCB)",
-          "NEET Qualification Scorecard",
-          "Certified copy of Birth Certificate",
-          "Medical Fitness & Blood Test Reports",
-          "Passport-size Photographs (white background)",
-          "Official Admission Invitation Statement"
-        ]
-      },
-      {
-        id: "fergana",
-        name: "Fergana Medical Institute of Public Health",
-        subtitle: "Leading Public Health & Medical Research Center in Fergana Valley",
-        city: "Fergana City",
-        country: "Uzbekistan",
-        type: "Public / Government",
-        est: "1991 / 1998",
-        legacyNote: "Founded in 1991 as a medical training center affiliated with Fergana State University and recognized as an autonomous public health institute in 1998, featuring 19+ clinical departments.",
-        duration: "6 Years (English Medium)",
-        medium: "100% English Medium",
-        nationalRank: 9,
-        worldRank: 5013,
-        tuitionFeeUSD: 3500,
-        hostelFeeUSD: 750,
-        totalAnnualUSD: 4250,
-        approxAnnualINR: "₹3,52,000 / year",
-        neetRequired: "Mandatory (Qualifying marks)",
-        ieltsRequired: "Not Required",
-        eligibility: "50% in PCB (General), 45% (Reserved Category). Age: 17 to 25 years.",
-        recognitions: ["NMC (India)", "WHO Listed", "Ministry of Higher Education Uzbekistan"],
-        collaborations: [
-          "International Public Health Councils",
-          "European Public Health Research Alliances"
-        ],
-        faculties: [
-          "General Medicine (MBBS)",
-          "Preventive Medicine & Epidemiology",
-          "Pediatrics",
-          "Higher Clinical Nursing",
-          "Pharmaceutical Sciences"
-        ],
-        highlights: [
-          "19+ specialized clinical departments with modern diagnostic equipment.",
-          "Extensive regional hospital bedside training across Fergana public hospitals.",
-          "Modern student hostels with round-the-clock security and Indian food mess.",
-          "Fergana International Airport offers rapid domestic connections to Tashkent.",
-          "Direct pathway to NMC Foreign Medical Graduate Licentiate exams."
-        ],
-        feeSchedule: [
-          { year: "Year 1", tuition: "$3,500", hostel: "$750", total: "$4,250" },
-          { year: "Year 2", tuition: "$3,500", hostel: "$750", total: "$4,250" },
-          { year: "Year 3", tuition: "$3,500", hostel: "$750", total: "$4,250" },
-          { year: "Year 4", tuition: "$3,500", hostel: "$750", total: "$4,250" },
-          { year: "Year 5", tuition: "$3,500", hostel: "$750", total: "$4,250" },
-          { year: "Year 6", tuition: "$3,500", hostel: "$750", total: "$4,250" }
-        ],
-        admissionProcess: [
-          "Application review through PARK Education international desk.",
-          "Provisional admission confirmation letter.",
-          "Consular visa stamping & travel clearance.",
-          "Hostel check-in and curriculum commencement."
-        ]
-      },
-      {
+{
         id: "tashkent",
         name: "Tashkent Medical Academy",
         subtitle: "Premier National Medical Academy in Uzbekistan Capital City",
@@ -401,96 +248,151 @@
           "Direct airport pickup in Tashkent & campus hostel allotment."
         ]
       },
-      {
-        id: "samarkand",
-        name: "Samarkand State Medical University",
-        subtitle: "Historic 95-Year-Old Pioneer of Medical Education in Central Asia",
-        city: "Samarkand",
+{
+        id: "namangan",
+        name: "Namangan State Medical University",
+        subtitle: "Vibrant Public University with 28,500+ Students & 40+ Global Partnerships",
+        city: "Namangan",
         country: "Uzbekistan",
-        type: "Public / State University",
-        est: "1930",
-        legacyNote: "Founded in 1930, Samarkand State Medical University has trained over 40,000 physicians and is celebrated as Central Asia's oldest and most prestigious state medical university.",
+        type: "Public / Government",
+        est: "1942 / Medical Faculty",
+        legacyNote: "With historical roots reaching back to 1942, Namangan State University established its dedicated medical faculty to serve the Fergana Valley, developing into modern medical programs.",
         duration: "6 Years (English Medium)",
         medium: "100% English Medium",
-        nationalRank: 16,
-        worldRank: 7805,
-        tuitionFeeUSD: 3500,
-        hostelFeeUSD: 350,
-        totalAnnualUSD: 3850,
-        approxAnnualINR: "₹3,19,000 / year",
+        nationalRank: "Top 20",
+        worldRank: "Recognized",
+        tuitionFeeUSD: 3300,
+        hostelFeeUSD: 500,
+        totalAnnualUSD: 3800,
+        approxAnnualINR: "₹3,15,000 / year",
         neetRequired: "Mandatory (Qualifying marks)",
         ieltsRequired: "Not Required",
         eligibility: "50% in PCB (General), 45% (Reserved Category). Age: 17 to 25 years.",
-        recognitions: ["NMC (India)", "WHO Listed", "FAIMER", "UNESCO"],
+        recognitions: ["NMC (India)", "WHO Listed", "Ministry of Higher Education Uzbekistan"],
         collaborations: [
-          "Erasmus+ Academic Exchange Network",
-          "Universities across Europe, Russia, and South Korea"
+          "40+ international university collaborations across Asia and Europe",
+          "Collaborative medical research and faculty exchange programs"
         ],
         faculties: [
-          "General Medicine (Therapeutic Faculty)",
-          "Pediatric Medicine",
-          "Medical Biology & Diagnostics",
-          "Dentistry",
-          "Pharmacy"
+          "Faculty of General Medicine (MBBS)",
+          "Faculty of Pediatrics",
+          "Faculty of Medical Biology",
+          "Faculty of Pharmacy"
         ],
         highlights: [
-          "95+ years of clinical medical education heritage.",
-          "Extremely economical hostel fee ($350/year) among top government universities.",
-          "Digitized campus with European credit-module teaching framework.",
-          "Large, thriving community of 2,000+ Indian medical students.",
-          "Subsidized Indian cafeteria serving North and South Indian home-style meals."
+          "Large, comprehensive public university with 28,500+ enrolled students.",
+          "Extremely affordable total fee package (~$3,800/year tuition + hostel).",
+          "Modern clinical diagnostic laboratories and anatomy museum.",
+          "Peaceful, hospitable city with low daily living costs for Indian families.",
+          "Round-the-clock Indian hostel warden and fresh Indian food."
         ],
         feeSchedule: [
-          { year: "Year 1", tuition: "$3,500", hostel: "$350", total: "$3,850" },
-          { year: "Year 2", tuition: "$3,500", hostel: "$350", total: "$3,850" },
-          { year: "Year 3", tuition: "$3,500", hostel: "$350", total: "$3,850" },
-          { year: "Year 4", tuition: "$3,500", hostel: "$350", total: "$3,850" },
-          { year: "Year 5", tuition: "$3,500", hostel: "$350", total: "$3,850" },
-          { year: "Year 6", tuition: "$3,500", hostel: "$350", total: "$3,850" }
+          { year: "Year 1", tuition: "$3,300", hostel: "$500", total: "$3,800" },
+          { year: "Year 2", tuition: "$3,300", hostel: "$500", total: "$3,800" },
+          { year: "Year 3", tuition: "$3,300", hostel: "$500", total: "$3,800" },
+          { year: "Year 4", tuition: "$3,300", hostel: "$500", total: "$3,800" },
+          { year: "Year 5", tuition: "$3,300", hostel: "$500", total: "$3,800" },
+          { year: "Year 6", tuition: "$3,300", hostel: "$500", total: "$3,800" }
         ],
         admissionProcess: [
-          "Verification of NEET qualification and 12th PCB credentials.",
-          "University provisional admission statement issuance.",
-          "Embassy visa stamping & documentation.",
-          "Arrival in Samarkand, registration and class commencement."
+          "Profile verification & eligibility confirmation.",
+          "Admission letter dispatch within 3 to 5 business days.",
+          "Government visa clearance & student visa.",
+          "Escorted travel and direct hostel check-in."
+        ]
+      },
+{
+        id: "fergana",
+        name: "Fergana Medical Institute of Public Health",
+        subtitle: "Leading Public Health & Medical Research Center in Fergana Valley",
+        city: "Fergana City",
+        country: "Uzbekistan",
+        type: "Public / Government",
+        est: "1991 / 1998",
+        legacyNote: "Founded in 1991 as a medical training center affiliated with Fergana State University and recognized as an autonomous public health institute in 1998, featuring 19+ clinical departments.",
+        duration: "6 Years (English Medium)",
+        medium: "100% English Medium",
+        nationalRank: 9,
+        worldRank: 5013,
+        tuitionFeeUSD: 3500,
+        hostelFeeUSD: 750,
+        totalAnnualUSD: 4250,
+        approxAnnualINR: "₹3,52,000 / year",
+        neetRequired: "Mandatory (Qualifying marks)",
+        ieltsRequired: "Not Required",
+        eligibility: "50% in PCB (General), 45% (Reserved Category). Age: 17 to 25 years.",
+        recognitions: ["NMC (India)", "WHO Listed", "Ministry of Higher Education Uzbekistan"],
+        collaborations: [
+          "International Public Health Councils",
+          "European Public Health Research Alliances"
+        ],
+        faculties: [
+          "General Medicine (MBBS)",
+          "Preventive Medicine & Epidemiology",
+          "Pediatrics",
+          "Higher Clinical Nursing",
+          "Pharmaceutical Sciences"
+        ],
+        highlights: [
+          "19+ specialized clinical departments with modern diagnostic equipment.",
+          "Extensive regional hospital bedside training across Fergana public hospitals.",
+          "Modern student hostels with round-the-clock security and Indian food mess.",
+          "Fergana International Airport offers rapid domestic connections to Tashkent.",
+          "Direct pathway to NMC Foreign Medical Graduate Licentiate exams."
+        ],
+        feeSchedule: [
+          { year: "Year 1", tuition: "$3,500", hostel: "$750", total: "$4,250" },
+          { year: "Year 2", tuition: "$3,500", hostel: "$750", total: "$4,250" },
+          { year: "Year 3", tuition: "$3,500", hostel: "$750", total: "$4,250" },
+          { year: "Year 4", tuition: "$3,500", hostel: "$750", total: "$4,250" },
+          { year: "Year 5", tuition: "$3,500", hostel: "$750", total: "$4,250" },
+          { year: "Year 6", tuition: "$3,500", hostel: "$750", total: "$4,250" }
+        ],
+        admissionProcess: [
+          "Application review through PARK Education international desk.",
+          "Provisional admission confirmation letter.",
+          "Consular visa stamping & travel clearance.",
+          "Hostel check-in and curriculum commencement."
         ]
       },
       {
-        id: "impulse",
-        name: "Impulse Medical Institute",
-        subtitle: "Modern European-Accredited Medical Institute with 3D Virtual Simulation",
-        city: "Bukhara / Tashkent",
+        id: "andijan",
+        name: "Andijan State Medical Institute",
+        subtitle: "Historic 70-Year-Old Public Medical Institution of Fergana Valley",
+        city: "Andijan",
         country: "Uzbekistan",
-        type: "Accredited Medical Institute",
-        est: "Modern Accredited",
-        legacyNote: "Established as an innovative, student-centric medical institution featuring European credit curriculum, interactive smart classrooms, and 3D virtual dissection tables.",
+        type: "Public / State Medical Institute",
+        est: "1955",
+        legacyNote: "Founded in 1955, Andijan State Medical Institute is one of Central Asia's oldest and most prestigious state medical institutes. Features 56 modern academic departments, multi-specialty clinical hospital networks with 700+ beds, and a comprehensive English-medium 6-year General Medicine (MBBS) curriculum.",
         duration: "6 Years (English Medium)",
         medium: "100% English Medium",
-        nationalRank: "Top 25",
-        worldRank: "Recognized",
+        nationalRank: 8,
+        worldRank: 5120,
         tuitionFeeUSD: 3500,
         hostelFeeUSD: 600,
         totalAnnualUSD: 4100,
         approxAnnualINR: "₹3,40,000 / year",
         neetRequired: "Mandatory (Qualifying marks)",
         ieltsRequired: "Not Required",
-        eligibility: "50% in PCB (General), 45% (Reserved Category). Age: 17 to 25 years.",
-        recognitions: ["WHO Listed", "WDOMS Directory", "Ministry of Higher Education Uzbekistan"],
+        eligibility: "50% in PCB (General), 45% (Reserved Category). Age: 17 to 25 years. NEET qualification mandatory.",
+        recognitions: ["NMC (India)", "WHO Listed (WDOMS)", "FAIMER", "Ministry of Health Uzbekistan"],
         collaborations: [
-          "European Medical Education Alliances",
-          "International Simulation Hospital Networks"
+          "Russian State Medical Universities",
+          "Erasmus+ Clinical Networks"
         ],
         faculties: [
-          "Faculty of General Medicine (MBBS)",
-          "Faculty of Basic Clinical Sciences",
-          "Faculty of Practical Skills & Diagnostics"
+          "Faculty of General Medicine (Curative)",
+          "Pediatrics",
+          "Dentistry / Stomatology",
+          "Preventive Medicine",
+          "Pharmacy"
         ],
         highlights: [
-          "3D Virtual Anatomy tables & high-fidelity simulation training wards.",
-          "Compact student-to-teacher ratio (1:12) for intensive clinical mentoring.",
-          "Curriculum designed to align with NExT, USMLE Step 1, and PLAB benchmarks.",
-          "Air-conditioned student residence with high-speed internet & Indian mess.",
-          "Experienced foreign clinical faculty and English-medium instruction."
+          "70+ years of clinical training heritage founded in 1955.",
+          "700+ bed in-house multi-profile clinical hospital for practical bedside rounds.",
+          "100% English-medium curriculum conforming to NMC Foreign Medical Graduate Licentiate regulations.",
+          "Comfortable international student hostels with dedicated Indian mess providing home-style meals.",
+          "Safe and peaceful academic environment with low student-to-teacher laboratory ratios."
         ],
         feeSchedule: [
           { year: "Year 1", tuition: "$3,500", hostel: "$600", total: "$4,100" },
@@ -498,16 +400,24 @@
           { year: "Year 3", tuition: "$3,500", hostel: "$600", total: "$4,100" },
           { year: "Year 4", tuition: "$3,500", hostel: "$600", total: "$4,100" },
           { year: "Year 5", tuition: "$3,500", hostel: "$600", total: "$4,100" },
-          { year: "Year 6", tuition: "$3,500", hostel: "$600", total: "$4,100" }
+          { year: "Year 6 (Internship)", tuition: "$3,500", hostel: "$600", total: "$4,100" }
         ],
         admissionProcess: [
-          "Online documentation & eligibility verification.",
-          "Provisional admission confirmation.",
-          "Uzbekistan student visa stamping.",
-          "Campus orientation & hostel room assignment."
+          "Submit NEET qualification scorecard & 12th academic marksheets.",
+          "Verification & issuance of official University Admission Statement.",
+          "Ministry of Foreign Affairs apostille & consular student visa issuance.",
+          "Airport reception in Tashkent/Andijan, campus check-in & hostel room allotment."
+        ],
+        requiredDocs: [
+          "Valid International Passport copy (min 18 months validity)",
+          "10th & 12th Grade Marksheets (Min 50% PCB)",
+          "NEET Qualification Scorecard",
+          "Medical Fitness & Blood Test Reports",
+          "Passport-size Photographs (white background)",
+          "Birth Certificate certified copy"
         ]
       },
-      {
+{
         id: "bukhara",
         name: "Bukhara State Medical Institute",
         subtitle: "Named after Abu Ali Ibn Sino (Avicenna) – Father of Modern Medicine",
@@ -562,63 +472,231 @@
         ]
       },
       {
-        id: "namangan",
-        name: "Namangan State Medical University",
-        subtitle: "Vibrant Public University with 28,500+ Students & 40+ Global Partnerships",
-        city: "Namangan",
+        id: "karshi",
+        name: "Karshi State University (Faculty of Medicine)",
+        subtitle: "Premier Medical & Surgical Faculty of Qashqadaryo Region",
+        city: "Karshi",
         country: "Uzbekistan",
-        type: "Public / Government",
-        est: "1942 / Medical Faculty",
-        legacyNote: "With historical roots reaching back to 1942, Namangan State University established its dedicated medical faculty to serve the Fergana Valley, developing into modern medical programs.",
+        type: "State Government University",
+        est: "1945",
+        legacyNote: "Established in 1945, Karshi State University expanded its academic profile with a cutting-edge Faculty of Medicine. Features state-of-the-art anatomy labs, high-tech diagnostic simulation centers, and direct tie-ups with regional government specialty hospitals.",
         duration: "6 Years (English Medium)",
         medium: "100% English Medium",
-        nationalRank: "Top 20",
-        worldRank: "Recognized",
-        tuitionFeeUSD: 3300,
+        nationalRank: 12,
+        worldRank: 6200,
+        tuitionFeeUSD: 3000,
         hostelFeeUSD: 500,
+        totalAnnualUSD: 3500,
+        approxAnnualINR: "₹2,90,000 / year",
+        neetRequired: "Mandatory (Qualifying marks)",
+        ieltsRequired: "Not Required",
+        eligibility: "50% in PCB (General), 45% (Reserved Category). Age: 17 to 25 years. NEET qualification mandatory.",
+        recognitions: ["NMC (India) Compliant", "WHO Listed (WDOMS)", "Ministry of Higher Education Uzbekistan"],
+        collaborations: [
+          "Central Asian Medical University Alliances",
+          "European University Exchange Partners"
+        ],
+        faculties: [
+          "General Medicine (MBBS/MD)",
+          "Clinical Diagnostics",
+          "Preventive Healthcare",
+          "Medical Biology"
+        ],
+        highlights: [
+          "One of the most affordable government university programs (~$3,000/year tuition).",
+          "Spacious green campus with state-of-the-art anatomy dissection and simulation centers.",
+          "Comprehensive English-medium medical curriculum compliant with NMC criteria.",
+          "Affordable living costs (~$80-$120/month) with secure campus hostel accommodations.",
+          "Strong clinical exposure through Karshi regional multi-specialty clinical hospital networks."
+        ],
+        feeSchedule: [
+          { year: "Year 1", tuition: "$3,000", hostel: "$500", total: "$3,500" },
+          { year: "Year 2", tuition: "$3,000", hostel: "$500", total: "$3,500" },
+          { year: "Year 3", tuition: "$3,000", hostel: "$500", total: "$3,500" },
+          { year: "Year 4", tuition: "$3,000", hostel: "$500", total: "$3,500" },
+          { year: "Year 5", tuition: "$3,000", hostel: "$500", total: "$3,500" },
+          { year: "Year 6 (Internship)", tuition: "$3,000", hostel: "$500", total: "$3,500" }
+        ],
+        admissionProcess: [
+          "Document verification & eligibility pre-screening.",
+          "Issuance of provisional admission invitation statement.",
+          "Student visa stamping with consular endorsement.",
+          "Arrival in Uzbekistan, campus registration & commencement of classes."
+        ],
+        requiredDocs: [
+          "Valid International Passport copy",
+          "10th & 12th Grade Marksheets (Min 50% PCB)",
+          "NEET Qualification Scorecard",
+          "Medical Fitness & Blood Test Reports",
+          "Passport-size Photographs (white background)"
+        ]
+      },
+      {
+        id: "angren",
+        name: "Angren University (Faculty of Medicine)",
+        subtitle: "Modern Medical Sciences & Clinical Practice Center - Tashkent Region",
+        city: "Angren, Tashkent Region",
+        country: "Uzbekistan",
+        type: "Recognized University Medical Faculty",
+        est: "2020",
+        legacyNote: "Located in the scenic foothill city of Angren in the Tashkent Region, Angren University's Faculty of Medicine was created with European-standard clinical simulation facilities, interactive digital cadaver tables, and small student batches for intensive personalized professor guidance.",
+        duration: "6 Years (English Medium)",
+        medium: "100% English Medium",
+        nationalRank: 18,
+        worldRank: 6800,
+        tuitionFeeUSD: 3200,
+        hostelFeeUSD: 600,
         totalAnnualUSD: 3800,
         approxAnnualINR: "₹3,15,000 / year",
         neetRequired: "Mandatory (Qualifying marks)",
         ieltsRequired: "Not Required",
-        eligibility: "50% in PCB (General), 45% (Reserved Category). Age: 17 to 25 years.",
-        recognitions: ["NMC (India)", "WHO Listed", "Ministry of Higher Education Uzbekistan"],
+        eligibility: "50% in PCB (General), 45% (Reserved Category). Age: 17 to 25 years. NEET qualification mandatory.",
+        recognitions: ["NMC (India) Compliant", "WHO Listed (WDOMS)", "State Inspectorate for Quality in Education Uzbekistan"],
         collaborations: [
-          "40+ international university collaborations across Asia and Europe",
-          "Collaborative medical research and faculty exchange programs"
+          "European Medical Training Consortium",
+          "Tashkent Regional Healthcare Hospitals"
         ],
         faculties: [
-          "Faculty of General Medicine (MBBS)",
-          "Faculty of Pediatrics",
-          "Faculty of Medical Biology",
-          "Faculty of Pharmacy"
+          "General Medicine (MD/MBBS)",
+          "Clinical Simulation & Diagnostics",
+          "Therapy & Surgery"
         ],
         highlights: [
-          "Large, comprehensive public university with 28,500+ enrolled students.",
-          "Extremely affordable total fee package (~$3,800/year tuition + hostel).",
-          "Modern clinical diagnostic laboratories and anatomy museum.",
-          "Peaceful, hospitable city with low daily living costs for Indian families.",
-          "Round-the-clock Indian hostel warden and fresh Indian food."
+          "Modern, newly built medical campus equipped with advanced digital laboratories.",
+          "Low student-to-professor ratio (1:12) ensuring focused bedside and theoretical learning.",
+          "Affordable tuition package ($3,200/yr) with guaranteed written fee schedules.",
+          "Proximity to Tashkent (just 1.5 hours) with pleasant, pollution-free climate.",
+          "Indian mess facility operating on campus with South and North Indian culinary options."
         ],
         feeSchedule: [
-          { year: "Year 1", tuition: "$3,300", hostel: "$500", total: "$3,800" },
-          { year: "Year 2", tuition: "$3,300", hostel: "$500", total: "$3,800" },
-          { year: "Year 3", tuition: "$3,300", hostel: "$500", total: "$3,800" },
-          { year: "Year 4", tuition: "$3,300", hostel: "$500", total: "$3,800" },
-          { year: "Year 5", tuition: "$3,300", hostel: "$500", total: "$3,800" },
-          { year: "Year 6", tuition: "$3,300", hostel: "$500", total: "$3,800" }
+          { year: "Year 1", tuition: "$3,200", hostel: "$600", total: "$3,800" },
+          { year: "Year 2", tuition: "$3,200", hostel: "$600", total: "$3,800" },
+          { year: "Year 3", tuition: "$3,200", hostel: "$600", total: "$3,800" },
+          { year: "Year 4", tuition: "$3,200", hostel: "$600", total: "$3,800" },
+          { year: "Year 5", tuition: "$3,200", hostel: "$600", total: "$3,800" },
+          { year: "Year 6 (Internship)", tuition: "$3,200", hostel: "$600", total: "$3,800" }
         ],
         admissionProcess: [
-          "Profile verification & eligibility confirmation.",
-          "Admission letter dispatch within 3 to 5 business days.",
-          "Government visa clearance & student visa.",
-          "Escorted travel and direct hostel check-in."
+          "Application review through PARK International Education admissions desk.",
+          "Direct issuance of University Admission Statement.",
+          "Student visa stamping & flight coordination.",
+          "Campus reception, hostel check-in & academic induction."
+        ],
+        requiredDocs: [
+          "Valid International Passport copy",
+          "10th & 12th Grade Marksheets (Min 50% PCB)",
+          "NEET Qualification Scorecard",
+          "Medical Fitness & Blood Test Reports",
+          "Passport-size Photographs (white background)"
+        ]
+      },
+{
+        id: "samarkand",
+        name: "Samarkand State Medical University",
+        subtitle: "Historic 95-Year-Old Pioneer of Medical Education in Central Asia",
+        city: "Samarkand",
+        country: "Uzbekistan",
+        type: "Public / State University",
+        est: "1930",
+        legacyNote: "Founded in 1930, Samarkand State Medical University has trained over 40,000 physicians and is celebrated as Central Asia's oldest and most prestigious state medical university.",
+        duration: "6 Years (English Medium)",
+        medium: "100% English Medium",
+        nationalRank: 16,
+        worldRank: 7805,
+        tuitionFeeUSD: 3500,
+        hostelFeeUSD: 350,
+        totalAnnualUSD: 3850,
+        approxAnnualINR: "₹3,19,000 / year",
+        neetRequired: "Mandatory (Qualifying marks)",
+        ieltsRequired: "Not Required",
+        eligibility: "50% in PCB (General), 45% (Reserved Category). Age: 17 to 25 years.",
+        recognitions: ["NMC (India)", "WHO Listed", "FAIMER", "UNESCO"],
+        collaborations: [
+          "Erasmus+ Academic Exchange Network",
+          "Universities across Europe, Russia, and South Korea"
+        ],
+        faculties: [
+          "General Medicine (Therapeutic Faculty)",
+          "Pediatric Medicine",
+          "Medical Biology & Diagnostics",
+          "Dentistry",
+          "Pharmacy"
+        ],
+        highlights: [
+          "95+ years of clinical medical education heritage.",
+          "Extremely economical hostel fee ($350/year) among top government universities.",
+          "Digitized campus with European credit-module teaching framework.",
+          "Large, thriving community of 2,000+ Indian medical students.",
+          "Subsidized Indian cafeteria serving North and South Indian home-style meals."
+        ],
+        feeSchedule: [
+          { year: "Year 1", tuition: "$3,500", hostel: "$350", total: "$3,850" },
+          { year: "Year 2", tuition: "$3,500", hostel: "$350", total: "$3,850" },
+          { year: "Year 3", tuition: "$3,500", hostel: "$350", total: "$3,850" },
+          { year: "Year 4", tuition: "$3,500", hostel: "$350", total: "$3,850" },
+          { year: "Year 5", tuition: "$3,500", hostel: "$350", total: "$3,850" },
+          { year: "Year 6", tuition: "$3,500", hostel: "$350", total: "$3,850" }
+        ],
+        admissionProcess: [
+          "Verification of NEET qualification and 12th PCB credentials.",
+          "University provisional admission statement issuance.",
+          "Embassy visa stamping & documentation.",
+          "Arrival in Samarkand, registration and class commencement."
         ]
       }
     ],
     Philippines: [
-      {
+{
+        id: "pltci",
+        name: "PLTCI Medical College & Research",
+        subtitle: "PLT Colleges Inc. College of Medicine – Nueva Vizcaya",
+        city: "Bayombong, Nueva Vizcaya",
+        country: "Philippines",
+        type: "Accredited Medical College & Research",
+        est: "1989",
+        legacyNote: "Established in 1989 in the province of Nueva Vizcaya, PLTCI College of Medicine is the first and only medical college in Nueva Vizcaya accredited by both CHED and the Bureau of Immigration. Listed in WDOMS (FAIMER/WFME). Clinical training affiliated with Region II Trauma & Medical Center.",
+        duration: "5.5 Years (BS + MD + Internship)",
+        medium: "100% English Medium",
+        nationalRank: "Top Regional Center",
+        worldRank: "WDOMS Listed",
+        tuitionFeeUSD: 3600,
+        hostelFeeUSD: 600,
+        totalAnnualUSD: 4200,
+        approxAnnualINR: "₹2,61,000 / year (MD)",
+        neetRequired: "Mandatory (Qualifying marks)",
+        ieltsRequired: "Not Required",
+        eligibility: "50% in PCB in 10+2. NEET qualified. Completed 17+ years.",
+        recognitions: [
+          "NMC (India)",
+          "WHO Listed",
+          "WDOMS / FAIMER Listed",
+          "CHED & Bureau of Immigration Accredited"
+        ],
+        highlights: [
+          "The first and only accredited medical college in Nueva Vizcaya province.",
+          "Clinical clerkship at Government Region II Trauma & Medical Center.",
+          "Very affordable MD tuition: PHP 180,000/year (approx. ₹2.61 Lakhs/yr).",
+          "Total 5.5-year MBBS tuition package is only approx. ₹17.59 Lakhs.",
+          "3D Virtual Anatomy Lab, cadavers, and modern biochemistry & clinical skills labs."
+        ],
+        feeSchedule: [
+          { year: "Pre-Medicine (BS)", tuition: "₹5,85,000 (Total BS)", hostel: "$600", total: "₹6,35,000" },
+          { year: "Medicine - 1st Year", tuition: "PHP 180,000 (₹2,61,000)", hostel: "$600", total: "₹3,11,000" },
+          { year: "Medicine - 2nd Year", tuition: "PHP 180,000 (₹2,61,000)", hostel: "$600", total: "₹3,11,000" },
+          { year: "Medicine - 3rd Year", tuition: "PHP 180,000 (₹2,61,000)", hostel: "$600", total: "₹3,11,000" },
+          { year: "Medicine - 4th Year", tuition: "PHP 180,000 (₹2,61,000)", hostel: "$600", total: "₹3,11,000" },
+          { year: "Medicine - 5th Year (6 Mos)", tuition: "PHP 90,000 (₹1,30,500)", hostel: "$300", total: "₹1,55,500" }
+        ],
+        admissionProcess: [
+          "Document verification through PARK International Education.",
+          "Admission statement issued by PLTCI College of Medicine.",
+          "Student visa clearance and embassy processing.",
+          "Flight ticketing, airport reception, and campus hostel allotment."
+        ]
+      },
+{
         id: "perpetual",
-        name: "University of Perpetual Help System Delta",
+        name: "University of Perpetual Help System DALTA (UPHSD)",
         subtitle: "University of Perpetual Help System DALTA (UPHSD) – Las Piñas, Manila",
         city: "Las Piñas City, Metro Manila",
         country: "Philippines",
@@ -666,7 +744,7 @@
           "Travel confirmation, airport pickup, and hostel room allotment."
         ]
       },
-      {
+{
         id: "davao",
         name: "Davao Medical Foundation",
         subtitle: "Davao Medical School Foundation (DMSF) – College of Medicine",
@@ -714,7 +792,7 @@
           "Travel arrangements, airport reception in Davao City, and direct hostel check-in."
         ]
       },
-      {
+{
         id: "gullas",
         name: "Gullas College of Medicine",
         subtitle: "UV Gullas College of Medicine (UV.GCM) – Cebu City",
@@ -761,7 +839,7 @@
           "Arrival in Cebu City, orientation, and hostel accommodation."
         ]
       },
-      {
+{
         id: "ama",
         name: "AMA College of Medicine",
         subtitle: "AMA School of Medicine (AMASOM) – Makati City, Metro Manila",
@@ -808,734 +886,77 @@
           "Embassy visa stamping in India.",
           "Departure, airport reception in Manila, and hostel check-in."
         ]
-      },
-      {
-        id: "pltci",
-        name: "PLTCI Medical College & Research",
-        subtitle: "PLT Colleges Inc. College of Medicine – Nueva Vizcaya",
-        city: "Bayombong, Nueva Vizcaya",
-        country: "Philippines",
-        type: "Accredited Medical College & Research",
-        est: "1989",
-        legacyNote: "Established in 1989 in the province of Nueva Vizcaya, PLTCI College of Medicine is the first and only medical college in Nueva Vizcaya accredited by both CHED and the Bureau of Immigration. Listed in WDOMS (FAIMER/WFME). Clinical training affiliated with Region II Trauma & Medical Center.",
-        duration: "5.5 Years (BS + MD + Internship)",
-        medium: "100% English Medium",
-        nationalRank: "Top Regional Center",
-        worldRank: "WDOMS Listed",
-        tuitionFeeUSD: 3600,
-        hostelFeeUSD: 600,
-        totalAnnualUSD: 4200,
-        approxAnnualINR: "₹2,61,000 / year (MD)",
-        neetRequired: "Mandatory (Qualifying marks)",
-        ieltsRequired: "Not Required",
-        eligibility: "50% in PCB in 10+2. NEET qualified. Completed 17+ years.",
-        recognitions: [
-          "NMC (India)",
-          "WHO Listed",
-          "WDOMS / FAIMER Listed",
-          "CHED & Bureau of Immigration Accredited"
-        ],
-        highlights: [
-          "The first and only accredited medical college in Nueva Vizcaya province.",
-          "Clinical clerkship at Government Region II Trauma & Medical Center.",
-          "Very affordable MD tuition: PHP 180,000/year (approx. ₹2.61 Lakhs/yr).",
-          "Total 5.5-year MBBS tuition package is only approx. ₹17.59 Lakhs.",
-          "3D Virtual Anatomy Lab, cadavers, and modern biochemistry & clinical skills labs."
-        ],
-        feeSchedule: [
-          { year: "Pre-Medicine (BS)", tuition: "₹5,85,000 (Total BS)", hostel: "$600", total: "₹6,35,000" },
-          { year: "Medicine - 1st Year", tuition: "PHP 180,000 (₹2,61,000)", hostel: "$600", total: "₹3,11,000" },
-          { year: "Medicine - 2nd Year", tuition: "PHP 180,000 (₹2,61,000)", hostel: "$600", total: "₹3,11,000" },
-          { year: "Medicine - 3rd Year", tuition: "PHP 180,000 (₹2,61,000)", hostel: "$600", total: "₹3,11,000" },
-          { year: "Medicine - 4th Year", tuition: "PHP 180,000 (₹2,61,000)", hostel: "$600", total: "₹3,11,000" },
-          { year: "Medicine - 5th Year (6 Mos)", tuition: "PHP 90,000 (₹1,30,500)", hostel: "$300", total: "₹1,55,500" }
-        ],
-        admissionProcess: [
-          "Document verification through PARK International Education.",
-          "Admission statement issued by PLTCI College of Medicine.",
-          "Student visa clearance and embassy processing.",
-          "Flight ticketing, airport reception, and campus hostel allotment."
-        ]
       }
     ],
-    Kazakhstan: [
+    Mongolia: [
       {
-        id: "semey",
-        name: "Semey State Medical University",
-        subtitle: "Leading Government Medical University in East Kazakhstan (Est. 1952/1953)",
-        city: "Semey 071400",
-        country: "Kazakhstan",
-        type: "Government State Medical University",
-        est: "1952 / 1953",
-        legacyNote: "Founded in 1952 as Semipalatinsk State Medical Institute, it admitted its first batch in 1953 and was later elevated to Semey State Medical University. Over 65+ years of medical excellence, contributing significantly to Kazakhstan's public healthcare with postgraduate medical training in Pavlodar.",
-        duration: "5.8 to 6 Years (incl. Internship)",
-        medium: "100% English Medium",
-        nationalRank: 17,
-        worldRank: 5059,
-        tuitionFeeUSD: 3600,
-        hostelFeeUSD: 800,
-        visaMedicalUSD: 150,
-        totalAnnualUSD: 4550,
-        approxAnnualINR: "₹2,70,000 / year (Tuition)",
-        totalCourseUSD: 18000,
-        totalCourseINR: "₹13,50,000 INR (5-Yr Tuition)",
-        neetRequired: "Mandatory (Qualifying marks)",
-        ieltsRequired: "Not Required",
-        eligibility: "Aggregate 50% in Physics, Chemistry, and Biology (45% for Reserved categories). 17+ years of age on or before 31st Dec. Clear NEET qualification.",
-        recognitions: ["NMC (India)", "WHO Certified", "MCI Recognized", "Ministry of Healthcare Kazakhstan"],
-        collaborations: [
-          "Postgraduate Medical Center Pavlodar",
-          "Leading Central Asian & European Medical Councils"
-        ],
-        faculties: [
-          "Faculty of General Medicine (MBBS)",
-          "Faculty of Pediatrics",
-          "Faculty of Public Health & Pharmacy",
-          "Postgraduate Studies & Residency Training"
-        ],
-        highlights: [
-          "Over 3,500 active medical students with high international student satisfaction.",
-          "Postgraduate medical center in Pavlodar graduating 1,000+ specialist doctors annually.",
-          "Three separate student hostels plus one dedicated International Student Hostel in prime location.",
-          "Large academic library, common kitchens, and student buffets with healthy meals.",
-          "High-level security with 24x7 security guards and CCTV cameras on every floor.",
-          "Active sports grounds on campus for cricket, football, basketball, and volleyball.",
-          "Easy installment payment plan with 100% transparent written fee structure."
-        ],
-        feeSchedule: [
-          { year: "1st Year", tuition: "$3,600 (₹2,70,000)", hostel: "$800 (₹60,000)", total: "$4,550 (incl. visa/ins)" },
-          { year: "2nd Year", tuition: "$3,600 (₹2,70,000)", hostel: "$800 (₹60,000)", total: "$4,550" },
-          { year: "3rd Year", tuition: "$3,600 (₹2,70,000)", hostel: "$800 (₹60,000)", total: "$4,550" },
-          { year: "4th Year", tuition: "$3,600 (₹2,70,000)", hostel: "$800 (₹60,000)", total: "$4,550" },
-          { year: "5th Year", tuition: "$3,600 (₹2,70,000)", hostel: "$800 (₹60,000)", total: "$4,550" },
-          { year: "Total (5 Yrs)", tuition: "$18,000 (₹13,50,000)", hostel: "$4,000", total: "$22,000 (~₹16.5L)" }
-        ],
-        hostelAccommodation: "Three student hostels plus one dedicated International Student Hostel within walking distance of the university. Equipped with 24h hot & cold water, central heating, common kitchens, laundry room, study hall, and 24x7 security guard supervision.",
-        admissionProcess: [
-          "Submission of 10th and 12th marksheet along with NEET scorecard through PARK Education.",
-          "Official admission acceptance verification by Semey State Medical University.",
-          "Issuance of student invitation letter approved by the Migration Department.",
-          "Document legalization and student visa processing at the Kazakh embassy.",
-          "Airport reception at Semey/Almaty and direct campus check-in."
-        ],
-        requiredDocs: [
-          "Valid International Passport copy",
-          "12th Marksheet with 50% in PCB (45% for reserved)",
-          "NEET-UG Qualification Scorecard",
-          "Birth Certificate & Medical Fitness Certificate",
-          "10 Passport-size photographs"
-        ]
-      },
-      {
-        id: "astana",
-        name: "Astana Medical University",
-        subtitle: "Premier Capital Medical University in Nur-Sultan (Astana)",
-        city: "Nur-Sultan (Astana) 010000",
-        country: "Kazakhstan",
-        type: "National Capital Medical University",
-        est: "1964 (Reorganized 1997)",
-        legacyNote: "Located in Kazakhstan's modern capital Nur-Sultan (formerly Astana). Established in 1964 and reorganized as a prestigious clinical institution in 1997. Over 800 professors and staff training 3,000+ students with advanced credit-based three-tier education (Bachelor, Master, Ph.D.).",
-        duration: "5.8 to 6 Years (incl. Internship)",
-        medium: "100% English Medium",
-        nationalRank: 14,
-        worldRank: 4870,
-        tuitionFeeUSD: 5200,
-        hostelFeeUSD: 800,
-        visaMedicalUSD: 300,
-        totalAnnualUSD: 6300,
-        approxAnnualINR: "₹3,90,000 / year (Tuition)",
-        totalCourseUSD: 26000,
-        totalCourseINR: "₹19,50,000 INR (5-Yr Tuition)",
-        neetRequired: "Mandatory (Qualifying marks)",
-        ieltsRequired: "Not Required",
-        eligibility: "Aggregate 50% in Physics, Chemistry, and Biology (45% for Reserved categories). 17+ years of age. Qualified NEET score.",
-        recognitions: ["NMC (India)", "WHO Certified", "UNESCO Approved", "Ministry of Education & Science Kazakhstan"],
-        collaborations: [
-          "National Medical Holding of Kazakhstan",
-          "Republican Scientific Centers & Clinical Bases"
-        ],
-        faculties: [
-          "Faculty of General Medicine (MBBS)",
-          "Faculty of Dentistry",
-          "Faculty of Public Health",
-          "Faculty of Pharmacy",
-          "Faculty of Preventive Medicine",
-          "Center for Postgraduate & Ph.D. Education"
-        ],
-        highlights: [
-          "Premier medical institution located in Kazakhstan's capital city with world-class infrastructure.",
-          "Largest medical library in Kazakhstan with comprehensive digital and physical collections.",
-          "Clinical training conducted at the largest national and republican medical research centers.",
-          "Over 800 expert professors and academic specialists on staff.",
-          "Modern student hostels providing 3 meals a day, high-speed Wi-Fi, and central heating.",
-          "Degree widely recognized across India, USA, Europe, and the Commonwealth.",
-          "Zero capitation, donation, or hidden charges with structured semester fee installments."
-        ],
-        feeSchedule: [
-          { year: "1st Year", tuition: "$5,200 (₹3,90,000)", hostel: "$800 (₹60,000)", total: "$6,300 (incl. visa/ins)" },
-          { year: "2nd Year", tuition: "$5,200 (₹3,90,000)", hostel: "$800 (₹60,000)", total: "$6,300" },
-          { year: "3rd Year", tuition: "$5,200 (₹3,90,000)", hostel: "$800 (₹60,000)", total: "$6,300" },
-          { year: "4th Year", tuition: "$5,200 (₹3,90,000)", hostel: "$800 (₹60,000)", total: "$6,300" },
-          { year: "5th Year", tuition: "$5,200 (₹3,90,000)", hostel: "$800 (₹60,000)", total: "$6,300" },
-          { year: "Total (5 Yrs)", tuition: "$26,000 (₹19,50,000)", hostel: "$4,000", total: "$31,500 (~₹23.6L)" }
-        ],
-        hostelAccommodation: "Excellent hostel facilities located close to campus. Includes 3 meals a day, central heating and cooling, regular hot water, attached washrooms, high-speed Wi-Fi, and 24x7 security personnel.",
-        admissionProcess: [
-          "Application submission with academic transcripts through PARK International Education.",
-          "Verification of NEET qualification and English proficiency.",
-          "Issuance of official admission order and Ministry invitation from Nur-Sultan.",
-          "Student visa endorsement from the Embassy of Kazakhstan.",
-          "Airport reception at Nursultan Nazarbayev International Airport and hostel allocation."
-        ],
-        requiredDocs: [
-          "Valid International Passport",
-          "10th & 12th Certificate with PCB marks (Min 50%)",
-          "NEET Qualification Scorecard",
-          "Candidate's Birth Certificate",
-          "Medical Fitness & Blood Test Reports",
-          "10 Passport-size photographs"
-        ]
-      },
-      {
-        id: "skma",
-        name: "South Kazakhstan Medical Academy (SKMA)",
-        subtitle: "Leading State Medical Academy with Indian Mess & FMGE Training",
-        city: "Shymkent",
-        country: "Kazakhstan",
-        type: "State Medical Academy",
-        est: "1979",
-        legacyNote: "Founded in 1979 in the historic southern hub of Shymkent. Consistently ranked among the Top 10 medical universities in Kazakhstan with academic partnerships spanning the USA, Singapore, Europe, and Russia. Extensive modern laboratories, dedicated simulation centers, and high clinical case volume.",
-        duration: "5.8 to 6 Years (incl. Internship)",
-        medium: "100% English Medium",
-        nationalRank: 29,
-        worldRank: 8676,
-        tuitionFeeUSD: 5200,
-        hostelFeeUSD: 800,
-        visaMedicalUSD: 200,
-        totalAnnualUSD: 6000,
-        approxAnnualINR: "₹3,90,000 / year (Tuition)",
-        totalCourseUSD: 26000,
-        totalCourseINR: "₹19,50,000 INR (5-Yr Tuition)",
-        neetRequired: "Mandatory (Qualifying marks)",
-        ieltsRequired: "Not Required",
-        eligibility: "Aggregate 50% in PCB in 12th standard (45% for Reserved categories). 17+ years of age. Valid NEET scorecard.",
-        recognitions: ["NMC (India)", "WHO Certified", "MCI Approved", "Ministry of Healthcare Kazakhstan"],
-        collaborations: [
-          "Academic partners in USA, Singapore, Europe, and Russia",
-          "Network of regional teaching hospitals in Shymkent"
-        ],
-        faculties: [
-          "Faculty of General Medicine (MBBS)",
-          "Faculty of Pediatrics",
-          "Faculty of Pharmacy",
-          "Faculty of Dental Medicine",
-          "Department of Postgraduate Education"
-        ],
-        highlights: [
-          "Ranked among the Top 10 medical universities in Kazakhstan for academic quality.",
-          "Indian food available in hostel mess with separate vegetarian and non-vegetarian dining.",
-          "24x7 Indian Warden on campus and emergency physicians available on site.",
-          "Integrated coaching and preparation for the FMGE / NExT screening exam.",
-          "Warm southern climate with pleasant winters and very affordable student living expenses.",
-          "Advanced simulation laboratories, extensive anatomical libraries, and 2-4 sharing rooms.",
-          "Academic exchange programs with top partner universities worldwide."
-        ],
-        feeSchedule: [
-          { year: "1st Year", tuition: "$6,000 (₹4,50,000)", hostel: "$800 (incl. in package)", total: "$6,000" },
-          { year: "2nd Year", tuition: "$5,000 (₹3,75,000)", hostel: "$800", total: "$5,000" },
-          { year: "3rd Year", tuition: "$5,000 (₹3,75,000)", hostel: "$800", total: "$5,000" },
-          { year: "4th Year", tuition: "$5,000 (₹3,75,000)", hostel: "$800", total: "$5,000" },
-          { year: "5th Year", tuition: "$5,000 (₹3,75,000)", hostel: "$800", total: "$5,000" },
-          { year: "Total (5 Yrs)", tuition: "$26,000 (₹19,50,000)", hostel: "Included/Subsidized", total: "$26,000 (~₹19.5L)" }
-        ],
-        hostelAccommodation: "Furnished student dormitories with 2-4 sharing rooms. Features separate hostels for boys and girls, 24x7 Wi-Fi, clean tidy washrooms, well-ventilated rooms, 24x7 electricity, and an Indian mess with Indian chefs.",
-        admissionProcess: [
-          "Submit 10th and 12th marksheet with NEET scorecard to PARK International Education.",
-          "Direct issuance of academy admission confirmation statement.",
-          "Invitation to study approved by the Migration Department of Kazakhstan.",
-          "Visa application and stamping through Kazakh consular services.",
-          "Group departure, airport reception at Shymkent, and Indian hostel allotment."
-        ],
-        requiredDocs: [
-          "10th, 11th, and 12th grade marksheets",
-          "Certificate of medical fitness from a registered doctor",
-          "Valid International Passport",
-          "NEET-UG scorecard copy",
-          "Original education documents and birth certificate",
-          "10 Passport-size photos"
-        ]
-      },
-      {
-        id: "alfarabi",
-        name: "Al-Farabi Kazakh National University",
-        subtitle: "Top-Ranked National University in Kazakhstan (QS World Rank #220)",
-        city: "Almaty 050040",
-        country: "Kazakhstan",
-        type: "Premier National Research University",
-        est: "1934",
-        legacyNote: "Founded in 1934 in Almaty. The country's foremost flagship institution, officially classified as a National Research University. Ranked #220 globally in QS World University Rankings. Sprawling academic campus known as 'KazGU City' spanning over 81,000 square meters.",
-        duration: "5.8 to 6 Years (incl. Internship)",
+        id: "mnums",
+        name: "Mongolian National University of Medical Sciences (MNUMS)",
+        subtitle: "Mongolia's Sole Apex National Medical University - Ulaanbaatar",
+        city: "Ulaanbaatar (Capital)",
+        country: "Mongolia",
+        type: "Premier National Government Medical University",
+        est: "1942",
+        legacyNote: "Founded in 1942 as the foundational medical faculty of the Mongolian State University, MNUMS is the premier public medical university in Mongolia, training over 90% of the nation's doctors and healthcare leaders. Features modern university hospital facilities, state-of-the-art simulation centers, and internationally accredited English-medium Doctor of Medicine (MD/MBBS) programs.",
+        duration: "6 Years (English Medium)",
         medium: "100% English Medium",
         nationalRank: 1,
-        worldRank: 220,
-        tuitionFeeUSD: 4190,
-        hostelFeeUSD: 700,
-        visaMedicalUSD: 300,
-        totalAnnualUSD: 5190,
-        approxAnnualINR: "₹3,14,250 / year (Tuition)",
-        totalCourseUSD: 20950,
-        totalCourseINR: "₹15,71,250 INR (5-Yr Tuition)",
-        neetRequired: "Mandatory (134 General / 107 Reserved)",
-        ieltsRequired: "Not Required",
-        eligibility: "Aggregate 50% in PCB in 12th standard. Minimum NEET cutoff marks (134 General, 107 Reserved). Age: 17+ years.",
-        recognitions: ["NMC (India)", "WHO Certified", "UNESCO Approved", "QS Ranked #220", "Ministry of Education Kazakhstan"],
-        collaborations: [
-          "More than 30 leading international medical universities worldwide",
-          "European and Asian University Research Alliances"
-        ],
-        faculties: [
-          "Faculty of Medicine & Healthcare",
-          "Faculty of General Medicine (MBBS)",
-          "Department of Biomedical Sciences",
-          "Center for Advanced Medical Research & Distance Learning"
-        ],
-        highlights: [
-          "Ranked #220 in QS World University Rankings — the highest ranked university in Kazakhstan.",
-          "A massive educational city: 14 student hostels covering 81,000 sq.m housing 5,000+ students.",
-          "Collaborations and academic exchange with 30+ top global medical universities.",
-          "High standard European-model curriculum with cutting-edge laboratories and clinical bases.",
-          "Courses designed in English with distance e-learning support for Indian medical students.",
-          "High security: turnstiles with electronic cards, CCTV on every floor, and night guards.",
-          "Affordable government tuition ($4,190/yr) offering unmatched value for a Top-250 global university."
-        ],
-        feeSchedule: [
-          { year: "1st Year", tuition: "$4,190 (₹3,14,250)", hostel: "$700 (₹52,500)", total: "$5,190 (incl. visa/ins)" },
-          { year: "2nd Year", tuition: "$4,190 (₹3,14,250)", hostel: "$700 (₹52,500)", total: "$5,190" },
-          { year: "3rd Year", tuition: "$4,190 (₹3,14,250)", hostel: "$700 (₹52,500)", total: "$5,190" },
-          { year: "4th Year", tuition: "$4,190 (₹3,14,250)", hostel: "$700 (₹52,500)", total: "$5,190" },
-          { year: "5th Year", tuition: "$4,190 (₹3,14,250)", hostel: "$700 (₹52,500)", total: "$5,190" },
-          { year: "Total (5 Yrs)", tuition: "$20,950 (₹15,71,250)", hostel: "$3,500", total: "$24,450 (~₹18.3L)" }
-        ],
-        hostelAccommodation: "Located directly inside the university campus across 14 dormitories. Rooms are furnished with beds, mattresses, study tables, chairs, water heaters, and private/common kitchens for student cooking. Electronic security card access at entrances.",
-        admissionProcess: [
-          "Document verification & NEET scorecard assessment by PARK Education.",
-          "Internal online subject test & interview coordination with Al-Farabi admissions.",
-          "Issuance of official university invitation letter.",
-          "Student visa stamping from the Kazakh embassy.",
-          "Arrival in Almaty, hostel check-in (starts 25th August), and orientation."
-        ],
-        requiredDocs: [
-          "10th and 12th passing marksheet and transfer certificates",
-          "International Passport copy (minimum 2 years validity)",
-          "NEET scorecard copy",
-          "Attested Mental and Physical Medical Fitness Certificate",
-          "Birth Certificate",
-          "8 Passport-size photographs",
-          "Bank statement / financial proof"
-        ]
-      },
-      {
-        id: "kaznmu",
-        name: "Kazakh National Medical University (Asfendiyarov)",
-        subtitle: "The Landmark National Medical University of Kazakhstan (Est. 1930)",
-        city: "Almaty 050000",
-        country: "Kazakhstan",
-        type: "National Government Medical University",
-        est: "1930 / 1931",
-        legacyNote: "Established in 1930 in Almaty. Recognized by the Government of Kazakhstan as a National University in 2001 for superior academic excellence. More than 11,000 national and international students trained by 1,500+ specialist medical professors and scientists.",
-        duration: "5.8 to 6 Years (incl. Internship)",
-        medium: "100% English Medium",
-        nationalRank: 5,
-        worldRank: 3878,
-        tuitionFeeUSD: 6500,
+        worldRank: 3850,
+        tuitionFeeUSD: 4500,
         hostelFeeUSD: 800,
-        visaMedicalUSD: 300,
-        totalAnnualUSD: 7600,
-        approxAnnualINR: "₹4,87,500 / year (Tuition)",
-        totalCourseUSD: 32500,
-        totalCourseINR: "₹24,37,500 INR (5-Yr Tuition)",
+        totalAnnualUSD: 5300,
+        approxAnnualINR: "₹4,40,000 / year",
         neetRequired: "Mandatory (Qualifying marks)",
         ieltsRequired: "Not Required",
-        eligibility: "Aggregate 50% in PCB in 12th standard (45% for Reserved categories). 17+ years of age. Valid NEET score.",
-        recognitions: ["NMC (India)", "WHO Certified", "UNESCO Approved", "Ministry of Healthcare Kazakhstan"],
+        eligibility: "50% in PCB (General), 40% (Reserved Category). Age: 17 to 25 years. NEET qualification mandatory.",
+        recognitions: ["NMC (India) Compliant", "WHO Listed (WDOMS)", "WFME Accredited", "Ministry of Health Mongolia", "FAIMER", "ECFMG (USA)"],
         collaborations: [
-          "Leading national clinical hospitals and research institutes across Kazakhstan",
-          "European Association of Medical Schools (AMSE)"
+          "Tokyo Medical and Dental University",
+          "Seoul National University Hospital",
+          "Harvard Medical School Global Alliances"
         ],
         faculties: [
-          "School of General Medicine (MBBS)",
-          "School of Pediatrics",
-          "School of Pharmacy",
+          "School of Medicine (General Medicine / MD)",
           "School of Dentistry",
+          "School of Pharmacy",
           "School of Public Health",
-          "International Medical Faculty"
+          "Graduate School of Biomedical Sciences"
         ],
         highlights: [
-          "Oldest and most prestigious medical university in Kazakhstan, founded in 1930.",
-          "Over 11,000 students and 1,500+ specialist medical professors.",
-          "Classified as a National University by the Government of Kazakhstan.",
-          "Extensive clinical bases across Almaty with multiple multi-specialty hospital rotations.",
-          "Modern hostel accommodation for 2,000+ international students with gym and reading rooms.",
-          "Subsidized government university education ensuring global degree recognition.",
-          "Complete hands-on bedside training and clinical clerkships compliant with NMC criteria."
+          "National apex medical institution of Mongolia with 80+ years of institutional excellence.",
+          "Sole university in the country possessing fully integrated national university teaching hospitals.",
+          "Accredited by the World Federation for Medical Education (WFME) and listed in WHO/WDOMS.",
+          "World-class clinical simulation center recognized across East Asia for surgical and trauma training.",
+          "Safe, progressive capital city (Ulaanbaatar) with modern amenities and English-speaking faculty."
         ],
         feeSchedule: [
-          { year: "1st Year", tuition: "$6,500 (₹4,87,500)", hostel: "$800 (₹60,000)", total: "$7,600 (incl. visa/ins)" },
-          { year: "2nd Year", tuition: "$6,500 (₹4,87,500)", hostel: "$800 (₹60,000)", total: "$7,600" },
-          { year: "3rd Year", tuition: "$6,500 (₹4,87,500)", hostel: "$800 (₹60,000)", total: "$7,600" },
-          { year: "4th Year", tuition: "$6,500 (₹4,87,500)", hostel: "$800 (₹60,000)", total: "$7,600" },
-          { year: "5th Year", tuition: "$6,500 (₹4,87,500)", hostel: "$800 (₹60,000)", total: "$7,600" },
-          { year: "Total (5 Yrs)", tuition: "$32,500 (₹24,37,500)", hostel: "$4,000", total: "$38,000 (~₹28.5L)" }
+          { year: "Year 1", tuition: "$4,500", hostel: "$800", total: "$5,300" },
+          { year: "Year 2", tuition: "$4,500", hostel: "$800", total: "$5,300" },
+          { year: "Year 3", tuition: "$4,500", hostel: "$800", total: "$5,300" },
+          { year: "Year 4", tuition: "$4,500", hostel: "$800", total: "$5,300" },
+          { year: "Year 5", tuition: "$4,500", hostel: "$800", total: "$5,300" },
+          { year: "Year 6 (Internship)", tuition: "$4,500", hostel: "$800", total: "$5,300" }
         ],
-        hostelAccommodation: "Hostel capacity for more than 2,000 students. Offers 2-3 shared rooms, gym, reading room, dining hall, geysers for hot/cold water, playground, cooking gas for student cooking, and an auditorium.",
         admissionProcess: [
-          "Direct profile and NEET submission to PARK International Education.",
-          "Issuance of official invitation letter from Kazakh National Medical University.",
-          "Legalization of documents with MEA attestation and consular stamp.",
-          "Student visa issuance from the embassy of Kazakhstan.",
-          "Airport reception at Almaty International Airport and hostel registration."
+          "Profile assessment & NEET qualification verification at PARK International Education desk.",
+          "Submission of application to the Academic Affairs Council of MNUMS.",
+          "Issuance of official University Acceptance & Admission Certificate.",
+          "Mongolian student visa stamping with Consular Ministry approval.",
+          "Flight departure from India to Ulaanbaatar, on-ground reception & hostel allotment."
         ],
         requiredDocs: [
-          "Valid International Passport",
-          "10th and 12th Marksheets (Min 50% PCB)",
-          "NEET Certificate with Scorecard",
-          "Birth Certificate",
-          "MEA attested documents and Embassy legalization",
-          "Medical Fitness certificate and proof of fees payment"
+          "Valid International Passport copy (min 2 years validity)",
+          "10th & 12th Grade Marksheets (Min 50% PCB)",
+          "NEET-UG Qualification Scorecard",
+          "Certified Birth Certificate copy",
+          "Comprehensive Medical Fitness & Blood Test Certificate",
+          "Police Clearance Certificate (PCC)",
+          "Passport-size Photographs (white background, 3.5 x 4.5 cm)"
         ]
       }
     ],
     Kyrgyzstan: [
-      {
-        id: "adam",
-        name: "Adam University School of Medicine",
-        subtitle: "Premier Medical Institution in Bishkek Following European Educational Standards",
-        city: "Bishkek",
-        country: "Kyrgyzstan",
-        type: "Accredited Medical University",
-        est: "1994",
-        legacyNote: "Established in 1994 in Bishkek, Adam University School of Medicine is officially recognized by the Ministry of Health and Ministry of Education of Kyrgyzstan. Features 45 study departments following European Educational Standards with modern medical simulators like Simformer, Webex, and Virtumed.",
-        duration: "6 Years (incl. Internship)",
-        medium: "100% English Medium",
-        nationalRank: 24,
-        worldRank: 11457,
-        tuitionFeeUSD: 4000,
-        hostelFeeUSD: 2000,
-        totalAnnualUSD: 6000,
-        approxAnnualINR: "₹3,00,000 / year (Tuition)",
-        totalCourseUSD: 26000,
-        totalCourseINR: "₹19,50,000 INR (6-Yr Tuition Total)",
-        neetRequired: "Mandatory",
-        ieltsRequired: "Not Required",
-        eligibility: "Aggregate 50% in PCB (General), 40% (Reserved Category). 17+ years of age by 31st Dec. NEET qualified.",
-        recognitions: ["NMC (India)", "WHO Listed", "MCI Approved", "Ministry of Education & Health Kyrgyzstan"],
-        collaborations: [
-          "European Educational Exchange Programs",
-          "International Simulation Centers (Simformer, Virtumed)"
-        ],
-        faculties: [
-          "School of General Medicine (MBBS)",
-          "Department of Biomedical & Clinical Sciences",
-          "Center for Medical Simulation & Digital Learning"
-        ],
-        highlights: [
-          "45 comprehensive study departments following European Educational Standards.",
-          "State-of-the-art training rooms with advanced medical simulators (Simformer, Virtumed, Webex).",
-          "100% English medium instruction with experienced, cooperative professors.",
-          "Fully furnished hostels with 24h water, electricity, heating, laundry, and Wi-Fi.",
-          "On-campus Indian mess with professional chefs preparing vegetarian and non-vegetarian food.",
-          "Campus museum, expansive medical library, and active sports complex.",
-          "No donation, no capitation fees, with structured installment fee payment."
-        ],
-        feeSchedule: [
-          { year: "1st Year", tuition: "$6,000", hostel: "$2,000", total: "$8,000 (₹6,00,000)" },
-          { year: "2nd Year", tuition: "$4,000", hostel: "Optional", total: "$4,000 (₹3,00,000)" },
-          { year: "3rd Year", tuition: "$4,000", hostel: "Optional", total: "$4,000 (₹3,00,000)" },
-          { year: "4th Year", tuition: "$4,000", hostel: "Optional", total: "$4,000 (₹3,00,000)" },
-          { year: "5th Year", tuition: "$4,000", hostel: "Optional", total: "$4,000 (₹3,00,000)" },
-          { year: "6th Year", tuition: "$2,000", hostel: "Optional", total: "$2,000 (₹1,50,000)" },
-          { year: "Total (6 Yrs)", tuition: "$26,000", hostel: "--", total: "$26,000 (~₹19.5L)" }
-        ],
-        hostelAccommodation: "Fully furnished student rooms with desks, tables, chairs, 24-hour hot & cold water, central heating, common study halls, laundry, small kitchen for self-cooking, high-speed Wi-Fi, CCTV, sports complex, and Indian food prepared by experienced cooks.",
-        admissionProcess: [
-          "Profile assessment & NEET qualification verification via PARK Education.",
-          "Formal application and submission of academic documents.",
-          "Issuance of official University Invitation / Offer Letter.",
-          "Tuition fee deposit and student visa processing at the Kyrgyz embassy.",
-          "Ticketing, group departure, and airport reception in Bishkek."
-        ],
-        requiredDocs: [
-          "NEET Qualification Scorecard",
-          "10th & 12th Grade Marksheets (Min 50% PCB)",
-          "Original International Passport",
-          "Passport-size photographs",
-          "Medical Fitness & Blood Test Reports"
-        ]
-      },
-      {
-        id: "krsu",
-        name: "Kyrgyz-Russian Slavic University (KRSU)",
-        subtitle: "Top-Ranked Interstate University Founded by Bilateral Treaty (Rank #2 in Kyrgyzstan)",
-        city: "Bishkek (Capital)",
-        country: "Kyrgyzstan",
-        type: "Interstate Joint Government University",
-        est: "1993",
-        legacyNote: "Founded in 1993 under a historic bilateral agreement between the Kyrgyz Republic and the Russian Federation. High international standing with over 11,000 students across 7 institutes and 13 faculties. Ranked #2 in Kyrgyzstan with global recognition by WHO, NMC, ECFMG, AMC, and GMC.",
-        duration: "6 Years (5 Yrs Academic + 1 Yr Internship)",
-        medium: "100% English Medium",
-        nationalRank: 2,
-        worldRank: 4472,
-        tuitionFeeUSD: 2900,
-        hostelFeeUSD: 600,
-        totalAnnualUSD: 3500,
-        approxAnnualINR: "₹2,17,500 / year (Tuition)",
-        totalCourseUSD: 17400,
-        totalCourseINR: "₹13,05,000 INR (6-Yr Tuition Total)",
-        neetRequired: "Mandatory",
-        ieltsRequired: "Not Required",
-        eligibility: "10+2 with 50% in PCB (General), 50% for Reserved as per MCI/NMC. NEET qualification mandatory.",
-        recognitions: ["NMC (India)", "WHO Listed", "ECFMG", "AMC", "GMC", "Ministry of Education Russia & Kyrgyzstan"],
-        collaborations: [
-          "Bilateral Government Partnership (Russia & Kyrgyzstan)",
-          "Leading Russian Clinical & Research Academies"
-        ],
-        faculties: [
-          "Faculty of Medicine (General Medicine MBBS)",
-          "Faculty of Pediatrics & Dentistry",
-          "Faculty of Humanities & International Relations",
-          "Postgraduate & Post-Doctoral Residency Programs"
-        ],
-        highlights: [
-          "Ranked #2 university in Kyrgyzstan with high FMGE passing rate (30%+).",
-          "Dual interstate Russian-Kyrgyz medical accreditation valid globally.",
-          "Cadaveric human body dissection and hospital exposure starting from 1st year.",
-          "Interactive complexes with virtual and augmented reality training.",
-          "One of the lowest tuition fees in Central Asia: Just $2,900/year (~₹2.17 Lakhs/yr).",
-          "4-star hostel accommodation facilities with Indian mess and 24x7 security.",
-          "Over 11,000 students on a modern, secure university campus in Bishkek."
-        ],
-        feeSchedule: [
-          { year: "1st Year", tuition: "$2,900 (₹2,17,500)", hostel: "$600 (₹45,000)", total: "$3,500" },
-          { year: "2nd Year", tuition: "$2,900 (₹2,17,500)", hostel: "$600 (₹45,000)", total: "$3,500" },
-          { year: "3rd Year", tuition: "$2,900 (₹2,17,500)", hostel: "$600 (₹45,000)", total: "$3,500" },
-          { year: "4th Year", tuition: "$2,900 (₹2,17,500)", hostel: "$600 (₹45,000)", total: "$3,500" },
-          { year: "5th Year", tuition: "$2,900 (₹2,17,500)", hostel: "$600 (₹45,000)", total: "$3,500" },
-          { year: "6th Year (Internship)", tuition: "$2,900 (₹2,17,500)", hostel: "$600 (₹45,000)", total: "$3,500" },
-          { year: "Total (6 Yrs)", tuition: "$17,400 (₹13,05,000)", hostel: "$3,600", total: "$21,000 (~₹15.75L)" }
-        ],
-        hostelAccommodation: "4-star quality accommodation with Indian food mess, high-speed Wi-Fi, well-furnished lecture halls, sports grounds, central heating, and round-the-clock security guard presence.",
-        admissionProcess: [
-          "Submit academic certificates and NEET scorecard through PARK Education.",
-          "Admission letter issuance from Kyrgyz-Russian Slavic University.",
-          "Visa invitation letter processing with the Ministry of Foreign Affairs.",
-          "Visa stamping at the Kyrgyz Embassy in Delhi.",
-          "Departure, airport reception in Bishkek, and hostel room allotment."
-        ],
-        requiredDocs: [
-          "10th and 12th Grade Marksheets (Min 50% PCB)",
-          "Valid International Passport",
-          "NEET Scorecard",
-          "Birth Certificate",
-          "Medical Fitness & HIV Test Reports",
-          "6 Passport-size photographs"
-        ]
-      },
-      {
-        id: "ism",
-        name: "International School of Medicine (ISM)",
-        subtitle: "Premier International Medical Campus of the International University of Kyrgyzstan",
-        city: "Bishkek (Capital)",
-        country: "Kyrgyzstan",
-        type: "International Medical School",
-        est: "2003",
-        legacyNote: "Founded in 2003 under the International University of Kyrgyzstan (IUK). Pioneer institution specialized in training international medical students with 100% English-medium instruction conforming to PM&DC, WHO, and NMC guidelines.",
-        duration: "5.8 to 6 Years (incl. Internship)",
-        medium: "100% English Medium",
-        nationalRank: 8,
-        worldRank: 9481,
-        tuitionFeeUSD: 5150,
-        hostelFeeUSD: 700,
-        visaMedicalUSD: 300,
-        totalAnnualUSD: 6150,
-        approxAnnualINR: "₹3,86,250 / year (Tuition)",
-        totalCourseUSD: 25750,
-        totalCourseINR: "₹19,31,250 INR (5-Yr Tuition Total)",
-        neetRequired: "Mandatory",
-        ieltsRequired: "Not Required",
-        eligibility: "Indian nationality, 12th standard with PCB + English (Min 50%), 17+ years of age by 31st Dec, NEET cleared.",
-        recognitions: ["NMC (India)", "WHO Listed", "FAIMER", "WFME", "Ministry of Education Kyrgyzstan"],
-        collaborations: [
-          "International University of Kyrgyzstan (IUK) Network",
-          "Affiliated Teaching Hospitals throughout Bishkek"
-        ],
-        faculties: [
-          "Faculty of General Medicine (MBBS)",
-          "Department of Clinical Sciences & Surgery",
-          "Department of Public Health & Preventive Care"
-        ],
-        highlights: [
-          "Ranked #8 in Kyrgyzstan with world-class medical education designed for foreign students.",
-          "100% English medium curriculum with highly qualified English-speaking faculty.",
-          "Located in capital Bishkek with direct connections to malls, hospitals, and airport.",
-          "International standard hostels with attached washrooms, Indian mess, and 24x7 security.",
-          "Extensive hospital practice across affiliated state and private clinics in Bishkek.",
-          "No hidden costs or capitation fees with transparent tuition installments."
-        ],
-        feeSchedule: [
-          { year: "1st Year", tuition: "$5,150 (₹3,86,250)", hostel: "$700 (₹52,500)", total: "$6,150 (incl. visa/ins)" },
-          { year: "2nd Year", tuition: "$5,150 (₹3,86,250)", hostel: "$700 (₹52,500)", total: "$6,150" },
-          { year: "3rd Year", tuition: "$5,150 (₹3,86,250)", hostel: "$700 (₹52,500)", total: "$6,150" },
-          { year: "4th Year", tuition: "$5,150 (₹3,86,250)", hostel: "$700 (₹52,500)", total: "$6,150" },
-          { year: "5th Year", tuition: "$5,150 (₹3,86,250)", hostel: "$700 (₹52,500)", total: "$6,150" },
-          { year: "Total (5 Yrs)", tuition: "$25,750 (₹19,31,250)", hostel: "$3,500", total: "$30,750 (~₹23.0L)" }
-        ],
-        hostelAccommodation: "Furnished rooms accommodating 2-3 students with attached washrooms, water heaters, central heating, Wi-Fi, common study lounges, kitchen for self-cooking, and a dedicated campus canteen providing Indian meals.",
-        admissionProcess: [
-          "Submission of 10th and 12th marksheet with NEET scorecard to PARK Education.",
-          "Verification and issuance of ISM admission confirmation letter.",
-          "Visa invitation processing through the Ministry of Foreign Affairs Kyrgyzstan.",
-          "Embassy visa stamping and group travel booking.",
-          "Airport reception in Bishkek and room allotment."
-        ],
-        requiredDocs: [
-          "10th & 12th Passing Certificates (Min 50% PCB)",
-          "NEET Scorecard",
-          "International Passport (min 2 years validity)",
-          "Birth Certificate & Medical Fitness Certificate",
-          "8 Passport-size photos"
-        ]
-      },
-      {
-        id: "bimi",
-        name: "Bishkek International Medical Institute (BIMI)",
-        subtitle: "Modern High-Tech International Medical Institute in Bishkek",
-        city: "Bishkek (Capital)",
-        country: "Kyrgyzstan",
-        type: "International Medical Institute",
-        est: "2019",
-        legacyNote: "Founded in 2019 in Bishkek. Designed from the ground up for modern medical training with high-tech computer simulation centers, 2 newly built dormitories with 750 beds, and complete digital library access for international students.",
-        duration: "5.8 to 6 Years (incl. Internship)",
-        medium: "100% English Medium",
-        nationalRank: 22,
-        worldRank: 10801,
-        tuitionFeeUSD: 4680,
-        hostelFeeUSD: 700,
-        visaMedicalUSD: 150,
-        totalAnnualUSD: 5530,
-        approxAnnualINR: "₹3,51,000 / year (Tuition)",
-        totalCourseUSD: 23400,
-        totalCourseINR: "₹17,55,000 INR (5-Yr Tuition Total)",
-        neetRequired: "Mandatory",
-        ieltsRequired: "Not Required",
-        eligibility: "Aggregate 50% in PCB in 12th standard (45% for Reserved categories). 17+ years of age. Valid NEET scorecard.",
-        recognitions: ["NMC (India)", "WHO Listed", "Ministry of Health & Education Kyrgyzstan"],
-        collaborations: [
-          "Advanced University Clinics across Bishkek",
-          "International Medical Training Councils"
-        ],
-        faculties: [
-          "Faculty of General Medicine (MBBS)",
-          "Department of Diagnostic & Clinical Sciences",
-          "High-Tech Medical Simulation Center"
-        ],
-        highlights: [
-          "High-tech campus with a modern computer simulation center and e-learning resources.",
-          "Advanced coaching integrated into the curriculum for NEXT, USMLE, and PLAB.",
-          "100% clinical exposure at advanced university partner clinics in Bishkek.",
-          "2 recently constructed student dormitories with 750 beds and clean, quiet study spaces.",
-          "Delicious Indian meals available with 24x7 electricity, hot and cold water.",
-          "Safe and secure campus environment with dedicated hostel management."
-        ],
-        feeSchedule: [
-          { year: "1st Year", tuition: "$4,680 (₹3,51,000)", hostel: "$700 (₹52,500)", total: "$5,530 (incl. ins)" },
-          { year: "2nd Year", tuition: "$4,680 (₹3,51,000)", hostel: "$700 (₹52,500)", total: "$5,530" },
-          { year: "3rd Year", tuition: "$4,680 (₹3,51,000)", hostel: "$700 (₹52,500)", total: "$5,530" },
-          { year: "4th Year", tuition: "$4,680 (₹3,51,000)", hostel: "$700 (₹52,500)", total: "$5,530" },
-          { year: "5th Year", tuition: "$4,680 (₹3,51,000)", hostel: "$700 (₹52,500)", total: "$5,530" },
-          { year: "Total (5 Yrs)", tuition: "$23,400 (₹17,55,000)", hostel: "$3,500", total: "$27,650 (~₹20.7L)" }
-        ],
-        hostelAccommodation: "Two newly built dormitories with 750 beds. Includes comfortable living rooms, reading rooms, large dining room, kitchen, laundry, modern showers/toilets, Wi-Fi, and 24x7 water and electricity.",
-        admissionProcess: [
-          "Submit 10+2 marksheet and NEET scorecard to reserve seat (July/Sept intake).",
-          "Receipt of official admission confirmation letter from BIMI.",
-          "Processing of student visa through the Kyrgyz Ministry of Foreign Affairs.",
-          "Embassy visa stamping and flight arrangement.",
-          "Arrival in Bishkek, campus orientation, and clinical batch start."
-        ],
-        requiredDocs: [
-          "12th Marksheet with 50% in PCB",
-          "Valid International Passport",
-          "NEET Qualification Scorecard",
-          "Welcome & Confirmation letter from university",
-          "Medical Fitness certificate",
-          "20 Passport-size photos"
-        ]
-      },
-      {
-        id: "jalalabad",
-        name: "Jalal-Abad State Medical University",
-        subtitle: "Historic Public Government Medical University in Jalal-Abad (Est. 1992)",
-        city: "Jalal-Abad",
-        country: "Kyrgyzstan",
-        type: "Public State Medical University",
-        est: "1992 / 1993",
-        legacyNote: "Public government medical university founded in 1992 in Jalal-Abad. Houses over 250 teachers including 10 professors and 40+ Ph.D. doctors, educating more than 4,500 students in international medicine.",
-        duration: "5.8 to 6 Years (incl. Internship)",
-        medium: "100% English Medium",
-        nationalRank: 17,
-        worldRank: 10285,
-        tuitionFeeUSD: 4000,
-        hostelFeeUSD: 700,
-        visaMedicalUSD: 150,
-        totalAnnualUSD: 4850,
-        approxAnnualINR: "₹3,00,000 / year (Tuition)",
-        totalCourseUSD: 20000,
-        totalCourseINR: "₹15,00,000 INR (5-Yr Tuition Total)",
-        neetRequired: "Mandatory",
-        ieltsRequired: "Not Required",
-        eligibility: "Indian nationality, 12th standard with 50% in PCB + English, Age 17+ by 31st Dec, NEET cleared.",
-        recognitions: ["NMC (India)", "WHO Listed", "PLAB & USMLE Eligible", "Ministry of Health Kyrgyzstan"],
-        collaborations: [
-          "State Health Clinics of Jalal-Abad Region",
-          "International Public Health Councils"
-        ],
-        faculties: [
-          "Faculty of General Medicine (MBBS)",
-          "Department of Surgery & Internal Medicine",
-          "Postgraduate Medical Education"
-        ],
-        highlights: [
-          "Government medical institution with 30+ years of training international physicians.",
-          "Over 4,500 enrolled students and 250+ experienced teaching doctors and professors.",
-          "State-of-the-art medical techniques and hands-on clinical focus.",
-          "Spacious dining halls and modern hygienic kitchens with food cooked by Indian chefs.",
-          "Well-furnished hostel rooms with attached washrooms, Wi-Fi, and 24x7 security.",
-          "Low cost of living in the scenic, peaceful city of Jalal-Abad."
-        ],
-        feeSchedule: [
-          { year: "1st Year", tuition: "$4,000 (₹3,00,000)", hostel: "$700 (₹52,500)", total: "$4,850 (incl. ins)" },
-          { year: "2nd Year", tuition: "$4,000 (₹3,00,000)", hostel: "$700 (₹52,500)", total: "$4,850" },
-          { year: "3rd Year", tuition: "$4,000 (₹3,00,000)", hostel: "$700 (₹52,500)", total: "$4,850" },
-          { year: "4th Year", tuition: "$4,000 (₹3,00,000)", hostel: "$700 (₹52,500)", total: "$4,850" },
-          { year: "5th Year", tuition: "$4,000 (₹3,00,000)", hostel: "$700 (₹52,500)", total: "$4,850" },
-          { year: "Total (5 Yrs)", tuition: "$20,000 (₹15,00,000)", hostel: "$3,500", total: "$24,250 (~₹18.2L)" }
-        ],
-        hostelAccommodation: "Furnished rooms with beds, mattresses, study tables, water heaters, Wi-Fi, common kitchens, housekeeping, clean attached washrooms, and an Indian mess serving nutritious meals.",
-        admissionProcess: [
-          "Submit 10th and 12th marksheets with NEET scorecard via PARK Education.",
-          "Issuance of official Jalal-Abad admission confirmation.",
-          "Ministry visa invitation processing and student visa stamping.",
-          "Departure, airport reception, and campus hostel check-in."
-        ],
-        requiredDocs: [
-          "10th and 12th passing marksheets (Min 50% PCB)",
-          "NEET Scorecard",
-          "Valid International Passport",
-          "Birth Certificate & Medical Fitness Report",
-          "8 Passport-size photos"
-        ]
-      },
-      {
+{
         id: "osh",
         name: "Osh State Medical University",
         subtitle: "Premier Public State Medical University with 29,000+ Students (Est. 1951/1993)",
@@ -1601,235 +1022,73 @@
           "8 Passport-size photos"
         ]
       },
-      {
-        id: "asmi",
-        name: "Asian Medical Institute (ASMI)",
-        subtitle: "Top-Ranked Medical Institute in Kant with 10 Affiliated Teaching Hospitals",
-        city: "Kant (near Bishkek)",
+{
+        id: "jalalabad",
+        name: "Jalal-Abad State Medical University",
+        subtitle: "Historic Public Government Medical University in Jalal-Abad (Est. 1992)",
+        city: "Jalal-Abad",
         country: "Kyrgyzstan",
-        type: "Private Medical Institute",
-        est: "2004",
-        legacyNote: "Founded in 2004 in Kant (20 km from Bishkek). Listed by the Ministry of Justice and WHO directory. More than 2,000 students and 550+ faculty members with 10 affiliated multi-specialty hospitals for extensive bedside training.",
+        type: "Public State Medical University",
+        est: "1992 / 1993",
+        legacyNote: "Public government medical university founded in 1992 in Jalal-Abad. Houses over 250 teachers including 10 professors and 40+ Ph.D. doctors, educating more than 4,500 students in international medicine.",
         duration: "5.8 to 6 Years (incl. Internship)",
         medium: "100% English Medium",
-        nationalRank: 30,
-        worldRank: 11832,
-        tuitionFeeUSD: 3400,
-        hostelFeeUSD: 450,
+        nationalRank: 17,
+        worldRank: 10285,
+        tuitionFeeUSD: 4000,
+        hostelFeeUSD: 700,
         visaMedicalUSD: 150,
-        totalAnnualUSD: 4000,
-        approxAnnualINR: "₹2,55,000 / year (Tuition)",
-        totalCourseUSD: 17000,
-        totalCourseINR: "₹12,75,000 INR (5-Yr Tuition Total)",
+        totalAnnualUSD: 4850,
+        approxAnnualINR: "₹3,00,000 / year (Tuition)",
+        totalCourseUSD: 20000,
+        totalCourseINR: "₹15,00,000 INR (5-Yr Tuition Total)",
         neetRequired: "Mandatory",
         ieltsRequired: "Not Required",
         eligibility: "Indian nationality, 12th standard with 50% in PCB + English, Age 17+ by 31st Dec, NEET cleared.",
-        recognitions: ["NMC (India)", "WHO Listed", "Ministry of Justice & Health Kyrgyzstan"],
+        recognitions: ["NMC (India)", "WHO Listed", "PLAB & USMLE Eligible", "Ministry of Health Kyrgyzstan"],
         collaborations: [
-          "10 Affiliated Clinical Teaching Hospitals in Chuy Region & Bishkek",
-          "Asian Medical College Hospital Network"
+          "State Health Clinics of Jalal-Abad Region",
+          "International Public Health Councils"
         ],
         faculties: [
           "Faculty of General Medicine (MBBS)",
-          "Faculty of Dentistry (BDS/DDS)",
-          "Department of Clinical Residencies"
+          "Department of Surgery & Internal Medicine",
+          "Postgraduate Medical Education"
         ],
         highlights: [
-          "Most affordable medical institute in Central Asia: Tuition just $3,400/yr (approx. ₹2.55 Lakhs/yr).",
-          "10 affiliated clinical hospitals providing diverse bedside practical training.",
-          "Purely English medium instruction throughout with zero language barrier.",
-          "Own campus hostels with attached washrooms, Indian mess, and Wi-Fi.",
-          "Limited batch strength ensuring individual attention from experienced professors.",
-          "No donation fees, capitation charges, or hidden expenses.",
-          "Scholarship opportunities available for high-achieving students."
+          "Government medical institution with 30+ years of training international physicians.",
+          "Over 4,500 enrolled students and 250+ experienced teaching doctors and professors.",
+          "State-of-the-art medical techniques and hands-on clinical focus.",
+          "Spacious dining halls and modern hygienic kitchens with food cooked by Indian chefs.",
+          "Well-furnished hostel rooms with attached washrooms, Wi-Fi, and 24x7 security.",
+          "Low cost of living in the scenic, peaceful city of Jalal-Abad."
         ],
         feeSchedule: [
-          { year: "1st Year", tuition: "$3,400 (₹2,55,000)", hostel: "$450 (₹33,750)", total: "$4,000 (incl. ins)" },
-          { year: "2nd Year", tuition: "$3,400 (₹2,55,000)", hostel: "$450 (₹33,750)", total: "$4,000" },
-          { year: "3rd Year", tuition: "$3,400 (₹2,55,000)", hostel: "$450 (₹33,750)", total: "$4,000" },
-          { year: "4th Year", tuition: "$3,400 (₹2,55,000)", hostel: "$450 (₹33,750)", total: "$4,000" },
-          { year: "5th Year", tuition: "$3,400 (₹2,55,000)", hostel: "$450 (₹33,750)", total: "$4,000" },
-          { year: "Total (5 Yrs)", tuition: "$17,000 (₹12,75,000)", hostel: "$2,250", total: "$19,850 (~₹14.9L)" }
+          { year: "1st Year", tuition: "$4,000 (₹3,00,000)", hostel: "$700 (₹52,500)", total: "$4,850 (incl. ins)" },
+          { year: "2nd Year", tuition: "$4,000 (₹3,00,000)", hostel: "$700 (₹52,500)", total: "$4,850" },
+          { year: "3rd Year", tuition: "$4,000 (₹3,00,000)", hostel: "$700 (₹52,500)", total: "$4,850" },
+          { year: "4th Year", tuition: "$4,000 (₹3,00,000)", hostel: "$700 (₹52,500)", total: "$4,850" },
+          { year: "5th Year", tuition: "$4,000 (₹3,00,000)", hostel: "$700 (₹52,500)", total: "$4,850" },
+          { year: "Total (5 Yrs)", tuition: "$20,000 (₹15,00,000)", hostel: "$3,500", total: "$24,250 (~₹18.2L)" }
         ],
-        hostelAccommodation: "Campus dormitories with 2-3 sharing furnished rooms, attached washrooms, Wi-Fi, water heaters, central heating, common kitchens, and a mess serving delicious Indian food.",
+        hostelAccommodation: "Furnished rooms with beds, mattresses, study tables, water heaters, Wi-Fi, common kitchens, housekeeping, clean attached washrooms, and an Indian mess serving nutritious meals.",
         admissionProcess: [
-          "Submission of 10th and 12th marksheets with NEET scorecard via PARK Education.",
-          "Admission letter issuance from Asian Medical Institute.",
-          "Ministry of Foreign Affairs visa invitation letter processing.",
-          "Embassy visa stamping and group departure.",
-          "Airport reception and hostel check-in."
+          "Submit 10th and 12th marksheets with NEET scorecard via PARK Education.",
+          "Issuance of official Jalal-Abad admission confirmation.",
+          "Ministry visa invitation processing and student visa stamping.",
+          "Departure, airport reception, and campus hostel check-in."
         ],
         requiredDocs: [
           "10th and 12th passing marksheets (Min 50% PCB)",
           "NEET Scorecard",
           "Valid International Passport",
-          "Birth Certificate & Medical Fitness Certificate",
+          "Birth Certificate & Medical Fitness Report",
           "8 Passport-size photos"
         ]
       }
     ],
-    Russia: [
-      {
-        id: "kzn",
-        name: "Kazan Federal University (Institute of Medicine)",
-        subtitle: "Century-Old Top-Tier Russian Federal University with Global Prestige",
-        city: "Kazan",
-        country: "Russia",
-        type: "Federal University",
-        est: "1804",
-        duration: "6 Years",
-        medium: "English Medium",
-        tuitionFeeUSD: 5200,
-        hostelFeeUSD: 300,
-        totalAnnualUSD: 5500,
-        approxAnnualINR: "₹4,55,000 / year",
-        neetRequired: "Mandatory",
-        recognitions: ["NMC", "WHO", "Ministry of Education & Science Russia"],
-        highlights: [
-          "QS Top 400 world-ranked federal university with world-class medical labs.",
-          "Own modern university clinic with cutting-edge robotic surgical equipment.",
-          "Safe, multicultural student-friendly city with beautiful historic architecture."
-        ]
-      },
-      {
-        id: "bashkir",
-        name: "Bashkir State Medical University",
-        subtitle: "Leading Center of Surgical and Robotic Medicine in Ufa",
-        city: "Ufa",
-        country: "Russia",
-        type: "Government Medical University",
-        est: "1932",
-        duration: "6 Years",
-        medium: "English Medium",
-        tuitionFeeUSD: 4000,
-        hostelFeeUSD: 400,
-        totalAnnualUSD: 4400,
-        approxAnnualINR: "₹3,65,000 / year",
-        neetRequired: "Mandatory",
-        recognitions: ["NMC", "WHO", "UNESCO"],
-        highlights: [
-          "Renowned center of robotic and laparoscopic surgery with own university hospital.",
-          "Large Indian student body with dedicated Indian mess facilities.",
-          "Over 8,000 students enrolled across comprehensive medical faculties."
-        ]
-      },
-      {
-        id: "crimea",
-        name: "Crimea Federal University (Medical Academy)",
-        subtitle: "Historic Medical Academy with Subsidized Tuition & Clinical Legacy",
-        city: "Simferopol",
-        country: "Russia",
-        type: "Federal Medical Academy",
-        est: "1931",
-        duration: "6 Years",
-        medium: "English Medium",
-        tuitionFeeUSD: 3600,
-        hostelFeeUSD: 400,
-        totalAnnualUSD: 4000,
-        approxAnnualINR: "₹3,32,000 / year",
-        neetRequired: "Mandatory",
-        recognitions: ["NMC", "WHO"],
-        highlights: [
-          "Long tradition of training Indian doctors spanning over three decades.",
-          "Moderate climate and very affordable federal tuition fees.",
-          "Extensive clinical departments and supportive teaching faculty."
-        ]
-      }
-    ],
-    Georgia: [
-      {
-        id: "tsmu",
-        name: "Tbilisi State Medical University",
-        subtitle: "The Premier Government Medical University in Georgia",
-        city: "Tbilisi (Capital)",
-        country: "Georgia",
-        type: "National Government University",
-        est: "1918",
-        duration: "6 Years",
-        medium: "100% English Medium",
-        tuitionFeeUSD: 6000,
-        hostelFeeUSD: 1800,
-        totalAnnualUSD: 7800,
-        approxAnnualINR: "₹6,45,000 / year",
-        neetRequired: "Mandatory",
-        recognitions: ["NMC", "WHO", "WFME", "ECTS European Credit"],
-        highlights: [
-          "Georgia's oldest and leading government medical university.",
-          "Full European ECTS curriculum standard with WFME international accreditation.",
-          "High preparation standard for USMLE Step 1 & Step 2 examinations."
-        ]
-      },
-      {
-        id: "euro-geo",
-        name: "European University Georgia",
-        subtitle: "Modern European-Accredited Medical Faculty with Own Teaching Hospital",
-        city: "Tbilisi",
-        country: "Georgia",
-        type: "Accredited University",
-        est: "2012",
-        duration: "6 Years",
-        medium: "100% English Medium",
-        tuitionFeeUSD: 5000,
-        hostelFeeUSD: 1500,
-        totalAnnualUSD: 6500,
-        approxAnnualINR: "₹5,40,000 / year",
-        neetRequired: "Mandatory",
-        recognitions: ["NMC", "WHO", "WFME"],
-        highlights: [
-          "Own 120-bed multi-profile university clinic 'Jo Ann Medical Center'.",
-          "State-of-the-art simulation equipment and 3D virtual dissection tables.",
-          "Located in safe, European-standard capital city Tbilisi."
-        ]
-      }
-    ],
-    Vietnam: [
-      {
-        id: "cantho",
-        name: "Can Tho University of Medicine and Pharmacy",
-        subtitle: "Top Government Medical University in Southern Vietnam",
-        city: "Can Tho",
-        country: "Vietnam",
-        type: "Government University",
-        est: "1979",
-        duration: "6 Years",
-        medium: "English Medium",
-        tuitionFeeUSD: 4500,
-        hostelFeeUSD: 800,
-        totalAnnualUSD: 5300,
-        approxAnnualINR: "₹4,40,000 / year",
-        neetRequired: "Mandatory",
-        recognitions: ["NMC", "WHO"],
-        highlights: [
-          "Major government medical training and healthcare center for Mekong Delta region.",
-          "Direct flight access from India to Vietnam (Ho Chi Minh City / Hanoi).",
-          "Safe, friendly Southeast Asian culture with affordable living expenses."
-        ]
-      },
-      {
-        id: "hongbang",
-        name: "Hong Bang International University",
-        subtitle: "Modern International University in Ho Chi Minh City",
-        city: "Ho Chi Minh City",
-        country: "Vietnam",
-        type: "International University",
-        est: "1997",
-        duration: "6 Years",
-        medium: "English Medium",
-        tuitionFeeUSD: 4800,
-        hostelFeeUSD: 900,
-        totalAnnualUSD: 5700,
-        approxAnnualINR: "₹4,70,000 / year",
-        neetRequired: "Mandatory",
-        recognitions: ["NMC", "WHO"],
-        highlights: [
-          "Located in Vietnam's largest metropolitan hub Ho Chi Minh City.",
-          "Modern urban campus with high-tech laboratories and international faculty.",
-          "Close proximity to leading national specialty hospitals for clinical rounds."
-        ]
-      }
-    ],
     TimorLeste: [
-      {
+{
         id: "uct",
         name: "Universidade Católica Timorense (UCT)",
         subtitle: "Catholic University of East Timor – Premier Medical Faculty in Dili",
@@ -1849,7 +1108,7 @@
         totalCourseUSD: 25200,
         totalCourseINR: "₹20,80,000 INR (6-Yr Total)",
         neetRequired: "Mandatory (Qualifying marks)",
-        ieltsRequired: "IELTS 7.0 Required (Delta / Direct Admission Guidelines)",
+        ieltsRequired: "IELTS 7.0 Required (PARK International Education Direct Guidelines)",
         eligibility: "Age 17 to 25 at admission. General category: Minimum 50% aggregate marks in PCB in 12th grade. SC/ST/OBC category: Minimum 40% aggregate marks in PCB. NEET scorecard is required. Eligibility Certificate issued by MCI/NMC is necessary.",
         recognitions: ["NMC (India) Compliant", "WHO Listed", "Ministry of Higher Education (MESCC) Timor-Leste", "Catholic Higher Education Network"],
         collaborations: [
@@ -1900,196 +1159,114 @@
           "Proof of Funds / Bank Statement",
           "Academic Reference Letter from Professor"
         ]
-      },
-      {
-        id: "unpaz",
-        name: "Unpaz University of Peace (Universidade da Paz)",
-        subtitle: "Leading Private University for Healthcare & Public Health in Timor-Leste",
-        city: "Dili",
-        country: "Timor-Leste",
-        type: "Accredited Private University",
-        est: "2004",
-        legacyNote: "Founded in 2004 in Dili, Universidade da Paz (UNPAZ) is one of the most prominent private higher education institutions in Timor-Leste. Its Faculty of Health Sciences is committed to training healthcare professionals capable of addressing regional and global health challenges. With an emphasis on affordable education, community health, and practical clinical diagnostics, UNPAZ welcomes international medical aspirants seeking low-cost, hands-on MBBS training in Southeast Asia.",
-        duration: "6 Years (5 Yrs Pre-Clinical/Clinical + 1 Yr Rotatory Internship)",
-        medium: "100% English Medium",
-        nationalRank: 2,
-        worldRank: 12150,
-        tuitionFeeUSD: 3000,
-        hostelFeeUSD: 500,
-        totalAnnualUSD: 3500,
-        approxAnnualINR: "₹2,90,000 / year",
-        totalCourseUSD: 21000,
-        totalCourseINR: "₹17,40,000 INR (6-Yr Total)",
-        neetRequired: "Mandatory (Qualifying marks)",
-        ieltsRequired: "IELTS 7.0 Required (or English Proficiency Verification)",
-        eligibility: "Applicant must be at least 17 years old and under 25 at the time of admission. General category: Minimum 50% aggregate marks in PCB in 12th grade. SC/ST/OBC category: Minimum 40% aggregate marks in PCB. NEET scorecard is required. Eligibility Certificate issued by MCI/NMC is necessary.",
-        recognitions: ["NMC (India) Compliant", "WHO Listed", "ANAAA Accredited", "Ministry of Education Timor-Leste"],
-        collaborations: [
-          "Timor-Leste National Health Laboratories",
-          "Regional Referral Health Centers & District Hospitals",
-          "Southeast Asian Public Health Consortium"
-        ],
-        faculties: [
-          "Faculty of Health Sciences & Medicine",
-          "Department of Community Health & Preventive Medicine",
-          "Department of Clinical Diagnostics & Pathology",
-          "Department of Nursing & Allied Health"
-        ],
-        highlights: [
-          "Most affordable MBBS tuition in Southeast Asia starting at just $3,000/year (₹2.48L/year).",
-          "Dynamic learning environment extending beyond traditional instruction with hands-on real-world clinical challenges.",
-          "Personalized faculty attention and cooperative professors dedicated to student development.",
-          "Developing healthcare hub with rapid ongoing investments in modern hospital facilities.",
-          "Located in capital Dili with a safe, serene island environment and low student living expenses (~₹25,000–₹30,000/month).",
-          "Rich cultural experience blending Portuguese, Indonesian, and traditional Timorese community values.",
-          "Transparent fee structure with no donation or capitation fees."
-        ],
-        feeSchedule: [
-          { year: "1st Year", tuition: "$3,000", hostel: "$500", total: "$3,500 (₹2,90,000)" },
-          { year: "2nd Year", tuition: "$3,000", hostel: "$500", total: "$3,500 (₹2,90,000)" },
-          { year: "3rd Year", tuition: "$3,000", hostel: "$500", total: "$3,500 (₹2,90,000)" },
-          { year: "4th Year", tuition: "$3,000", hostel: "$500", total: "$3,500 (₹2,90,000)" },
-          { year: "5th Year", tuition: "$3,000", hostel: "$500", total: "$3,500 (₹2,90,000)" },
-          { year: "6th Year (Internship)", tuition: "$3,000", hostel: "$500", total: "$3,500 (₹2,90,000)" },
-          { year: "Total (6 Yrs)", tuition: "$18,000", hostel: "$3,000", total: "$21,000 (~₹17.4L)" }
-        ],
-        hostelAccommodation: "Comfortable living quarters near campus with furnished rooms, continuous utilities, study areas, and Wi-Fi access. Monthly living costs (room, meals, and local transit) range from ₹25,000 to ₹30,000, with private city rentals available at ₹16,000–₹17,000/month.",
-        admissionProcess: [
-          "Free counselling and academic eligibility evaluation at PARK International Education.",
-          "Application form completion and document submission to UNPAZ.",
-          "Receipt of official university offer letter after academic review.",
-          "Application for passport and Timor-Leste student visa.",
-          "Pre-departure briefing, group departure, and arrival assistance in Dili."
-        ],
-        requiredDocs: [
-          "10th and 12th class mark sheets (Minimum 50% PCB for General, 40% for Reserved)",
-          "NEET Qualification Scorecard",
-          "Valid International Passport",
-          "IELTS Scorecard (Band 7.0)",
-          "MCI / NMC Eligibility Certificate",
-          "Statement of Purpose (SOP) & Academic Resume",
-          "Medical Fitness Certificate",
-          "Proof of Funds / Bank Statement",
-          "Academic Reference Letter from Professor"
-        ]
       }
     ]
   };
 
-  // 4. Education Consultancy Services (9 Core Services)
+  // Education Consultancy Services (9 Core Services)
   const SERVICES = [
     {
       icon: ICONS.counselling,
       titleEn: "Free Educational Counselling",
-      titleTa: "இலவச கல்வி ஆலோசனை",
       descEn: "Personalized 1-on-1 profile evaluation based on your 12th group, marks, NEET qualification, and family budget."
     },
     {
       icon: ICONS.collegeSelect,
       titleEn: "College & University Selection",
-      titleTa: "கல்லூரி & பல்கலைக்கழக தேர்வு",
       descEn: "Impartial comparison of approved universities, clinical exposure, hostel safety, and historical student outcomes."
     },
     {
       icon: ICONS.admission,
       titleEn: "Admission & Application Support",
-      titleTa: "நேரடி சேர்க்கை உதவி",
       descEn: "Complete documentation handling, application submission, and direct admission letter issuance without middlemen."
     },
     {
       icon: ICONS.neetDoc,
       titleEn: "NEET Eligibility & Documentation",
-      titleTa: "NEET மற்றும் ஆவண வழிகாட்டுதல்",
       descEn: "Clear checklist for marksheets, apostille/attestation, medical fitness, and official regulatory compliance."
     },
     {
       icon: ICONS.feeDetails,
       titleEn: "Transparent Fee Structure",
-      titleTa: "வெளிப்படையான கட்டண விபரம்",
       descEn: "Every expense—tuition, hostel, food, visa, and insurance—is provided in writing with no hidden costs."
     },
     {
       icon: ICONS.scholarship,
       titleEn: "Scholarship Guidance",
-      titleTa: "உதவித்தொகை வழிகாட்டுதல்",
       descEn: "Identifying and applying for institutional, state, and private merit scholarships to reduce your educational burden."
     },
     {
       icon: ICONS.educationLoan,
       titleEn: "Education Loan Assistance",
-      titleTa: "கல்விக் கடன் உதவி",
       descEn: "Step-by-step assistance with bank documentation, estimates, and sanction letters from nationalized and private banks."
     },
     {
       icon: ICONS.visaTravel,
       titleEn: "Visa & Travel Facilitation",
-      titleTa: "விசா மற்றும் பயண வழிகாட்டுதல்",
       descEn: "Complete student visa stamping, travel insurance, flight group ticketing, and pre-departure briefings."
     },
     {
       icon: ICONS.hostelSupport,
       titleEn: "Hostel & On-Campus Support",
-      titleTa: "விடுதி மற்றும் வளாக உதவி",
       descEn: "Assurance of comfortable stay, Indian mess options, campus registration, and local guardian assistance until you settle."
     }
   ];
 
-  // 5. Branch Network (8 Branches)
   const BRANCHES = [
     {
       city: "Tirunelveli",
       type: "Head Office",
       isHead: true,
-      address: "No. 6/1, Pioneer Kumarasamy Nagar, Vasanth Nagar, Near RHOCK Hospital, Opp. New Bus Stand, Tirunelveli – 627007.",
-      contact: "📞 81100 87722 / 88077 44900"
-    },
-    {
-      city: "Madurai",
-      type: "Branch Office",
-      isHead: false,
-      address: "No. 64, Press Colony, RTO Office Road, Opp. Mattuthavani Bus Stand, Madurai – 625007.",
-      contact: "📞 81100 87722 / 88077 44900"
-    },
-    {
-      city: "Ramanathapuram",
-      type: "Branch Office",
-      isHead: false,
-      address: "Direct Admissions Desk, Ramanathapuram Main Center.",
-      contact: "Call 81100 87722 for consultation & visiting hours."
+      address: "Palayamkottai / Vannarpettai Junction, Tirunelveli, Tamil Nadu 627002",
+      contact: "Phone: 81100 87722 / 88077 44900 (Mon - Sat: 9:30 AM - 7:00 PM)"
     },
     {
       city: "Trichy",
-      type: "Branch Office",
+      type: "Branch Office & Admissions Hub",
       isHead: false,
-      address: "Central Admissions Desk, Opp. Central Bus Stand Area, Trichy.",
-      contact: "Call 81100 87722 for consultation & visiting hours."
+      address: "Thillai Nagar Main Road, Tiruchirappalli, Tamil Nadu 620018",
+      contact: "Phone: 88077 44900 / 81100 87722 (Mon - Sat: 9:30 AM - 7:00 PM)"
     },
     {
-      city: "Karur",
-      type: "Branch Office",
+      city: "Madurai",
+      type: "Regional Branch",
       isHead: false,
-      address: "Direct Admissions Desk, Karur City Office.",
-      contact: "Call 81100 87722 for consultation & visiting hours."
-    },
-    {
-      city: "Salem",
-      type: "Branch Office",
-      isHead: false,
-      address: "Regional Admissions Office, Near New Bus Stand, Salem.",
+      address: "Admissions Center, KK Nagar Main Road, Madurai, Tamil Nadu",
       contact: "Call 81100 87722 for consultation & visiting hours."
     },
     {
       city: "Chennai",
-      type: "Branch Office",
+      type: "Regional Branch",
       isHead: false,
-      address: "Metropolitan Admissions Desk, Chennai Regional Office.",
+      address: "Metropolitan Admissions Desk, Mount Road / Guindy, Chennai, Tamil Nadu",
       contact: "Call 81100 87722 for consultation & visiting hours."
     },
     {
-      city: "New Delhi",
-      type: "Northern Regional Desk",
+      city: "Coimbatore",
+      type: "Western Regional Desk",
       isHead: false,
-      address: "International Admissions Desk, New Delhi.",
+      address: "Admissions Counseling Center, Gandhipuram, Coimbatore, Tamil Nadu",
+      contact: "Call 81100 87722 for consultation & visiting hours."
+    },
+    {
+      city: "Nagercoil",
+      type: "South Regional Desk",
+      isHead: false,
+      address: "Direct Admissions Desk, Court Road, Nagercoil, Kanyakumari District",
+      contact: "Call 81100 87722 for consultation & visiting hours."
+    },
+    {
+      city: "Tenkasi",
+      type: "Regional Desk",
+      isHead: false,
+      address: "Counseling Desk, Main Road, Tenkasi District",
+      contact: "Call 81100 87722 for consultation & visiting hours."
+    },
+    {
+      city: "Ramanathapuram",
+      type: "Regional Desk",
+      isHead: false,
+      address: "Direct Admissions Desk, Salai Street, Ramanathapuram Main Center",
       contact: "Call 81100 87722 for consultation & visiting hours."
     }
   ];
@@ -2103,17 +1280,11 @@
     // Desktop nav omits redundant "Apply" link since "Apply Now" CTA button is right next to it in header actions
     const desktopPages = PAGES.filter(p => p.id !== "apply");
     const desktopHtml = desktopPages.map(p => `
-      <a href="#${p.id}" class="nav-link" data-page="${p.id}">
-        <span class="en">${p.en}</span>
-        <span class="ta">${p.ta}</span>
-      </a>
+      <a href="#${p.id}" class="nav-link" data-page="${p.id}">${p.en}</a>
     `).join("");
 
     const mobileHtml = PAGES.map(p => `
-      <a href="#${p.id}" class="nav-link" data-page="${p.id}">
-        <span class="en">${p.en}</span>
-        <span class="ta">${p.ta}</span>
-      </a>
+      <a href="#${p.id}" class="nav-link" data-page="${p.id}">${p.en}</a>
     `).join("");
 
     navDesktop.innerHTML = desktopHtml;
@@ -2122,7 +1293,7 @@
     }
   }
 
-  // Render Courses Cards
+    // Render Courses Cards
   function renderCourses() {
     const containers = [
       $("home-courses-grid"),
@@ -2134,20 +1305,13 @@
         <div class="course-icon-wrap">
           ${c.icon}
         </div>
-        <h3 class="course-title">
-          <span class="en">${c.titleEn}</span>
-          <span class="ta">${c.titleTa}</span>
-        </h3>
-        <p class="course-desc">
-          <span class="en">${c.descEn}</span>
-          <span class="ta">${c.descTa}</span>
-        </p>
+        <h3 class="course-title">${c.titleEn}</h3>
+        <p class="course-desc">${c.descEn}</p>
         <div class="course-meta">
           <span class="duration-tag">${ICONS.clock} ${c.duration}</span>
         </div>
         <a href="#apply" class="card-action-link" onclick="selectCourse('${c.titleEn}')">
-          <span class="en">Get Admission Details</span>
-          <span class="ta">சேர்க்கை விபரம்</span>
+          <span>Get Admission Details</span>
           ${ICONS.arrowRight}
         </a>
       </div>
@@ -2167,7 +1331,7 @@
     });
   }
 
-  // Render Countries Cards
+    // Render Countries Cards
   function renderCountries() {
     const containers = [
       $("home-countries-grid"),
@@ -2179,7 +1343,7 @@
       const uniCount = uniList.length;
       const uniLinkText = uniCount > 0 
         ? `View ${uniCount} Medical Universities in ${c.nameEn}`
-        : `View Universities in ${c.nameEn}`;
+        : `Consult for MBBS in ${c.nameEn}`;
 
       return `
       <div class="card country-card">
@@ -2191,18 +1355,14 @@
           </div>
         </div>
         <div class="country-body">
-          <p class="country-desc">
-            <span class="en">${c.descEn}</span>
-            <span class="ta">${c.descTa}</span>
-          </p>
+          <p class="country-desc">${c.descEn}</p>
           <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
             <a href="#universities" class="card-action-link" onclick="filterUniversitiesCountry('${c.key}')" style="font-weight: 700; color: var(--color-primary);">
               <span>${uniLinkText}</span>
               ${ICONS.arrowRight}
             </a>
             <a href="#apply" class="card-action-link" onclick="selectCountry('${c.nameEn}')" style="font-size: 13px;">
-              <span class="en">Request Written Fee Sheet</span>
-              <span class="ta">கட்டண விபரம் பெற</span>
+              <span>Request Written Fee Sheet</span>
               ${ICONS.arrowRight}
             </a>
           </div>
@@ -2226,7 +1386,7 @@
     });
   }
 
-  // Render Services Cards
+    // Render Services Cards
   function renderServices() {
     const containers = [
       $("home-services-grid"),
@@ -2238,14 +1398,8 @@
         <div class="service-icon-box">
           ${s.icon}
         </div>
-        <h3 class="service-title">
-          <span class="en">${s.titleEn}</span>
-          <span class="ta">${s.titleTa}</span>
-        </h3>
-        <p class="service-desc">
-          <span class="en">${s.descEn}</span>
-          <span class="ta">${s.descTa}</span>
-        </p>
+        <h3 class="service-title">${s.titleEn}</h3>
+        <p class="service-desc">${s.descEn}</p>
       </div>
     `).join("");
 
@@ -2300,7 +1454,7 @@
   // View Routing (SPA Hash Router)
   function handleRouting() {
     let hash = (location.hash || "#home").replace("#", "").trim().toLowerCase();
-    const validViews = ["home", "courses", "services", "countries", "universities", "process", "branches", "apply", "admin"];
+    const validViews = ["home", "about", "courses", "services", "countries", "universities", "process", "branches", "apply", "admin"];
     if (!validViews.includes(hash)) {
       hash = "home";
     }
@@ -2330,6 +1484,11 @@
     // Trigger number counter if entering home view
     if (hash === "home") {
       animateCounters();
+    }
+
+    // Schedule 6.5s lead popup on all pages except apply
+    if (typeof scheduleLeadPopup === "function") {
+      scheduleLeadPopup();
     }
   }
 
@@ -2659,6 +1818,34 @@
             <span class="uni-banner-tag">${ICONS.check} 100% English Medium</span>
             <span class="uni-banner-tag">${ICONS.check} Indian Mess &amp; Hostels</span>
             <span class="uni-banner-tag">${ICONS.check} Low Fees (From ₹2.17L/Yr)</span>
+          </div>
+        `;
+            } else if (currentCountryFilter === "Mongolia") {
+        banner.style.display = "flex";
+        banner.innerHTML = `
+          <div class="uni-country-banner-content">
+            <h2 class="uni-country-banner-title">
+              <span style="display:inline-block; width:34px; height:24px; vertical-align:middle;">${FLAGS.Mongolia}</span>
+              <span>Study MBBS in Mongolia – Premier National Medical Education</span>
+            </h2>
+            <p class="uni-country-banner-desc">
+              Mongolia is an emerging destination for medical studies in East Asia, home to the prestigious Mongolian National University of Medical Sciences (MNUMS) in Ulaanbaatar. Benefit from 6-year English-medium medical training recognized by WHO and WFME, cutting-edge surgical simulation centers, on-campus teaching hospitals, and friendly international student living.
+            </p>
+            <div class="uni-country-spotlight">
+              <div class="spotlight-thumb">
+                <img src="assets/images/destinations/mongolia-ulaanbaatar.jpg" alt="Sukhbaatar Square, Ulaanbaatar" onerror="this.parentElement.style.display='none';" loading="lazy">
+              </div>
+              <div class="spotlight-details">
+                <div class="spotlight-title">Featured Cultural Capital: Genghis Khan Square &amp; Ulaanbaatar</div>
+                <div>Peaceful, progressive capital city with rich nomadic heritage, modern healthcare research institutes, and safe international student lifestyle.</div>
+              </div>
+            </div>
+          </div>
+          <div class="uni-country-banner-badges">
+            <span class="uni-banner-tag">${ICONS.check} NMC &amp; WHO Listed</span>
+            <span class="uni-banner-tag">${ICONS.check} WFME Accredited</span>
+            <span class="uni-banner-tag">${ICONS.check} 100% English Medium</span>
+            <span class="uni-banner-tag">${ICONS.check} National Teaching Hospitals</span>
           </div>
         `;
       } else if (currentCountryFilter === "TimorLeste") {
@@ -3173,11 +2360,44 @@
   // =========================================================================
   // LEAD REGISTRATION / ENQUIRY POPUP MODAL CONTROLLER
   // =========================================================================
+  let leadPopupTimer = null;
+
+  window.scheduleLeadPopup = function() {
+    try {
+      if (sessionStorage.getItem("park_lead_seen")) return;
+      if (leadPopupTimer) {
+        clearTimeout(leadPopupTimer);
+        leadPopupTimer = null;
+      }
+
+      const hash = (location.hash || "#home").replace("#", "").trim().toLowerCase();
+      // Popup should come once on all pages after 6.5s except apply page (and staff admin)
+      if (hash === "apply" || hash === "admin") {
+        return;
+      }
+
+      leadPopupTimer = setTimeout(() => {
+        const currentHash = (location.hash || "#home").replace("#", "").trim().toLowerCase();
+        if (currentHash === "apply" || currentHash === "admin") return;
+        if (sessionStorage.getItem("park_lead_seen")) return;
+
+        // Don't interrupt if user is already viewing the university details modal
+        const uniModal = $("uni-modal-backdrop");
+        if (!uniModal || !uniModal.classList.contains("open")) {
+          openLeadModal();
+        }
+      }, 6500);
+    } catch (e) {}
+  };
+
   window.openLeadModal = function() {
     const backdrop = $("lead-modal-backdrop");
     if (backdrop) {
       backdrop.classList.add("open");
       document.body.style.overflow = "hidden";
+      try {
+        sessionStorage.setItem("park_lead_seen", "true");
+      } catch (err) {}
     }
   };
 
@@ -3204,19 +2424,8 @@
       });
     }
 
-    // Auto-open after 6.5 seconds on initial visit
-    try {
-      const alreadySeen = sessionStorage.getItem("park_lead_seen");
-      if (!alreadySeen) {
-        setTimeout(() => {
-          // Don't interrupt if user is already viewing the university details modal
-          const uniModal = $("uni-modal-backdrop");
-          if (!uniModal || !uniModal.classList.contains("open")) {
-            openLeadModal();
-          }
-        }, 6500);
-      }
-    } catch (e) {}
+    // Auto-open once on all pages after 6.5 seconds except apply page
+    scheduleLeadPopup();
 
     // Lead Form submission
     if (form) {
@@ -3905,7 +3114,7 @@
     initUniversities();
     initLeadModal();
 
-    initLanguageToggle();
+    // Language toggle removed
     initMobileDrawer();
     initHeaderScroll();
 
