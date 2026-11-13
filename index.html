@@ -76,6 +76,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Supabase Cloud Database Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
 
@@ -207,23 +210,6 @@
         <div class="container hero-grid">
           <!-- Hero Content Column -->
           <div class="hero-content">
-            <!-- Flight Route Corridor Animation -->
-            <div class="hero-flight-corridor" aria-label="International Flight Corridor">
-              <div class="flight-live-pulse" aria-hidden="true"></div>
-              <div class="flight-track-wrap">
-                <span class="flight-airport-tag">DEL / MAA / TRZ</span>
-                <span class="flight-air-line" aria-hidden="true">
-                  <span class="flight-plane-glider">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
-                    </svg>
-                  </span>
-                </span>
-                <span class="flight-airport-tag dest">TAS · MNL · DIL</span>
-                <span>Escorted Student Flight Batches (2026 Admissions)</span>
-              </div>
-            </div>
-
             <div class="section-eyebrow">
               PARK INTERNATIONAL EDUCATION
             </div>
@@ -410,116 +396,7 @@
         </div>
       </section>
 
-      <!-- 5. Education Consultancy Services -->
-      <section class="section" id="section-services">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">
-              END-TO-END SUPPORT
-            </div>
-            <h2>
-              Our Education Consultancy Services
-            </h2>
-            <p class="section-desc">
-              From your first career counselling session to landing on campus, our dedicated senior team supports you at every milestone.
-            </p>
-          </div>
-
-          <!-- 9 Services Grid -->
-          <div class="grid-3" id="home-services-grid">
-            <!-- Populated via js/app.js -->
-          </div>
-        </div>
-      </section>
-
-      <!-- 6. Admission Guidance Process & "Verify Before You Pay" -->
-      <section class="section section-blue" id="section-process">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">
-              ADMISSION ROADMAP
-            </div>
-            <h2>
-              Admission Guidance Process
-            </h2>
-            <p class="section-desc">
-              A structured, transparent 5-step admission pathway designed to eliminate uncertainty and ensure timely university approvals.
-            </p>
-          </div>
-
-          <!-- 5 Steps Process -->
-          <div class="process-grid">
-            <div class="process-step">
-              <div class="step-num-badge">1</div>
-              <div class="step-content">
-                <h3 class="step-title">Free Consultation &amp; Profile Analysis</h3>
-                <p class="step-desc">Share your +2 marks, academic stream, NEET qualification status, and family budget. We evaluate your profile and present matched colleges in India and abroad.</p>
-              </div>
-            </div>
-
-            <div class="process-step">
-              <div class="step-num-badge">2</div>
-              <div class="step-content">
-                <h3 class="step-title">University Shortlisting &amp; Written Fees</h3>
-                <p class="step-desc">Compare shortlisted universities based on clinical patient flow, faculty credentials, medium of instruction, and an itemized written fee structure.</p>
-              </div>
-            </div>
-
-            <div class="process-step">
-              <div class="step-num-badge">3</div>
-              <div class="step-content">
-                <h3 class="step-title">Document Verification &amp; Application</h3>
-                <p class="step-desc">Our documentation specialists verify your 10th &amp; 12th marksheets, NEET score card, passport, and submit your official application directly to the university.</p>
-              </div>
-            </div>
-
-            <div class="process-step">
-              <div class="step-num-badge">4</div>
-              <div class="step-content">
-                <h3 class="step-title">Admission Letter &amp; Education Loan Documentation</h3>
-                <p class="step-desc">Upon application approval, receive your official university admission letter. We provide bank-approved fee estimates and assist with education loan files.</p>
-              </div>
-            </div>
-
-            <div class="process-step">
-              <div class="step-num-badge">5</div>
-              <div class="step-content">
-                <h3 class="step-title">Visa Stamping, Travel &amp; Campus Settlement</h3>
-                <p class="step-desc">We manage complete embassy visa processing, ticket bookings, airport reception, university registration, and hostel accommodation with Indian dining options.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Verify Before You Pay Checklist -->
-          <div style="margin-top: 48px;">
-            <div class="section-header" style="margin-bottom: 24px;">
-              <h3>Verify Before You Pay: 4 Mandatory Checks</h3>
-              <p class="section-desc">Protect your career and hard-earned savings by verifying these 4 critical items before making any financial commitment:</p>
-            </div>
-
-            <div class="grid-2">
-              <div class="card">
-                <h4>1. Exact Degree Title &amp; Course Duration</h4>
-                <p class="service-desc">Confirm the exact medical or engineering degree awarded by the university and ensure total program duration matches regulatory requirements.</p>
-              </div>
-              <div class="card">
-                <h4>2. NMC FMGL Regulations Compliance</h4>
-                <p class="service-desc">For MBBS abroad, verify that the program adheres to the 54 months of theoretical/practical study plus 12 months internship in the same institution in English medium.</p>
-              </div>
-              <div class="card">
-                <h4>3. Itemized Fee Schedule in Writing</h4>
-                <p class="service-desc">Never accept verbal assurances. Require a signed breakdown of tuition fees per year, hostel, food, medical insurance, and university charges.</p>
-              </div>
-              <div class="card">
-                <h4>4. Written Refund &amp; Cancellation Policy</h4>
-                <p class="service-desc">Understand official refund terms in the event of unforeseen visa or personal complications before remitting registration or processing fees.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 7. Why Choose PARK Education (Trust Pillars) -->
+      <!-- Why Choose PARK Education (Trust Pillars) -->
       <section class="section" id="section-why-us">
         <div class="container">
           <div class="section-header text-center">
@@ -618,27 +495,6 @@
         </div>
       </section>
 
-      <!-- 9. Branch Offices Directory -->
-      <section class="section" id="section-branches">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">
-              LOCATIONS &amp; VISITS
-            </div>
-            <h2>
-              Our Branch Network
-            </h2>
-            <p class="section-desc">
-              Visit any of our 8 branch offices across Tamil Nadu and New Delhi to consult directly with our senior admission directors.
-            </p>
-          </div>
-
-          <!-- 8 Branch Cards -->
-          <div class="grid-4" id="home-branches-grid">
-            <!-- Populated via js/app.js -->
-          </div>
-        </div>
-      </section>
 
       <!-- 10. Student Enquiry Form -->
       <section class="section section-blue" id="section-apply">
@@ -813,15 +669,15 @@
     </section>
 
     <!-- ====================================================================
-         VIEW: ABOUT (Dedicated About PARK International Education Page)
+         VIEW: ABOUT (Dedicated About Us & Credentials Page)
          ==================================================================== -->
     <section class="view" id="v-about" aria-labelledby="about-heading">
       <div class="section">
         <div class="container">
           <div class="section-header">
-            <div class="section-eyebrow">ABOUT PARK INTERNATIONAL EDUCATION</div>
-            <h1 id="about-heading">Direct Path to Educational Excellence</h1>
-            <p class="section-desc">Backed by 18+ years of distinguished leadership in student admission guidance, career counselling, and trusted college admissions across Tamil Nadu, India, and Abroad.</p>
+            <div class="section-eyebrow">ABOUT US</div>
+            <h1 id="about-heading">Your Direct Path to Top Colleges for Professional Courses</h1>
+            <p class="section-desc">With over 18+ years of trusted experience in admission guidance and career counselling, Park International Education is a leading educational consultancy based in Tirunelveli and Madurai.</p>
           </div>
 
           <!-- Main Story & Profile Card -->
@@ -829,61 +685,55 @@
             <div style="display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: var(--space-8); align-items: start;">
               <div>
                 <div style="display: inline-block; background: rgba(21, 52, 91, 0.08); color: var(--color-primary); font-weight: 700; font-size: 13px; padding: 4px 12px; border-radius: var(--radius-full); margin-bottom: var(--space-3); text-transform: uppercase; letter-spacing: 0.05em;">
-                  Head Office: Tirunelveli · 8 Branch Offices Across Tamil Nadu &amp; New Delhi
+                  Head Offices: Tirunelveli | Madurai · Serving Tamil Nadu, India &amp; Abroad
                 </div>
                 <h2 style="font-size: 26px; font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-4); line-height: 1.3;">
-                  Guiding Aspirants with Ethics, Integrity &amp; Transparency Since 2008
+                  Empowering Aspirants with Ethics, Integrity &amp; Transparency Since 2008
                 </h2>
                 <p style="font-size: 16px; line-height: 1.7; color: var(--color-text-main); margin-bottom: var(--space-4);">
-                  <strong>PARK International Education</strong> (PARK Abroad) is your direct path to premier colleges and universities for professional courses, backed by <strong>18+ years of experience</strong> in student admission guidance and personalized career counselling. Headquartered at our main office in <strong>Tirunelveli</strong>, with active branch offices in <strong>Trichy, Madurai, Chennai, Coimbatore, Nagercoil, Ramanathapuram, and New Delhi</strong>, we provide trusted, hassle-free admission support across Tamil Nadu, India, and Abroad.
-                </p>
-                <p style="font-size: 16px; line-height: 1.7; color: var(--color-text-main); margin-bottom: var(--space-4);">
-                  We specialize in admissions for a comprehensive range of programs including <strong>MBBS (India &amp; Abroad), BDS, BVSc, AYUSH, Engineering (B.E / B.Tech), Paramedical, Nursing (B.Sc / GNM), Allied Health Sciences (AHS), Arts &amp; Science, Law, Pharmacy, and Aviation</strong>.
-                </p>
-                <p style="font-size: 16px; line-height: 1.7; color: var(--color-text-main); margin-bottom: var(--space-4);">
-                  PARK International Education facilitates admissions in top government and recognized private colleges in India and internationally, offering reliable, NMC-compliant MBBS abroad guidance in countries such as <strong>Uzbekistan, Philippines, Timor-Leste, Mongolia, Kyrgyzstan, Kazakhstan, Mauritius, Georgia, Vietnam, and Russia</strong>.
+                  With over <strong>18+ years of trusted experience</strong> in admission guidance and career counselling, <strong>Park International Education</strong> is a leading educational consultancy based in <strong>Tirunelveli and Madurai</strong>.
                 </p>
                 <p style="font-size: 16px; line-height: 1.7; color: var(--color-text-main); margin-bottom: var(--space-6);">
-                  We provide complete end-to-end admission support including <strong>NEET counselling, course and college selection, eligibility guidance, transparent written fee details, university selection, visa and travel assistance, and pre &amp; post-departure support</strong>. With a strong network of colleges and universities, personalized career counselling, and an unwavering commitment to guiding students from start to finish, we stand as the most trusted higher education consultancy across Tamil Nadu.
+                  We provide transparent, hassle-free admission support across Tamil Nadu, India, and Abroad, empowering students from Madurai, Tirunelveli, and nearby districts to choose the right career path with confidence.
                 </p>
                 <div style="display: flex; flex-wrap: wrap; gap: 12px;">
                   <a href="#apply" class="btn btn-primary">Book Free Career Guidance</a>
-                  <a href="https://wa.me/918110087722?text=Hello%20PARK%20International%20Education%2C%20I%20would%20like%20to%20know%20more%20about%20admissions" target="_blank" rel="noopener" class="btn btn-whatsapp">
+                  <a href="https://wa.me/918110087722?text=Hello%20PARK%20International%20Education%2C%20I%20would%20like%20to%20know%20more%20about%20admissions" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.35.06-.53.27-.19.21-.71.7-.71 1.7 0 1 .73 1.97.83 2.11.1.14 1.43 2.19 3.47 3.07.49.21.87.33 1.17.43.49.16.94.13 1.29.08.4-.06 1.22-.5 1.39-.98.17-.49.17-.9.12-.98-.05-.09-.19-.14-.4-.24s-1.22-.6-1.41-.67c-.19-.07-.33-.1-.47.1-.14.21-.55.7-.67.84-.12.14-.24.16-.45.05s-.89-.33-1.69-1.05c-.63-.56-1.05-1.26-1.17-1.47-.12-.21-.01-.33.09-.43.09-.09.21-.24.31-.36.1-.12.14-.21.21-.35.07-.14.03-.26-.02-.36s-.47-1.14-.65-1.56c-.17-.42-.35-.36-.48-.37l-.41-.01z"/></svg>
                     <span>Chat on WhatsApp</span>
                   </a>
                 </div>
               </div>
 
-              <!-- Right Stat Box -->
-              <div style="background: var(--color-bg); padding: var(--space-6); border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <!-- Right Stat Box (Stabilized with Fixed Widths & Tabular Figures) -->
+              <div style="background: var(--color-bg); padding: var(--space-6); border-radius: var(--radius-md); border: 1px solid var(--color-border); min-width: 0;">
                 <h3 style="font-size: 18px; font-weight: 700; color: var(--color-primary); margin-bottom: var(--space-4); border-bottom: 2px solid var(--color-accent); padding-bottom: 8px;">
                   Key Achievements &amp; Scale
                 </h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                   <div style="display: flex; align-items: center; gap: 14px;">
-                    <span style="font-size: 28px; font-weight: 800; color: var(--color-primary); min-width: 105px; flex-shrink: 0;"><span data-counter="18">0</span>+</span>
+                    <span style="font-size: 28px; font-weight: 800; color: var(--color-primary); width: 110px; display: inline-block; font-variant-numeric: tabular-nums; flex-shrink: 0;"><span data-counter="18">18</span>+</span>
                     <div>
                       <strong style="color: var(--color-text-main); font-size: 14px; display: block;">Years of Excellence</strong>
                       <span style="font-size: 12.5px; color: var(--color-text-muted);">Continuous counseling and direct admissions since 2008</span>
                     </div>
                   </div>
                   <div style="display: flex; align-items: center; gap: 14px;">
-                    <span style="font-size: 28px; font-weight: 800; color: var(--color-accent); min-width: 105px; flex-shrink: 0;"><span data-counter="15000">0</span>+</span>
+                    <span style="font-size: 28px; font-weight: 800; color: var(--color-accent); width: 110px; display: inline-block; font-variant-numeric: tabular-nums; flex-shrink: 0;"><span data-counter="15000">15000</span>+</span>
                     <div>
                       <strong style="color: var(--color-text-main); font-size: 14px; display: block;">Students Guided</strong>
                       <span style="font-size: 12.5px; color: var(--color-text-muted);">Enrolled in premier medical, engineering, and nursing universities</span>
                     </div>
                   </div>
                   <div style="display: flex; align-items: center; gap: 14px;">
-                    <span style="font-size: 28px; font-weight: 800; color: var(--color-primary); min-width: 105px; flex-shrink: 0;"><span data-counter="8">0</span>+</span>
+                    <span style="font-size: 28px; font-weight: 800; color: var(--color-primary); width: 110px; display: inline-block; font-variant-numeric: tabular-nums; flex-shrink: 0;"><span data-counter="8">8</span>+</span>
                     <div>
                       <strong style="color: var(--color-text-main); font-size: 14px; display: block;">Regional Branches</strong>
                       <span style="font-size: 12.5px; color: var(--color-text-muted);">Tirunelveli, Trichy, Madurai, Chennai, Coimbatore, Nagercoil</span>
                     </div>
                   </div>
                   <div style="display: flex; align-items: center; gap: 14px;">
-                    <span style="font-size: 28px; font-weight: 800; color: var(--color-accent); min-width: 105px; flex-shrink: 0;"><span data-counter="100">0</span>%</span>
+                    <span style="font-size: 28px; font-weight: 800; color: var(--color-accent); width: 110px; display: inline-block; font-variant-numeric: tabular-nums; flex-shrink: 0;"><span data-counter="100">100</span>%</span>
                     <div>
                       <strong style="color: var(--color-text-main); font-size: 14px; display: block;">Fee Transparency</strong>
                       <span style="font-size: 12.5px; color: var(--color-text-muted);">Official written statements directly through university desks</span>
@@ -892,92 +742,189 @@
                 </div>
 
                 <div style="margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--color-border);">
-                  <strong style="font-size: 13.5px; color: var(--color-primary); display: block; margin-bottom: 6px;">Direct Office Helplines:</strong>
-                  <div style="font-size: 13px; color: var(--color-text-main); line-height: 1.6;">
-                    📍 <strong>Tirunelveli (Head Office):</strong> Palayamkottai / Vannarpettai<br>
-                    📞 <a href="tel:+918110087722" style="font-weight: 700; color: var(--color-primary);">81100 87722</a><br>
-                    📍 <strong>Trichy (Branch Office):</strong> Thillai Nagar Main Road<br>
-                    📞 <a href="tel:+918807744900" style="font-weight: 700; color: var(--color-primary);">88077 44900</a>
+                  <strong style="font-size: 13.5px; color: var(--color-primary); display: block; margin-bottom: 8px;">Direct Office Helplines:</strong>
+                  <div style="font-size: 13px; color: var(--color-text-main); line-height: 1.7;">
+                    <div>
+                      📍 <strong>Tirunelveli (Head Office):</strong> Palayamkottai / Vannarpettai<br>
+                      📞 <a href="tel:+918110087722" style="font-weight: 700; color: var(--color-primary);">81100 87722</a>
+                      &middot; <a href="https://maps.app.goo.gl/uid8TLC4vsFK9NP78" target="_blank" rel="noopener noreferrer" style="color:var(--color-secondary); font-weight:700; text-decoration:none;">🗺️ View Map</a>
+                    </div>
+                    <div style="margin-top: 6px;">
+                      📍 <strong>Madurai (Branch Office):</strong> KK Nagar Main Road<br>
+                      📞 <a href="tel:+918110087722" style="font-weight: 700; color: var(--color-primary);">81100 87722</a>
+                      &middot; <a href="https://maps.app.goo.gl/xfjGFMjJt7XKMDuY6" target="_blank" rel="noopener noreferrer" style="color:var(--color-secondary); font-weight:700; text-decoration:none;">🗺️ View Map</a>
+                    </div>
+                    <div style="margin-top: 6px;">
+                      📍 <strong>Trichy (Branch Office):</strong> Thillai Nagar Main Road<br>
+                      📞 <a href="tel:+918807744900" style="font-weight: 700; color: var(--color-primary);">88077 44900</a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Courses Spectrum Grid on About Page -->
+          <!-- COURSES WE OFFER -->
           <div class="section-header" style="text-align: left; margin-bottom: var(--space-6);">
-            <div class="section-eyebrow">OUR SPECIALIZED PROGRAM SPECTRUM</div>
-            <h2 style="font-size: 24px; font-weight: 800; color: var(--color-primary);">Admissions Facilitation Across All Major Disciplines</h2>
-            <p class="section-desc">PARK International Education specializes in end-to-end admission guidance for top government and private institutions across India and internationally.</p>
+            <div class="section-eyebrow">PROGRAMS</div>
+            <h2 style="font-size: 24px; font-weight: 800; color: var(--color-primary);">COURSES WE OFFER</h2>
+            <p class="section-desc">We guide students for a wide range of professional and undergraduate programs:</p>
           </div>
 
           <div class="grid-4" style="margin-bottom: var(--space-10);">
-            <div class="card" style="padding: var(--space-4);">
-              <h4 style="color: var(--color-primary); margin-bottom: 6px;">🩺 MBBS (India &amp; Abroad)</h4>
-              <p style="font-size: 13.5px; color: var(--color-text-muted); line-height: 1.5;">Direct medical admissions in NMC-recognized colleges in India and top universities across Uzbekistan, Philippines, Timor-Leste, Mongolia, and more.</p>
+            <div class="card" style="padding: var(--space-5); border-left: 4px solid var(--color-primary);">
+              <h3 style="color: var(--color-primary); margin-bottom: 8px; font-size: 17px;">🩺 Medicine</h3>
+              <p style="font-size: 14px; color: var(--color-text-main); line-height: 1.6; margin-bottom: 0;">
+                <strong>MBBS (India &amp; Abroad)</strong>, BDS, BVSc, AYUSH (BAMS, BHMS, BSMS, BNYS).
+              </p>
             </div>
-            <div class="card" style="padding: var(--space-4);">
-              <h4 style="color: var(--color-primary); margin-bottom: 6px;">🦷 BDS &amp; Dental Surgery</h4>
-              <p style="font-size: 13.5px; color: var(--color-text-muted); line-height: 1.5;">DCI-approved dental institutions across Tamil Nadu and premier Indian private universities with comprehensive clinical chair training.</p>
+            <div class="card" style="padding: var(--space-5); border-left: 4px solid var(--color-secondary);">
+              <h3 style="color: var(--color-primary); margin-bottom: 8px; font-size: 17px;">⚙️ Engineering &amp; Technology</h3>
+              <p style="font-size: 14px; color: var(--color-text-main); line-height: 1.6; margin-bottom: 0;">
+                B.E / B.Tech in CSE, AI &amp; Data Science, Robotics, Mechanical, Civil, ECE &amp; IT.
+              </p>
             </div>
-            <div class="card" style="padding: var(--space-4);">
-              <h4 style="color: var(--color-primary); margin-bottom: 6px;">🐾 BVSc (Veterinary Sciences)</h4>
-              <p style="font-size: 13.5px; color: var(--color-text-muted); line-height: 1.5;">Bachelor of Veterinary Science &amp; Animal Husbandry admissions with guidance on cutoffs, state counselings, and private veterinary colleges.</p>
+            <div class="card" style="padding: var(--space-5); border-left: 4px solid var(--color-accent);">
+              <h3 style="color: var(--color-primary); margin-bottom: 8px; font-size: 17px;">👩‍⚕️ Healthcare</h3>
+              <p style="font-size: 14px; color: var(--color-text-main); line-height: 1.6; margin-bottom: 0;">
+                Paramedical, Nursing (B.Sc / GNM / Post Basic), Allied Health Sciences (AHS).
+              </p>
             </div>
-            <div class="card" style="padding: var(--space-4);">
-              <h4 style="color: var(--color-primary); margin-bottom: 6px;">🌿 AYUSH Degree Programs</h4>
-              <p style="font-size: 13.5px; color: var(--color-text-muted); line-height: 1.5;">BAMS (Ayurveda), BHMS (Homeopathy), BSMS (Siddha), and BNYS (Naturopathy) in top-ranked traditional medical colleges.</p>
-            </div>
-            <div class="card" style="padding: var(--space-4);">
-              <h4 style="color: var(--color-primary); margin-bottom: 6px;">⚙️ Engineering (B.E / B.Tech)</h4>
-              <p style="font-size: 13.5px; color: var(--color-text-muted); line-height: 1.5;">Top NIRF-ranked engineering colleges, Anna University affiliated campuses, and autonomous universities for Computer Science, AI, Mechanical, Civil, and ECE.</p>
-            </div>
-            <div class="card" style="padding: var(--space-4);">
-              <h4 style="color: var(--color-primary); margin-bottom: 6px;">👩‍⚕️ Nursing (B.Sc / GNM)</h4>
-              <p style="font-size: 13.5px; color: var(--color-text-muted); line-height: 1.5;">INC &amp; TNC approved nursing colleges with parent multi-specialty hospital training, guaranteeing 100% placement opportunities in India and abroad.</p>
-            </div>
-            <div class="card" style="padding: var(--space-4);">
-              <h4 style="color: var(--color-primary); margin-bottom: 6px;">🔬 Paramedical &amp; AHS</h4>
-              <p style="font-size: 13.5px; color: var(--color-text-muted); line-height: 1.5;">Allied Health Sciences including Dialysis, Cardiac Care, Radiology, Operation Theatre &amp; Anaesthesia, and Medical Lab Technology.</p>
-            </div>
-            <div class="card" style="padding: var(--space-4);">
-              <h4 style="color: var(--color-primary); margin-bottom: 6px;">⚖️ Law &amp; Arts &amp; Science</h4>
-              <p style="font-size: 13.5px; color: var(--color-text-muted); line-height: 1.5;">Bar Council approved 3-year LL.B and 5-year integrated law courses, plus B.Com, BCA, BBA, and specialized pure science programs.</p>
+            <div class="card" style="padding: var(--space-5); border-left: 4px solid #10B981;">
+              <h3 style="color: var(--color-primary); margin-bottom: 8px; font-size: 17px;">⚖️ Others</h3>
+              <p style="font-size: 14px; color: var(--color-text-main); line-height: 1.6; margin-bottom: 0;">
+                Arts &amp; Science, Law (LL.B &amp; Integrated 5-Yr), and other Undergraduate &amp; Professional Programs.
+              </p>
             </div>
           </div>
 
-          <!-- End to End Support Pillars -->
-          <div class="card" style="padding: var(--space-8); background: var(--color-primary); color: var(--color-white); border-radius: var(--radius-lg); margin-bottom: var(--space-8);">
-            <h2 style="font-size: 24px; font-weight: 800; color: #FFFFFF; margin-bottom: var(--space-4); text-align: center;">
-              Our Complete End-to-End Admission Support Lifecycle
-            </h2>
-            <p style="text-align: center; color: #D3E0EA; max-width: 720px; margin: 0 auto var(--space-8) auto; font-size: 15px;">
-              From the initial counseling session until your graduation and return to India, PARK International Education stands with you at every milestone.
-            </p>
+          <!-- MBBS ABROAD - STUDY DESTINATIONS -->
+          <div class="card" style="padding: var(--space-8); margin-bottom: var(--space-10); background: linear-gradient(135deg, #F8FAFC 0%, #EDF4FA 100%); border: 1.5px solid var(--color-border); border-radius: var(--radius-lg);">
+            <div class="section-header" style="text-align: center; margin-bottom: var(--space-5);">
+              <div class="section-eyebrow">GLOBAL MEDICAL EDUCATION</div>
+              <h2 style="font-size: 24px; font-weight: 800; color: var(--color-primary);">MBBS ABROAD - STUDY DESTINATIONS</h2>
+              <p class="section-desc" style="max-width: 640px; margin: 0 auto;">We are official admission partners for top-ranked universities in:</p>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 900px; margin: 0 auto;">
+              <span class="badge" style="background:#FFFFFF; color:var(--color-primary); font-size:14px; font-weight:700; padding:8px 16px; border:1px solid var(--color-border); box-shadow:var(--shadow-sm); border-radius:var(--radius-full);">🇺🇿 Uzbekistan</span>
+              <span class="badge" style="background:#FFFFFF; color:var(--color-primary); font-size:14px; font-weight:700; padding:8px 16px; border:1px solid var(--color-border); box-shadow:var(--shadow-sm); border-radius:var(--radius-full);">🇵🇭 Philippines</span>
+              <span class="badge" style="background:#FFFFFF; color:var(--color-primary); font-size:14px; font-weight:700; padding:8px 16px; border:1px solid var(--color-border); box-shadow:var(--shadow-sm); border-radius:var(--radius-full);">🇹🇱 Timor-Leste</span>
+              <span class="badge" style="background:#FFFFFF; color:var(--color-primary); font-size:14px; font-weight:700; padding:8px 16px; border:1px solid var(--color-border); box-shadow:var(--shadow-sm); border-radius:var(--radius-full);">🇲🇺 Mauritius</span>
+              <span class="badge" style="background:#FFFFFF; color:var(--color-primary); font-size:14px; font-weight:700; padding:8px 16px; border:1px solid var(--color-border); box-shadow:var(--shadow-sm); border-radius:var(--radius-full);">🇬🇪 Georgia</span>
+              <span class="badge" style="background:#FFFFFF; color:var(--color-primary); font-size:14px; font-weight:700; padding:8px 16px; border:1px solid var(--color-border); box-shadow:var(--shadow-sm); border-radius:var(--radius-full);">🇰🇿 Kazakhstan</span>
+              <span class="badge" style="background:#FFFFFF; color:var(--color-primary); font-size:14px; font-weight:700; padding:8px 16px; border:1px solid var(--color-border); box-shadow:var(--shadow-sm); border-radius:var(--radius-full);">🇰🇬 Kyrgyzstan</span>
+              <span class="badge" style="background:#FFFFFF; color:var(--color-primary); font-size:14px; font-weight:700; padding:8px 16px; border:1px solid var(--color-border); box-shadow:var(--shadow-sm); border-radius:var(--radius-full);">🇻🇳 Vietnam</span>
+              <span class="badge" style="background:#FFFFFF; color:var(--color-primary); font-size:14px; font-weight:700; padding:8px 16px; border:1px solid var(--color-border); box-shadow:var(--shadow-sm); border-radius:var(--radius-full);">🇷🇺 Russia</span>
+            </div>
+          </div>
+
+          <!-- OUR END-TO-END SERVICES -->
+          <div class="card" style="padding: var(--space-8); background: var(--color-primary); color: var(--color-white); border-radius: var(--radius-lg); margin-bottom: var(--space-10);">
+            <div class="section-header" style="text-align: center; margin-bottom: var(--space-6);">
+              <div class="section-eyebrow" style="color: var(--color-accent);">COMPLETE LIFECYCLE SUPPORT</div>
+              <h2 style="font-size: 24px; font-weight: 800; color: #FFFFFF;">OUR END-TO-END SERVICES</h2>
+              <p style="text-align: center; color: #D3E0EA; max-width: 680px; margin: 0 auto; font-size: 15px;">
+                From counselling to classroom, we are with you at every step:
+              </p>
+            </div>
             <div class="grid-3" style="color: #FFFFFF;">
               <div style="background: rgba(255, 255, 255, 0.08); padding: var(--space-5); border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.15);">
-                <div style="font-size: 20px; font-weight: 800; color: #2ED1BF; margin-bottom: 6px;">01. NEET &amp; Merit Profiling</div>
-                <p style="font-size: 13.5px; line-height: 1.6; color: #E2E8F0;">Detailed analysis of 12th group scores, NEET percentiles, budget constraints, and career goals to identify the most suitable universities.</p>
+                <div style="font-size: 20px; font-weight: 800; color: #2ED1BF; margin-bottom: 6px;">1. NEET Counselling &amp; Course Selection</div>
+                <p style="font-size: 13.5px; line-height: 1.6; color: #E2E8F0; margin-bottom: 0;">In-depth profile and cutoff evaluation matching your aspirations with accredited college options.</p>
               </div>
               <div style="background: rgba(255, 255, 255, 0.08); padding: var(--space-5); border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.15);">
-                <div style="font-size: 20px; font-weight: 800; color: #2ED1BF; margin-bottom: 6px;">02. Direct Admission &amp; Letters</div>
-                <p style="font-size: 13.5px; line-height: 1.6; color: #E2E8F0;">Direct submission to authorized rector desks, securing verified university admission letters and official ministerial invitations.</p>
+                <div style="font-size: 20px; font-weight: 800; color: #2ED1BF; margin-bottom: 6px;">2. Eligibility Assessment &amp; College Selection</div>
+                <p style="font-size: 13.5px; line-height: 1.6; color: #E2E8F0; margin-bottom: 0;">Comprehensive verification of regulatory eligibility, NMC guidelines, clinical exposure, and safety standards.</p>
               </div>
               <div style="background: rgba(255, 255, 255, 0.08); padding: var(--space-5); border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.15);">
-                <div style="font-size: 20px; font-weight: 800; color: #2ED1BF; margin-bottom: 6px;">03. 100% Visa &amp; Travel Assistance</div>
-                <p style="font-size: 13.5px; line-height: 1.6; color: #E2E8F0;">Hassle-free document apostille, translation, consular student visa stamping, flight booking, and foreign exchange (forex) guidance.</p>
+                <div style="font-size: 20px; font-weight: 800; color: #2ED1BF; margin-bottom: 6px;">3. Transparent Fee Structure &amp; Scholarship Guidance</div>
+                <p style="font-size: 13.5px; line-height: 1.6; color: #E2E8F0; margin-bottom: 0;">Official written fee statements with zero hidden charges, plus state and institutional scholarship assistance.</p>
               </div>
               <div style="background: rgba(255, 255, 255, 0.08); padding: var(--space-5); border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.15);">
-                <div style="font-size: 20px; font-weight: 800; color: #2ED1BF; margin-bottom: 6px;">04. Airport Reception &amp; Escort</div>
-                <p style="font-size: 13.5px; line-height: 1.6; color: #E2E8F0;">PARK International Education teams meet students at destination airports, provide safe transport to campus, and complete university registration.</p>
+                <div style="font-size: 20px; font-weight: 800; color: #2ED1BF; margin-bottom: 6px;">4. University Selection &amp; Admission Assistance</div>
+                <p style="font-size: 13.5px; line-height: 1.6; color: #E2E8F0; margin-bottom: 0;">Direct application submission to university rector desks ensuring verified, timely admission letter issuance.</p>
               </div>
               <div style="background: rgba(255, 255, 255, 0.08); padding: var(--space-5); border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.15);">
-                <div style="font-size: 20px; font-weight: 800; color: #2ED1BF; margin-bottom: 6px;">05. Indian Hostel &amp; Mess Setup</div>
-                <p style="font-size: 13.5px; line-height: 1.6; color: #E2E8F0;">Immediate room allotment in verified student hostels with 24/7 security, Indian wardens, and hygienic Indian vegetarian and non-vegetarian food.</p>
+                <div style="font-size: 20px; font-weight: 800; color: #2ED1BF; margin-bottom: 6px;">5. Visa, Documentation &amp; Travel Assistance</div>
+                <p style="font-size: 13.5px; line-height: 1.6; color: #E2E8F0; margin-bottom: 0;">End-to-end embassy visa stamping, document apostille, group travel booking, and foreign currency guidance.</p>
               </div>
               <div style="background: rgba(255, 255, 255, 0.08); padding: var(--space-5); border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.15);">
-                <div style="font-size: 20px; font-weight: 800; color: #2ED1BF; margin-bottom: 6px;">06. Ongoing Academic Care</div>
-                <p style="font-size: 13.5px; line-height: 1.6; color: #E2E8F0;">Continuous coordination between parents, students, and faculties throughout the degree course, plus licensing exam (NExT/FMGE) support.</p>
+                <div style="font-size: 20px; font-weight: 800; color: #2ED1BF; margin-bottom: 6px;">6. Pre- and Post-Departure Support</div>
+                <p style="font-size: 13.5px; line-height: 1.6; color: #E2E8F0; margin-bottom: 0;">Comprehensive pre-departure orientations, campus airport pickups, Indian mess/hostel allotment, and academic welfare.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- WHY CHOOSE PARK INTERNATIONAL EDUCATION? -->
+          <div class="section-header" style="text-align: center; margin-bottom: var(--space-6);">
+            <div class="section-eyebrow">KEY ADVANTAGES</div>
+            <h2 style="font-size: 24px; font-weight: 800; color: var(--color-primary);">WHY CHOOSE PARK INTERNATIONAL EDUCATION?</h2>
+            <p class="section-desc">Four core pillars that set us apart as Tamil Nadu's premier education consultancy:</p>
+          </div>
+
+          <div class="grid-4" style="margin-bottom: var(--space-10);">
+            <div class="card" style="padding: var(--space-6); text-align: center;">
+              <div style="width: 52px; height: 52px; border-radius: 50%; background: #EDF4FA; color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px auto;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+              </div>
+              <h3 style="font-size: 16px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">18+ Years of Proven Expertise</h3>
+              <p style="font-size: 13.5px; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 0;">Distinguished track record in career counseling and direct admissions since 2008.</p>
+            </div>
+
+            <div class="card" style="padding: var(--space-6); text-align: center;">
+              <div style="width: 52px; height: 52px; border-radius: 50%; background: #EDF4FA; color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px auto;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
+              </div>
+              <h3 style="font-size: 16px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Strong Network of Colleges</h3>
+              <p style="font-size: 13.5px; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 0;">Direct institutional tie-ups with top colleges and universities across India and abroad.</p>
+            </div>
+
+            <div class="card" style="padding: var(--space-6); text-align: center;">
+              <div style="width: 52px; height: 52px; border-radius: 50%; background: #EDF4FA; color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px auto;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+              </div>
+              <h3 style="font-size: 16px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Personalized Counselling</h3>
+              <p style="font-size: 13.5px; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 0;">Dedicated 1-on-1 career guidance designed around student merit and family budget.</p>
+            </div>
+
+            <div class="card" style="padding: var(--space-6); text-align: center;">
+              <div style="width: 52px; height: 52px; border-radius: 50%; background: #EDF4FA; color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px auto;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <h3 style="font-size: 16px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">100% Transparent Guidance</h3>
+              <p style="font-size: 13.5px; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 0;">Trusted, transparent admission assistance from your first consultation to graduation.</p>
+            </div>
+          </div>
+
+          <!-- OUR PRESENCE -->
+          <div class="card" style="padding: var(--space-8); margin-bottom: var(--space-10); border: 1.5px solid var(--color-border); border-radius: var(--radius-lg); background: #FFFFFF;">
+            <div class="section-header" style="text-align: center; margin-bottom: var(--space-6);">
+              <div class="section-eyebrow">NATIONWIDE NETWORK</div>
+              <h2 style="font-size: 24px; font-weight: 800; color: var(--color-primary);">OUR PRESENCE</h2>
+              <p class="section-desc">Serving students locally in Tamil Nadu and across all over India:</p>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 18px;">
+              <div style="padding: var(--space-4) var(--space-6); background: #F8FAFC; border-radius: var(--radius-md); border-left: 5px solid var(--color-primary);">
+                <div style="font-size: 16px; font-weight: 800; color: var(--color-primary); margin-bottom: 4px;">Head Offices:</div>
+                <div style="font-size: 15px; color: var(--color-text-main); font-weight: 600;">
+                  📍 <strong>Tirunelveli</strong> (<a href="https://maps.app.goo.gl/uid8TLC4vsFK9NP78" target="_blank" rel="noopener noreferrer" style="color:var(--color-secondary);">Palayamkottai / Vannarpettai - View Map</a>) &nbsp;|&nbsp; 
+                  📍 <strong>Madurai</strong> (<a href="https://maps.app.goo.gl/xfjGFMjJt7XKMDuY6" target="_blank" rel="noopener noreferrer" style="color:var(--color-secondary);">KK Nagar Main Road - View Map</a>)
+                </div>
+              </div>
+
+              <div style="padding: var(--space-4) var(--space-6); background: #F8FAFC; border-radius: var(--radius-md); border-left: 5px solid var(--color-secondary);">
+                <div style="font-size: 16px; font-weight: 800; color: var(--color-secondary); margin-bottom: 4px;">Branch Offices in Tamilnadu:</div>
+                <div style="font-size: 14.5px; color: var(--color-text-main); line-height: 1.6;">
+                  Ramanathapuram &nbsp;|&nbsp; Nagercoil &nbsp;|&nbsp; Theni &nbsp;|&nbsp; Karur &nbsp;|&nbsp; Trichy &nbsp;|&nbsp; Coimbatore &amp; across tamilnadu.
+                </div>
+              </div>
+
+              <div style="padding: var(--space-4) var(--space-6); background: #F8FAFC; border-radius: var(--radius-md); border-left: 5px solid var(--color-accent);">
+                <div style="font-size: 16px; font-weight: 800; color: var(--color-primary); margin-bottom: 4px;">Services Available at Other States:</div>
+                <div style="font-size: 14px; color: var(--color-text-main); line-height: 1.7;">
+                  Newdelhi | Maharastra | Haryana | Rajasthan | Jharkhand | Madhya Pradesh | Northeast (Manipur | Meghalaya | Sikkim | Nagaland | Assam | Mizoram | Tripura) &amp; Across all over India.
+                </div>
               </div>
             </div>
           </div>
@@ -985,11 +932,11 @@
           <!-- Bottom CTA -->
           <div class="cta-banner">
             <h2>Ready to Choose the Right Career Path with Confidence?</h2>
-            <p>Visit our Head Office in Tirunelveli or any of our branch offices, or connect with our senior education counselors online today.</p>
+            <p>Visit our Head Offices in Tirunelveli or Madurai, or connect with our senior education counselors online today.</p>
             <div class="btn-group">
               <a href="#apply" class="btn btn-teal">Apply for Direct Admission Guidance</a>
               <a href="tel:+918110087722" class="btn btn-outline" style="background:#fff; color:var(--color-primary);">Call Tirunelveli Head Office (81100 87722)</a>
-              <a href="tel:+918807744900" class="btn btn-outline" style="background:#fff; color:var(--color-primary);">Call Trichy Branch (88077 44900)</a>
+              <a href="tel:+918110087722" class="btn btn-outline" style="background:#fff; color:var(--color-primary);">Call Madurai Office (81100 87722)</a>
             </div>
           </div>
 
@@ -1077,21 +1024,6 @@
       <div class="section">
         <div class="container">
           <div class="section-header" style="position: relative;">
-            <div class="hero-flight-corridor" aria-label="International Flight Corridor" style="margin-bottom: 12px;">
-              <div class="flight-live-pulse" aria-hidden="true"></div>
-              <div class="flight-track-wrap">
-                <span class="flight-airport-tag">DEL / MAA / TRZ</span>
-                <span class="flight-air-line" aria-hidden="true">
-                  <span class="flight-plane-glider">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
-                    </svg>
-                  </span>
-                </span>
-                <span class="flight-airport-tag dest">TAS · MNL · DIL · FRU</span>
-                <span>Direct Batch Departures &amp; Group Travel Assist</span>
-              </div>
-            </div>
             <div class="section-eyebrow">
               MBBS STUDY DESTINATIONS
             </div>
@@ -1324,13 +1256,13 @@
         <div class="container">
           <div class="section-header">
             <div class="section-eyebrow">
-              8 BRANCH OFFICES
+              BRANCH &amp; COUNSELLING NETWORK
             </div>
             <h1 id="branches-heading">
               Our Official Branch Network
             </h1>
             <p class="section-desc">
-              Visit our Head Office in Tirunelveli, Madurai branch, or any of our 8 regional centers across Tamil Nadu and New Delhi for personal face-to-face consultation.
+              Visit our Head Office in Tirunelveli, Madurai branch office, or any of our regional centers across Tamil Nadu and all over India for personalized admission counselling.
             </p>
           </div>
 
@@ -1525,8 +1457,8 @@
               <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 12px;">
                 <span>Unlock Admin Dashboard</span>
               </button>
-              <div style="margin-top: 14px; font-size: 12px; color: var(--color-text-muted);">
-                Default Password: <code>park@2008</code> &nbsp;·&nbsp; <a href="#home" style="color: var(--color-secondary);">Return to Website</a>
+              <div style="margin-top: 16px; font-size: 12px; text-align: center;">
+                <a href="#home" style="color: var(--color-secondary); text-decoration: none; font-weight: 500;">&larr; Return to Website Home</a>
               </div>
             </form>
           </div>
@@ -1537,16 +1469,26 @@
             <div class="admin-header-bar">
               <div>
                 <h1 class="admin-header-title">Admissions &amp; Queries CRM</h1>
-                <p class="admin-header-sub">PARK International Education · Student requirements, current stages, and counsellor follow-ups.</p>
+                <p class="admin-header-sub">PARK International Education · Student requirements, current stages, college fee verification &amp; counsellor follow-ups.</p>
               </div>
-              <div class="admin-header-actions">
-                <button type="button" class="btn btn-sm btn-primary" onclick="openAddQueryModal()">
+              <div class="admin-header-actions" style="flex-wrap: wrap; gap: 8px;">
+                <button type="button" class="btn btn-sm btn-primary" onclick="openAdminAddModal()">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                  <span>Add Query</span>
+                  <span>+ Add Student</span>
                 </button>
                 <button type="button" class="btn btn-sm btn-outline-primary" onclick="exportQueriesToCSV()">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  <span>Export CSV</span>
+                  <span>Export to Excel</span>
+                </button>
+                <button type="button" class="supabase-badge-btn" id="supabase-status-pill" onclick="openSupabaseModal()" title="Configure Supabase Cloud Database">
+                  <span class="supabase-badge-dot"></span>
+                  <span id="supabase-pill-text">Supabase Cloud</span>
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="openBackupModal()" title="Download or restore full database backup">
+                  <span>💾 Backup / Restore</span>
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="clearSampleQueries()" title="Remove demo/sample records and start clean">
+                  <span>🗑️ Clear Demo Data</span>
                 </button>
                 <button type="button" class="btn btn-sm btn-outline-secondary" onclick="openChangePassModal()">
                   <span>Password</span>
@@ -1563,20 +1505,28 @@
             <!-- KPI Cards Grid -->
             <div class="admin-kpi-grid">
               <div class="admin-kpi-card blue">
-                <span class="admin-kpi-label">Total Queries</span>
+                <span class="admin-kpi-label">Total Students</span>
                 <span class="admin-kpi-num" id="kpi-total">0</span>
               </div>
               <div class="admin-kpi-card amber">
-                <span class="admin-kpi-label">New / Action Needed</span>
-                <span class="admin-kpi-num" id="kpi-new">0</span>
-              </div>
-              <div class="admin-kpi-card teal">
-                <span class="admin-kpi-label">In Counselling / Docs</span>
+                <span class="admin-kpi-label">In Pipeline / Docs</span>
                 <span class="admin-kpi-num" id="kpi-counselling">0</span>
               </div>
               <div class="admin-kpi-card green">
                 <span class="admin-kpi-label">Seat Booked / Admitted</span>
                 <span class="admin-kpi-num" id="kpi-admitted">0</span>
+              </div>
+              <div class="admin-kpi-card purple">
+                <span class="admin-kpi-label">Total College Fees</span>
+                <span class="admin-kpi-num" id="kpi-fees-total" style="font-size: 21px;">₹0</span>
+              </div>
+              <div class="admin-kpi-card teal">
+                <span class="admin-kpi-label">Total Fees Collected</span>
+                <span class="admin-kpi-num" id="kpi-fees-paid" style="font-size: 21px;">₹0</span>
+              </div>
+              <div class="admin-kpi-card red">
+                <span class="admin-kpi-label">Total Balance Due</span>
+                <span class="admin-kpi-num" id="kpi-fees-balance" style="font-size: 21px; color: #DC2626;">₹0</span>
               </div>
             </div>
 
@@ -1626,7 +1576,8 @@
                   <tr>
                     <th>Date / Source</th>
                     <th>Student &amp; Contact</th>
-                    <th>Course &amp; Requirements</th>
+                    <th>Course &amp; University</th>
+                    <th>College Fees &amp; Balance</th>
                     <th>Admission Stage</th>
                     <th>Current Position / Milestone</th>
                     <th style="text-align: right;">Actions</th>
@@ -2039,6 +1990,28 @@
           </div>
         </div>
 
+        <!-- College Fees & Payment Tracking Section -->
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+          <div style="font-size: 13px; font-weight: 700; color: var(--color-primary); margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between;">
+            <span>💰 College Fees &amp; Payment Details</span>
+            <span id="edit-fee-status-badge" style="font-size: 11px; padding: 2px 8px; border-radius: 12px; background: #E2E8F0; color: #475569; font-weight: 600;">Status</span>
+          </div>
+          <div class="form-row">
+            <div class="form-group" style="flex: 1;">
+              <label class="form-label">Total College Fees (₹ / $)</label>
+              <input type="number" id="edit-total-fees" class="form-control" placeholder="e.g. 2200000" oninput="calcEditBalance()">
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label class="form-label">Fees Paid (₹ / $)</label>
+              <input type="number" id="edit-paid-fees" class="form-control" placeholder="e.g. 500000" oninput="calcEditBalance()">
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label class="form-label">Balance Due (Auto)</label>
+              <input type="text" id="edit-balance-fees" class="form-control" readonly style="background: #F1F5F9; font-weight: 700; color: #DC2626;">
+            </div>
+          </div>
+        </div>
+
         <div class="form-group">
           <label class="form-label">Current Position Milestone &amp; Tracking *</label>
           <input type="text" id="edit-current-position" class="form-control" placeholder="e.g. Passport submitted; waiting for NEET eligibility letter; admission letter issued" required>
@@ -2068,7 +2041,7 @@
   <div class="admin-modal-backdrop" id="admin-add-modal" role="dialog" aria-modal="true" aria-labelledby="admin-add-title">
     <div class="admin-modal-dialog">
       <div class="admin-modal-header">
-        <h3 class="admin-modal-title" id="admin-add-title">Log New Query / Walk-in</h3>
+        <h3 class="admin-modal-title" id="admin-add-title">Log New Student Admission</h3>
         <button type="button" class="lead-modal-close" onclick="closeAdminAddModal()" aria-label="Close dialog">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
@@ -2148,6 +2121,28 @@
           </div>
         </div>
 
+        <!-- College Fees & Payment Section -->
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+          <div style="font-size: 13px; font-weight: 700; color: var(--color-primary); margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between;">
+            <span>💰 College Fees &amp; Payment Details</span>
+            <span id="add-fee-status-badge" style="font-size: 11px; padding: 2px 8px; border-radius: 12px; background: #E2E8F0; color: #475569; font-weight: 600;">Status</span>
+          </div>
+          <div class="form-row">
+            <div class="form-group" style="flex: 1;">
+              <label class="form-label">Total College Fees (₹ / $)</label>
+              <input type="number" id="add-total-fees" class="form-control" placeholder="e.g. 2200000" oninput="calcAddBalance()">
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label class="form-label">Fees Paid (₹ / $)</label>
+              <input type="number" id="add-paid-fees" class="form-control" placeholder="e.g. 500000" oninput="calcAddBalance()">
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label class="form-label">Balance Due (Auto)</label>
+              <input type="text" id="add-balance-fees" class="form-control" readonly style="background: #F1F5F9; font-weight: 700; color: #DC2626;">
+            </div>
+          </div>
+        </div>
+
         <div class="form-group">
           <label class="form-label">Current Position Milestone</label>
           <input type="text" id="add-current-position" class="form-control" placeholder="e.g. Visited Tirunelveli HO; collected Kokand fee brochure" value="New inquiry received">
@@ -2160,9 +2155,85 @@
 
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
           <button type="button" class="btn btn-outline-secondary" onclick="closeAdminAddModal()">Cancel</button>
-          <button type="submit" class="btn btn-primary">Add Lead</button>
+          <button type="submit" class="btn btn-primary">Save Student</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       ADMIN: SUPABASE CLOUD DATABASE CONFIGURATION MODAL
+       ==================================================================== -->
+  <div class="admin-modal-backdrop" id="admin-supabase-modal" role="dialog" aria-modal="true" aria-labelledby="admin-supabase-title">
+    <div class="admin-modal-dialog">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="admin-supabase-title">☁️ Supabase Cloud Backend Settings</h3>
+        <button type="button" class="lead-modal-close" onclick="closeSupabaseModal()" aria-label="Close dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div style="font-size: 13.5px; color: var(--color-text-muted); margin-bottom: 16px; line-height: 1.5;">
+        Connect your free Supabase PostgreSQL database to store student inquiries and fee records permanently in the cloud. Data is synced in real-time across all Tirunelveli and branch computers.
+      </div>
+      <form id="admin-supabase-form" onsubmit="saveSupabaseConfig(event)">
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label class="form-label">Supabase Project URL *</label>
+          <input type="url" id="supabase-url-input" class="form-control" placeholder="https://xxxxxxxxxxxx.supabase.co" required>
+          <small style="font-size: 11.5px; color: #64748B;">Found in your Supabase Dashboard ➔ Project Settings ➔ API ➔ Project URL</small>
+        </div>
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label class="form-label">Supabase Anon Public API Key *</label>
+          <input type="password" id="supabase-key-input" class="form-control" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." required>
+          <small style="font-size: 11.5px; color: #64748B;">Found in your Supabase Dashboard ➔ Project Settings ➔ API ➔ Project API keys (anon / public)</small>
+        </div>
+        <div id="supabase-conn-status" style="display: none; padding: 10px 14px; border-radius: 6px; font-size: 13px; margin-bottom: 14px;"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 18px;">
+          <button type="button" class="btn btn-sm btn-outline-primary" onclick="syncLocalToSupabase()" id="btn-sync-supabase">
+            <span>⬆️ Upload All Local Records to Cloud</span>
+          </button>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="disconnectSupabase()">Disconnect</button>
+            <button type="submit" class="btn btn-sm btn-primary">Save &amp; Connect</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       ADMIN: BACKUP & RESTORE DATABASE MODAL
+       ==================================================================== -->
+  <div class="admin-modal-backdrop" id="admin-backup-modal" role="dialog" aria-modal="true" aria-labelledby="admin-backup-title">
+    <div class="admin-modal-dialog">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="admin-backup-title">💾 Database Backup &amp; Disaster Recovery</h3>
+        <button type="button" class="lead-modal-close" onclick="closeBackupModal()" aria-label="Close dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div style="font-size: 13.5px; color: var(--color-text-muted); margin-bottom: 18px; line-height: 1.5;">
+        Save offline backup copies of your student records and college fees so you never lose data if a browser cache is cleared or computer crashes.
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="padding: 16px; border: 1px solid var(--color-border); border-radius: 8px; background: #F8FAFC;">
+          <strong style="font-size: 14px; color: var(--color-primary); display: block; margin-bottom: 4px;">📥 1. Download Offline Backup (JSON)</strong>
+          <p style="font-size: 12.5px; color: var(--color-text-muted); margin-bottom: 10px;">Downloads a complete snapshot of all student files, fees, and notes to your computer.</p>
+          <button type="button" class="btn btn-sm btn-primary" onclick="downloadJSONBackup()">
+            <span>Download Backup File</span>
+          </button>
+        </div>
+        <div style="padding: 16px; border: 1px solid var(--color-border); border-radius: 8px; background: #F8FAFC;">
+          <strong style="font-size: 14px; color: var(--color-primary); display: block; margin-bottom: 4px;">📤 2. Restore / Import Backup File</strong>
+          <p style="font-size: 12.5px; color: var(--color-text-muted); margin-bottom: 10px;">Select a previously downloaded `.json` backup file to restore all student data immediately.</p>
+          <input type="file" id="backup-file-input" accept=".json" style="display: none;" onchange="handleRestoreBackupFile(event)">
+          <button type="button" class="btn btn-sm btn-outline-primary" onclick="document.getElementById('backup-file-input').click()">
+            <span>Choose Backup File to Restore...</span>
+          </button>
+        </div>
+      </div>
+      <div style="text-align: right; margin-top: 18px;">
+        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="closeBackupModal()">Close</button>
+      </div>
     </div>
   </div>
 
@@ -2198,6 +2269,13 @@
       </form>
     </div>
   </div>
+
+  <!-- Floating Back to Top Button -->
+  <button type="button" id="back-to-top-btn" class="back-to-top-btn" onclick="scrollToTop()" aria-label="Scroll back to top" title="Back to Top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6"/>
+    </svg>
+  </button>
 
   <!-- Application Logic -->
   <script src="js/app.js"></script>

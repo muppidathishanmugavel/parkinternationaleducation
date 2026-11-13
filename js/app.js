@@ -1218,55 +1218,71 @@
       type: "Head Office",
       isHead: true,
       address: "Palayamkottai / Vannarpettai Junction, Tirunelveli, Tamil Nadu 627002",
-      contact: "Phone: 81100 87722 / 88077 44900 (Mon - Sat: 9:30 AM - 7:00 PM)"
+      contact: "Phone: 81100 87722 / 88077 44900 (Mon - Sat: 9:30 AM - 7:00 PM)",
+      mapUrl: "https://maps.app.goo.gl/uid8TLC4vsFK9NP78"
+    },
+    {
+      city: "Madurai",
+      type: "Branch Office",
+      isHead: false,
+      address: "Admissions Center, KK Nagar Main Road, Madurai, Tamil Nadu",
+      contact: "Call 81100 87722 for consultation & visiting hours.",
+      mapUrl: "https://maps.app.goo.gl/xfjGFMjJt7XKMDuY6"
     },
     {
       city: "Trichy",
-      type: "Branch Office & Admissions Hub",
+      type: "Branch Office",
       isHead: false,
       address: "Thillai Nagar Main Road, Tiruchirappalli, Tamil Nadu 620018",
       contact: "Phone: 88077 44900 / 81100 87722 (Mon - Sat: 9:30 AM - 7:00 PM)"
     },
     {
-      city: "Madurai",
-      type: "Regional Branch",
+      city: "Ramanathapuram",
+      type: "Branch Office",
       isHead: false,
-      address: "Admissions Center, KK Nagar Main Road, Madurai, Tamil Nadu",
-      contact: "Call 81100 87722 for consultation & visiting hours."
-    },
-    {
-      city: "Chennai",
-      type: "Regional Branch",
-      isHead: false,
-      address: "Metropolitan Admissions Desk, Mount Road / Guindy, Chennai, Tamil Nadu",
-      contact: "Call 81100 87722 for consultation & visiting hours."
-    },
-    {
-      city: "Coimbatore",
-      type: "Western Regional Desk",
-      isHead: false,
-      address: "Admissions Counseling Center, Gandhipuram, Coimbatore, Tamil Nadu",
+      address: "Direct Admissions Desk, Salai Street, Ramanathapuram Main Center",
       contact: "Call 81100 87722 for consultation & visiting hours."
     },
     {
       city: "Nagercoil",
-      type: "South Regional Desk",
+      type: "Branch Office",
       isHead: false,
       address: "Direct Admissions Desk, Court Road, Nagercoil, Kanyakumari District",
       contact: "Call 81100 87722 for consultation & visiting hours."
     },
     {
-      city: "Tenkasi",
-      type: "Regional Desk",
+      city: "Theni",
+      type: "Branch Office",
       isHead: false,
-      address: "Counseling Desk, Main Road, Tenkasi District",
+      address: "Admissions Counseling Desk, Theni, Tamil Nadu",
       contact: "Call 81100 87722 for consultation & visiting hours."
     },
     {
-      city: "Ramanathapuram",
-      type: "Regional Desk",
+      city: "Karur",
+      type: "Branch Office",
       isHead: false,
-      address: "Direct Admissions Desk, Salai Street, Ramanathapuram Main Center",
+      address: "Admissions Desk, Karur, Tamil Nadu",
+      contact: "Call 81100 87722 for consultation & visiting hours."
+    },
+    {
+      city: "Coimbatore",
+      type: "Branch Office",
+      isHead: false,
+      address: "Admissions Counseling Center, Gandhipuram, Coimbatore, Tamil Nadu",
+      contact: "Call 81100 87722 for consultation & visiting hours."
+    },
+    {
+      city: "Chennai",
+      type: "Branch Office",
+      isHead: false,
+      address: "Metropolitan Admissions Desk, Mount Road / Guindy, Chennai, Tamil Nadu",
+      contact: "Call 81100 87722 for consultation & visiting hours."
+    },
+    {
+      city: "Tenkasi",
+      type: "Branch Office",
+      isHead: false,
+      address: "Counseling Desk, Main Road, Tenkasi District",
       contact: "Call 81100 87722 for consultation & visiting hours."
     }
   ];
@@ -1422,6 +1438,13 @@
         <p class="branch-address">${b.address}</p>
         <div class="branch-footer">
           <span>${b.contact}</span>
+          ${b.mapUrl ? `
+            <div>
+              <a href="${b.mapUrl}" target="_blank" rel="noopener noreferrer" class="branch-map-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>View on Google Maps</span>
+              </a>
+            </div>` : ''}
         </div>
       </div>
     `).join("");
@@ -1493,17 +1516,21 @@
     }
   }
 
-  // Dynamic Number Counter Animation with Viewport Auto-Trigger
+  // Dynamic Number Counter Animation with Viewport Auto-Trigger (Zero-Flicker & Zero-Hang)
   let counterObserver = null;
 
   function checkAndAnimateCounter(counter) {
-    if (counter.dataset.countingStarted) return;
-    counter.dataset.countingStarted = "1";
+    if (counter.dataset.countingDone === "true" || counter.dataset.countingActive === "true") return;
+    counter.dataset.countingActive = "true";
     const target = parseInt(counter.dataset.counter, 10);
-    if (isNaN(target)) return;
+    if (isNaN(target)) {
+      counter.dataset.countingDone = "true";
+      counter.dataset.countingActive = "false";
+      return;
+    }
 
     let start = null;
-    const duration = 1400; // ms
+    const duration = 1200; // ms
 
     function step(timestamp) {
       if (!start) start = timestamp;
@@ -1517,6 +1544,8 @@
         requestAnimationFrame(step);
       } else {
         counter.textContent = target.toLocaleString();
+        counter.dataset.countingDone = "true";
+        counter.dataset.countingActive = "false";
       }
     }
 
@@ -1528,36 +1557,29 @@
     const counters = document.querySelectorAll("[data-counter]");
     if (!counters.length) return;
 
-    if (counterObserver) {
-      counterObserver.disconnect();
-    }
-
     if (prefersReducedMotion || !window.IntersectionObserver) {
       counters.forEach(c => {
         const target = parseInt(c.dataset.counter, 10);
         if (!isNaN(target)) c.textContent = target.toLocaleString();
+        c.dataset.countingDone = "true";
       });
       return;
     }
 
-    counterObserver = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          checkAndAnimateCounter(entry.target);
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.05, rootMargin: "50px" });
+    if (!counterObserver) {
+      counterObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            checkAndAnimateCounter(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "60px" });
+    }
 
+    // Only observe elements that haven't finished counting yet
     counters.forEach(c => {
-      delete c.dataset.countingStarted;
-      const rect = c.getBoundingClientRect();
-      const inView = rect.top < (window.innerHeight || document.documentElement.clientHeight) && rect.bottom > 0;
-      if (inView) {
-        c.textContent = "0";
-        checkAndAnimateCounter(c);
-      } else {
-        c.textContent = "0";
+      if (c.dataset.countingDone !== "true") {
         counterObserver.observe(c);
       }
     });
@@ -1566,6 +1588,25 @@
   function animateCounters() {
     initCounterObserver();
   }
+
+  // Floating Back to Top Button Controller
+  function initBackToTop() {
+    const btn = $("back-to-top-btn");
+    if (!btn) return;
+
+    window.addEventListener("scroll", () => {
+      const scrolled = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrolled > 300) {
+        btn.classList.add("visible");
+      } else {
+        btn.classList.remove("visible");
+      }
+    }, { passive: true });
+  }
+
+  window.scrollToTop = function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   // Scroll Reveal Observer for Sliding Animations
   function initScrollReveals() {
@@ -2594,6 +2635,9 @@
   const QUERIES_STORAGE_KEY = "park_admin_queries_v2";
   const PASS_STORAGE_KEY = "park_admin_password_v2";
   const AUTH_SESSION_KEY = "park_admin_session_auth";
+  const SUPABASE_URL_KEY = "park_supabase_url";
+  const SUPABASE_KEY_KEY = "park_supabase_key";
+  let supabaseClient = null;
 
   // Pre-loaded realistic inquiries
   const INITIAL_SAMPLE_QUERIES = [
@@ -2610,6 +2654,9 @@
       city: "Tirunelveli",
       branch: "Tirunelveli Head Office",
       stage: "Document Verification",
+      totalFees: 2200000,
+      paidFees: 500000,
+      balanceFees: 1700000,
       currentPosition: "Passport submitted for MEA Apostille; NEET score 342 verified; Kokand admission letter issued",
       reqs: "Budget: ₹22 Lakhs total. Needs vegetarian mess and Indian senior student guidance.",
       remarks: "Parents visited Tirunelveli HO on Tuesday; highly satisfied with written fee breakdown."
@@ -2627,6 +2674,9 @@
       city: "Madurai",
       branch: "Madurai Branch",
       stage: "Seat Booked",
+      totalFees: 2400000,
+      paidFees: 2400000,
+      balanceFees: 0,
       currentPosition: "BS-MD seat advance paid; CHED endorsement documents submitted; visa appointment booked",
       reqs: "Focus on US-aligned clinical training; 12th PCB 89%. Prefer on-campus dorm with attached bath.",
       remarks: "Counselling conducted by senior doctor alumnus."
@@ -2644,6 +2694,9 @@
       city: "Chennai",
       branch: "Chennai Branch",
       stage: "NEET Counselling",
+      totalFees: 2100000,
+      paidFees: 0,
+      balanceFees: 2100000,
       currentPosition: "Detailed university comparison provided; reviewing Tashkent vs Fergana; parent discussion on Friday",
       reqs: "Wants capital city university with direct flights from Delhi/Mumbai. NEET score 310.",
       remarks: "Follow-up scheduled for 31 Oct at 4:00 PM."
@@ -2661,6 +2714,9 @@
       city: "Coimbatore",
       branch: "Coimbatore Branch",
       stage: "Call Scheduled",
+      totalFees: 2500000,
+      paidFees: 200000,
+      balanceFees: 2300000,
       currentPosition: "New lead captured; introductory call completed; WhatsApp fee brochure sent",
       reqs: "Interested in high FMGE passing rate (83%). Enquired about Davao climate and Indian mess.",
       remarks: "Send video of DMSF hostel and hospital clinical rotations."
@@ -2678,6 +2734,9 @@
       city: "Salem",
       branch: "Salem Branch",
       stage: "Admitted",
+      totalFees: 2000000,
+      paidFees: 2000000,
+      balanceFees: 0,
       currentPosition: "Visa stamped; air ticket confirmed for Nov departure batch from Chennai airport; pre-departure briefing done",
       reqs: "Government medical degree; Indian mess hostel confirmed.",
       remarks: "Student and father attended Tirunelveli pre-departure orientation."
@@ -2758,17 +2817,133 @@
     }
   };
 
+  // =========================================================================
+  // SUPABASE CLOUD & PERSISTENT STORAGE CONTROLLER
+  // =========================================================================
+
+  function initSupabaseClient() {
+    try {
+      const url = localStorage.getItem(SUPABASE_URL_KEY);
+      const key = localStorage.getItem(SUPABASE_KEY_KEY);
+      if (url && key && window.supabase && window.supabase.createClient) {
+        supabaseClient = window.supabase.createClient(url, key);
+        updateSupabasePill(true);
+        fetchQueriesFromSupabase();
+        return supabaseClient;
+      }
+    } catch (e) {
+      console.warn("Supabase init error:", e);
+    }
+    supabaseClient = null;
+    updateSupabasePill(false);
+    return null;
+  }
+
+  function updateSupabasePill(isConnected) {
+    const pill = $("supabase-status-pill");
+    const text = $("supabase-pill-text");
+    if (!pill || !text) return;
+    if (isConnected) {
+      pill.classList.add("connected");
+      text.textContent = "Supabase: Connected";
+      pill.title = "Connected to Supabase PostgreSQL database. Click to manage cloud settings.";
+    } else {
+      pill.classList.remove("connected");
+      text.textContent = "Supabase Cloud";
+      pill.title = "Connect to your Supabase PostgreSQL cloud database.";
+    }
+  }
+
+  async function fetchQueriesFromSupabase() {
+    if (!supabaseClient) return null;
+    try {
+      const { data, error } = await supabaseClient
+        .from('students')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.warn("Supabase select error:", error.message || error);
+        return null;
+      }
+      if (data && Array.isArray(data)) {
+        const mapped = data.map(row => ({
+          id: row.id,
+          date: row.date || new Date(row.created_at).toLocaleDateString("en-IN"),
+          source: row.source || "Website Inquiry",
+          name: row.name || "Student",
+          phone: row.phone || "",
+          email: row.email || "",
+          course: row.course || "Medicine (MBBS)",
+          country: row.country || "Uzbekistan",
+          uni: row.uni || "",
+          city: row.city || "Tamil Nadu",
+          branch: row.branch || "Tirunelveli Head Office",
+          stage: row.stage || "New Enquiry",
+          totalFees: Number(row.total_fees) || 0,
+          paidFees: Number(row.paid_fees) || 0,
+          balanceFees: Number(row.balance_fees) !== undefined ? Number(row.balance_fees) : Math.max(0, (Number(row.total_fees) || 0) - (Number(row.paid_fees) || 0)),
+          currentPosition: row.current_position || "",
+          reqs: row.reqs || "",
+          remarks: row.remarks || ""
+        }));
+        saveQueriesToStorage(mapped);
+        renderAdminDashboard();
+        return mapped;
+      }
+    } catch (err) {
+      console.warn("Supabase fetch failed:", err);
+    }
+    return null;
+  }
+
+  async function syncQueryToSupabase(q, action = "upsert") {
+    if (!supabaseClient) return;
+    try {
+      if (action === "delete") {
+        await supabaseClient.from('students').delete().eq('id', q.id);
+      } else {
+        const total = Number(q.totalFees) || 0;
+        const paid = Number(q.paidFees) || 0;
+        const balance = (q.balanceFees !== undefined) ? Number(q.balanceFees) : Math.max(0, total - paid);
+        const payload = {
+          id: q.id,
+          date: q.date,
+          source: q.source || "Website Inquiry",
+          name: q.name,
+          phone: q.phone,
+          email: q.email || "",
+          course: q.course || "Medicine (MBBS)",
+          country: q.country || "Uzbekistan",
+          uni: q.uni || "",
+          city: q.city || "",
+          branch: q.branch || "Tirunelveli Head Office",
+          stage: q.stage || "New Enquiry",
+          total_fees: total,
+          paid_fees: paid,
+          balance_fees: balance,
+          current_position: q.currentPosition || "",
+          reqs: q.reqs || "",
+          remarks: q.remarks || ""
+        };
+        await supabaseClient.from('students').upsert(payload);
+      }
+    } catch (err) {
+      console.warn("Supabase syncQuery error:", err);
+    }
+  }
+
   function getQueriesFromStorage() {
     try {
       const data = localStorage.getItem(QUERIES_STORAGE_KEY);
-      if (data) {
+      if (data !== null) {
         return JSON.parse(data);
       } else {
         localStorage.setItem(QUERIES_STORAGE_KEY, JSON.stringify(INITIAL_SAMPLE_QUERIES));
         return INITIAL_SAMPLE_QUERIES;
       }
     } catch (e) {
-      return INITIAL_SAMPLE_QUERIES;
+      return [];
     }
   }
 
@@ -2780,6 +2955,10 @@
 
   function addQueryToDatabase(q) {
     const list = getQueriesFromStorage();
+    const total = parseFloat(q.totalFees) || 0;
+    const paid = parseFloat(q.paidFees) || 0;
+    const balance = Math.max(0, total - paid);
+
     const newEntry = {
       id: "PK-" + Math.floor(1000 + Math.random() * 9000),
       date: new Date().toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" }),
@@ -2793,12 +2972,16 @@
       city: q.city || "Tirunelveli",
       branch: q.branch || "Tirunelveli Head Office",
       stage: q.stage || "New Enquiry",
+      totalFees: total,
+      paidFees: paid,
+      balanceFees: balance,
       currentPosition: q.currentPosition || "Inquiry received; awaiting follow-up call",
       reqs: q.reqs || "Requested admission guidance and written fee structure.",
       remarks: q.remarks || ""
     };
     list.unshift(newEntry);
     saveQueriesToStorage(list);
+    syncQueryToSupabase(newEntry, "upsert");
   }
 
   function getStageBadgeClass(stage) {
@@ -2822,15 +3005,29 @@
 
     // Update KPI Counts
     const kpiTotal = $("kpi-total");
-    const kpiNew = $("kpi-new");
     const kpiCounselling = $("kpi-counselling");
     const kpiAdmitted = $("kpi-admitted");
+    const kpiFeesTotal = $("kpi-fees-total");
+    const kpiFeesPaid = $("kpi-fees-paid");
+    const kpiFeesBalance = $("kpi-fees-balance");
+
+    const sumTotalFees = list.reduce((acc, q) => acc + (Number(q.totalFees) || 0), 0);
+    const sumPaidFees = list.reduce((acc, q) => acc + (Number(q.paidFees) || 0), 0);
+    const sumBalanceFees = list.reduce((acc, q) => {
+      const tot = Number(q.totalFees) || 0;
+      const pd = Number(q.paidFees) || 0;
+      const bal = (q.balanceFees !== undefined) ? Number(q.balanceFees) : Math.max(0, tot - pd);
+      return acc + bal;
+    }, 0);
 
     if (kpiTotal) kpiTotal.textContent = list.length;
-    if (kpiNew) kpiNew.textContent = list.filter(q => q.stage === "New Enquiry" || q.stage === "Call Scheduled").length;
     if (kpiCounselling) kpiCounselling.textContent = list.filter(q => q.stage === "NEET Counselling" || q.stage === "Document Verification" || q.stage === "Visa & Processing").length;
     if (kpiAdmitted) kpiAdmitted.textContent = list.filter(q => q.stage === "Seat Booked" || q.stage === "Admitted").length;
+    if (kpiFeesTotal) kpiFeesTotal.textContent = "₹" + sumTotalFees.toLocaleString("en-IN");
+    if (kpiFeesPaid) kpiFeesPaid.textContent = "₹" + sumPaidFees.toLocaleString("en-IN");
+    if (kpiFeesBalance) kpiFeesBalance.textContent = "₹" + sumBalanceFees.toLocaleString("en-IN");
 
+    updateSupabasePill(!!supabaseClient);
     filterAdminQueries();
   };
 
@@ -2864,8 +3061,9 @@
     if (filtered.length === 0) {
       tbody.innerHTML = `
         <tr>
-          <td colspan="6" style="text-align: center; padding: 40px 16px; color: var(--color-text-muted);">
-            No queries found matching the selected filters.
+          <td colspan="7" style="text-align: center; padding: 48px 16px; color: var(--color-text-muted);">
+            <div style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">No student records found</div>
+            <div style="font-size: 13px;">Click <strong>+ Add Student</strong> above to log a new inquiry or student admission.</div>
           </td>
         </tr>
       `;
@@ -2874,8 +3072,11 @@
 
     tbody.innerHTML = filtered.map(item => {
       const badgeCls = getStageBadgeClass(item.stage);
-      const cleanPhone = item.phone.replace(/\D/g, "");
-      const waLink = `https://wa.me/91${cleanPhone}?text=Hello%20${encodeURIComponent(item.name)}%2C%20greetings%20from%20PARK%20International%20Education%20Admissions%20Desk.`;
+      const cleanPhone = (item.phone || '').replace(/\D/g, "");
+      const waLink = `https://wa.me/91${cleanPhone}?text=Hello%20${encodeURIComponent(item.name || 'Student')}%2C%20greetings%20from%20PARK%20International%20Education%20Admissions%20Desk.`;
+      const tot = Number(item.totalFees) || 0;
+      const pd = Number(item.paidFees) || 0;
+      const bal = (item.balanceFees !== undefined) ? Number(item.balanceFees) : Math.max(0, tot - pd);
 
       return `
         <tr id="query-row-${item.id}">
@@ -2889,15 +3090,27 @@
             <div class="admin-student-contact">
               <div>📞 <a href="tel:+91${cleanPhone}" style="color: var(--color-primary); font-weight: 600;">+91 ${item.phone}</a></div>
               ${item.email ? `<div>✉️ ${item.email}</div>` : ''}
-              <div>📍 ${item.city || 'Tamil Nadu'}</div>
+              <div>📍 ${item.city || 'Tamil Nadu'} · <span style="color:#64748B;">${item.branch || 'Tirunelveli HO'}</span></div>
             </div>
           </td>
           <td>
             <div class="admin-req-box">
               <div class="admin-req-course">${item.course}</div>
-              <div class="admin-req-uni"><strong>${item.country}:</strong> ${item.uni || 'Any'}</div>
+              <div class="admin-req-uni"><strong>${item.country}:</strong> ${item.uni || 'Any Approved'}</div>
               ${item.reqs ? `<div class="admin-req-notes">📝 ${item.reqs}</div>` : ''}
             </div>
+          </td>
+          <td>
+            <div style="font-size: 13.5px; font-weight: 700; color: var(--color-primary);">
+              ₹${tot.toLocaleString('en-IN')}
+            </div>
+            <div style="font-size: 12px; color: #16A34A; font-weight: 600; margin-top: 2px;">
+              Paid: ₹${pd.toLocaleString('en-IN')}
+            </div>
+            <div style="font-size: 12px; font-weight: 700; margin-top: 2px; color: ${bal > 0 ? '#DC2626' : '#16A34A'};">
+              Due: ₹${bal.toLocaleString('en-IN')}
+            </div>
+            ${tot > 0 ? (pd >= tot ? '<span style="display:inline-block; font-size:10px; background:#DCFCE7; color:#15803D; padding:1px 6px; border-radius:3px; margin-top:3px; font-weight:600;">✓ FULLY PAID</span>' : '<span style="display:inline-block; font-size:10px; background:#FEF3C7; color:#B45309; padding:1px 6px; border-radius:3px; margin-top:3px; font-weight:600;">⏳ PENDING DUE</span>') : '<span style="font-size:11px; color:#94A3B8;">Quote pending</span>'}
           </td>
           <td style="min-width: 140px;">
             <span class="admin-position-badge ${badgeCls}">${item.stage}</span>
@@ -2924,7 +3137,7 @@
               <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="admin-mini-btn wa" title="WhatsApp Chat">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.35.06-.53.27-.19.21-.71.7-.71 1.7 0 1 .73 1.97.83 2.11.1.14 1.43 2.19 3.47 3.07.49.21.87.33 1.17.43.49.16.94.13 1.29.08.4-.06 1.22-.5 1.39-.98.17-.49.17-.9.12-.98-.05-.09-.19-.14-.4-.24s-1.22-.6-1.41-.67c-.19-.07-.33-.1-.47.1-.14.21-.55.7-.67.84-.12.14-.24.16-.45.05s-.89-.33-1.69-1.05c-.63-.56-1.05-1.26-1.17-1.47-.12-.21-.01-.33.09-.43.09-.09.21-.24.31-.36.1-.12.14-.21.21-.35.07-.14.03-.26-.02-.36s-.47-1.14-.65-1.56c-.17-.42-.35-.36-.48-.37l-.41-.01z"/></svg>
               </a>
-              <button type="button" class="admin-mini-btn" onclick="openAdminEditModal('${item.id}')" title="Edit Requirements & Position">
+              <button type="button" class="admin-mini-btn" onclick="openAdminEditModal('${item.id}')" title="Edit Requirements, Stage & Fees">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
                 <span>Edit</span>
               </button>
@@ -2936,6 +3149,63 @@
         </tr>
       `;
     }).join("");
+  };
+
+  window.clearSampleQueries = function() {
+    if (!confirm("Are you sure you want to clear the sample demo leads?\n\nThis will give you a clean, empty list so you can enter only your real student data.")) return;
+    localStorage.setItem(QUERIES_STORAGE_KEY, JSON.stringify([]));
+    renderAdminDashboard();
+    alert("Sample demo data cleared! You now have a clean slate to log your student inquiries.");
+  };
+
+  window.calcEditBalance = function() {
+    const total = parseFloat($("edit-total-fees") ? $("edit-total-fees").value : 0) || 0;
+    const paid = parseFloat($("edit-paid-fees") ? $("edit-paid-fees").value : 0) || 0;
+    const balance = Math.max(0, total - paid);
+    if ($("edit-balance-fees")) {
+      $("edit-balance-fees").value = "₹" + balance.toLocaleString("en-IN");
+    }
+    const badge = $("edit-fee-status-badge");
+    if (badge) {
+      if (total === 0) {
+        badge.textContent = "Quote Pending";
+        badge.style.background = "#E2E8F0";
+        badge.style.color = "#475569";
+      } else if (paid >= total) {
+        badge.textContent = "✓ Fully Paid";
+        badge.style.background = "#DCFCE7";
+        badge.style.color = "#15803D";
+      } else {
+        badge.textContent = `₹${balance.toLocaleString("en-IN")} Due`;
+        badge.style.background = "#FEF3C7";
+        badge.style.color = "#B45309";
+      }
+    }
+  };
+
+  window.calcAddBalance = function() {
+    const total = parseFloat($("add-total-fees") ? $("add-total-fees").value : 0) || 0;
+    const paid = parseFloat($("add-paid-fees") ? $("add-paid-fees").value : 0) || 0;
+    const balance = Math.max(0, total - paid);
+    if ($("add-balance-fees")) {
+      $("add-balance-fees").value = "₹" + balance.toLocaleString("en-IN");
+    }
+    const badge = $("add-fee-status-badge");
+    if (badge) {
+      if (total === 0) {
+        badge.textContent = "No Payment Logged";
+        badge.style.background = "#E2E8F0";
+        badge.style.color = "#475569";
+      } else if (paid >= total) {
+        badge.textContent = "✓ Fully Paid";
+        badge.style.background = "#DCFCE7";
+        badge.style.color = "#15803D";
+      } else {
+        badge.textContent = `₹${balance.toLocaleString("en-IN")} Due`;
+        badge.style.background = "#FEF3C7";
+        badge.style.color = "#B45309";
+      }
+    }
   };
 
   window.updateQueryStage = function(id, newStage) {
@@ -2951,6 +3221,7 @@
     }
 
     saveQueriesToStorage(list);
+    syncQueryToSupabase(item, "upsert");
     renderAdminDashboard();
   };
 
@@ -2968,9 +3239,13 @@
     if ($("edit-student-city")) $("edit-student-city").value = item.city || "";
     if ($("edit-student-stage")) $("edit-student-stage").value = item.stage;
     if ($("edit-student-branch")) $("edit-student-branch").value = item.branch || "Tirunelveli Head Office";
+    if ($("edit-total-fees")) $("edit-total-fees").value = item.totalFees || "";
+    if ($("edit-paid-fees")) $("edit-paid-fees").value = item.paidFees || "";
     if ($("edit-current-position")) $("edit-current-position").value = item.currentPosition || "";
     if ($("edit-student-reqs")) $("edit-student-reqs").value = item.reqs || "";
     if ($("edit-counsellor-remarks")) $("edit-counsellor-remarks").value = item.remarks || "";
+
+    calcEditBalance();
 
     const modal = $("admin-edit-modal");
     if (modal) {
@@ -2994,6 +3269,10 @@
     const item = list.find(q => q.id === id);
     if (!item) return;
 
+    const total = parseFloat($("edit-total-fees") ? $("edit-total-fees").value : 0) || 0;
+    const paid = parseFloat($("edit-paid-fees") ? $("edit-paid-fees").value : 0) || 0;
+    const balance = Math.max(0, total - paid);
+
     if ($("edit-student-name")) item.name = $("edit-student-name").value.trim();
     if ($("edit-student-phone")) item.phone = $("edit-student-phone").value.trim();
     if ($("edit-student-course")) item.course = $("edit-student-course").value.trim();
@@ -3002,16 +3281,26 @@
     if ($("edit-student-city")) item.city = $("edit-student-city").value.trim();
     if ($("edit-student-stage")) item.stage = $("edit-student-stage").value;
     if ($("edit-student-branch")) item.branch = $("edit-student-branch").value;
+    item.totalFees = total;
+    item.paidFees = paid;
+    item.balanceFees = balance;
     if ($("edit-current-position")) item.currentPosition = $("edit-current-position").value.trim();
     if ($("edit-student-reqs")) item.reqs = $("edit-student-reqs").value.trim();
     if ($("edit-counsellor-remarks")) item.remarks = $("edit-counsellor-remarks").value.trim();
 
     saveQueriesToStorage(list);
+    syncQueryToSupabase(item, "upsert");
     closeAdminEditModal();
     renderAdminDashboard();
   };
 
   window.openAdminAddModal = function() {
+    const form = $("admin-add-form");
+    if (form) form.reset();
+    if ($("add-total-fees")) $("add-total-fees").value = "";
+    if ($("add-paid-fees")) $("add-paid-fees").value = "";
+    calcAddBalance();
+
     const modal = $("admin-add-modal");
     if (modal) {
       modal.classList.add("open");
@@ -3037,6 +3326,8 @@
     const city = $("add-student-city") ? $("add-student-city").value.trim() : "Tirunelveli";
     const stage = $("add-student-stage") ? $("add-student-stage").value : "New Enquiry";
     const source = $("add-student-source") ? $("add-student-source").value : "Office Walk-in";
+    const totalFees = parseFloat($("add-total-fees") ? $("add-total-fees").value : 0) || 0;
+    const paidFees = parseFloat($("add-paid-fees") ? $("add-paid-fees").value : 0) || 0;
     const currentPosition = $("add-current-position") ? $("add-current-position").value.trim() : "New inquiry received";
     const notes = $("add-student-notes") ? $("add-student-notes").value.trim() : "";
 
@@ -3049,6 +3340,8 @@
       city,
       stage,
       source,
+      totalFees,
+      paidFees,
       currentPosition,
       reqs: notes
     });
@@ -3061,11 +3354,210 @@
   };
 
   window.deleteAdminQuery = function(id) {
-    if (!confirm(`Are you sure you want to delete lead query ${id}?`)) return;
+    if (!confirm(`Are you sure you want to delete student query ${id}?`)) return;
     let list = getQueriesFromStorage();
+    const item = list.find(q => q.id === id);
     list = list.filter(q => q.id !== id);
     saveQueriesToStorage(list);
+    if (item) syncQueryToSupabase(item, "delete");
     renderAdminDashboard();
+  };
+
+  // =========================================================================
+  // SUPABASE CONFIGURATION MODAL CONTROLLERS
+  // =========================================================================
+
+  window.openSupabaseModal = function() {
+    const urlInput = $("supabase-url-input");
+    const keyInput = $("supabase-key-input");
+    const statusDiv = $("supabase-conn-status");
+
+    if (urlInput) urlInput.value = localStorage.getItem(SUPABASE_URL_KEY) || "";
+    if (keyInput) keyInput.value = localStorage.getItem(SUPABASE_KEY_KEY) || "";
+    if (statusDiv) {
+      if (supabaseClient) {
+        statusDiv.style.display = "block";
+        statusDiv.style.background = "#DCFCE7";
+        statusDiv.style.color = "#15803D";
+        statusDiv.textContent = "✓ Connected to live Supabase PostgreSQL database. Realtime cloud sync is active.";
+      } else {
+        statusDiv.style.display = "none";
+      }
+    }
+
+    const modal = $("admin-supabase-modal");
+    if (modal) {
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+  };
+
+  window.closeSupabaseModal = function() {
+    const modal = $("admin-supabase-modal");
+    if (modal) {
+      modal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+  };
+
+  window.saveSupabaseConfig = async function(e) {
+    if (e) e.preventDefault();
+    const url = $("supabase-url-input") ? $("supabase-url-input").value.trim() : "";
+    const key = $("supabase-key-input") ? $("supabase-key-input").value.trim() : "";
+    const statusDiv = $("supabase-conn-status");
+
+    if (!url || !key) {
+      alert("Please provide both Supabase Project URL and Anon API Key.");
+      return;
+    }
+
+    if (!window.supabase || !window.supabase.createClient) {
+      alert("Supabase SDK is still loading. Please check your internet connection.");
+      return;
+    }
+
+    try {
+      if (statusDiv) {
+        statusDiv.style.display = "block";
+        statusDiv.style.background = "#FEF3C7";
+        statusDiv.style.color = "#B45309";
+        statusDiv.textContent = "Testing connection to Supabase...";
+      }
+
+      const testClient = window.supabase.createClient(url, key);
+      const { error } = await testClient.from('students').select('id').limit(1);
+
+      if (error && error.code !== "PGRST116") {
+        throw new Error(error.message || "Failed to query students table. Ensure you ran the SQL schema in Supabase.");
+      }
+
+      localStorage.setItem(SUPABASE_URL_KEY, url);
+      localStorage.setItem(SUPABASE_KEY_KEY, key);
+      supabaseClient = testClient;
+      updateSupabasePill(true);
+
+      if (statusDiv) {
+        statusDiv.style.background = "#DCFCE7";
+        statusDiv.style.color = "#15803D";
+        statusDiv.textContent = "✓ Connection Successful! Supabase is now your primary cloud backend.";
+      }
+
+      setTimeout(() => {
+        closeSupabaseModal();
+        fetchQueriesFromSupabase();
+      }, 1200);
+
+    } catch (err) {
+      if (statusDiv) {
+        statusDiv.style.display = "block";
+        statusDiv.style.background = "#FEE2E2";
+        statusDiv.style.color = "#B91C1C";
+        statusDiv.textContent = "Connection Error: " + (err.message || err);
+      }
+    }
+  };
+
+  window.disconnectSupabase = function() {
+    if (!confirm("Disconnect Supabase cloud? The system will revert to local browser storage.")) return;
+    localStorage.removeItem(SUPABASE_URL_KEY);
+    localStorage.removeItem(SUPABASE_KEY_KEY);
+    supabaseClient = null;
+    updateSupabasePill(false);
+    closeSupabaseModal();
+    renderAdminDashboard();
+  };
+
+  window.syncLocalToSupabase = async function() {
+    if (!supabaseClient) {
+      alert("Please connect to Supabase first before syncing.");
+      return;
+    }
+    const list = getQueriesFromStorage();
+    if (!list.length) {
+      alert("No local records to upload.");
+      return;
+    }
+
+    const btn = $("btn-sync-supabase");
+    if (btn) btn.textContent = "Uploading...";
+
+    try {
+      let successCount = 0;
+      for (const item of list) {
+        await syncQueryToSupabase(item, "upsert");
+        successCount++;
+      }
+      alert(`Successfully uploaded ${successCount} student records to Supabase Cloud!`);
+    } catch (err) {
+      alert("Upload incomplete: " + err.message);
+    } finally {
+      if (btn) btn.textContent = "⬆️ Upload All Local Records to Cloud";
+    }
+  };
+
+  // =========================================================================
+  // DISASTER RECOVERY & BACKUP MODAL CONTROLLERS
+  // =========================================================================
+
+  window.openBackupModal = function() {
+    const modal = $("admin-backup-modal");
+    if (modal) {
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+  };
+
+  window.closeBackupModal = function() {
+    const modal = $("admin-backup-modal");
+    if (modal) {
+      modal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+  };
+
+  window.downloadJSONBackup = function() {
+    const list = getQueriesFromStorage();
+    const backupObj = {
+      agency: "PARK International Education",
+      version: "2.0",
+      exportedAt: new Date().toISOString(),
+      studentCount: list.length,
+      records: list
+    };
+    const jsonStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupObj, null, 2));
+    const link = document.createElement("a");
+    link.setAttribute("href", jsonStr);
+    link.setAttribute("download", `PARK_Education_Database_Backup_${new Date().toISOString().slice(0, 10)}.json`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  window.handleRestoreBackupFile = function(e) {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      try {
+        const parsed = JSON.parse(evt.target.result);
+        const records = Array.isArray(parsed) ? parsed : (parsed.records || parsed.students || []);
+        if (!Array.isArray(records)) throw new Error("Invalid format");
+
+        if (!confirm(`Found ${records.length} records in this backup file. Restore and overwrite current data?`)) return;
+
+        saveQueriesToStorage(records);
+        if (supabaseClient) {
+          records.forEach(r => syncQueryToSupabase(r, "upsert"));
+        }
+        renderAdminDashboard();
+        closeBackupModal();
+        alert(`Restored ${records.length} student records successfully!`);
+      } catch (err) {
+        alert("Failed to parse backup file. Please provide a valid JSON backup from PARK Education.");
+      }
+    };
+    reader.readAsText(file);
   };
 
   window.openChangePassModal = function() {
@@ -3131,34 +3623,69 @@
   window.exportQueriesToCSV = function() {
     const list = getQueriesFromStorage();
     if (!list || list.length === 0) {
-      alert("No queries to export.");
+      alert("No student queries to export.");
       return;
     }
 
-    const headers = ["Query ID", "Date", "Source", "Student Name", "Phone", "Email", "Course", "Country", "University", "City", "Branch", "Stage", "Current Position", "Requirements", "Remarks"];
-    const rows = list.map(q => [
-      `"${q.id}"`,
-      `"${q.date}"`,
-      `"${q.source || ''}"`,
-      `"${q.name}"`,
-      `"${q.phone}"`,
-      `"${q.email || ''}"`,
-      `"${q.course || ''}"`,
-      `"${q.country || ''}"`,
-      `"${(q.uni || '').replace(/"/g, '""')}"`,
-      `"${q.city || ''}"`,
-      `"${q.branch || ''}"`,
-      `"${q.stage || ''}"`,
-      `"${(q.currentPosition || '').replace(/"/g, '""')}"`,
-      `"${(q.reqs || '').replace(/"/g, '""')}"`,
-      `"${(q.remarks || '').replace(/"/g, '""')}"`
-    ]);
+    const headers = [
+      "Student ID",
+      "Registration Date",
+      "Lead Source",
+      "Student Name",
+      "Phone",
+      "Email",
+      "Native City / District",
+      "Branch Office",
+      "Course",
+      "Country Destination",
+      "University",
+      "Total College Fees (INR)",
+      "Amount Paid (INR)",
+      "Balance Due (INR)",
+      "Payment Status",
+      "Admission Stage",
+      "Current Position / Milestone",
+      "Requirements",
+      "Counsellor Remarks"
+    ];
+
+    const rows = list.map(q => {
+      const tot = Number(q.totalFees) || 0;
+      const pd = Number(q.paidFees) || 0;
+      const bal = (q.balanceFees !== undefined) ? Number(q.balanceFees) : Math.max(0, tot - pd);
+      let feeStatus = "Quote Pending";
+      if (tot > 0) {
+        feeStatus = (pd >= tot) ? "Fully Paid" : "Balance Due";
+      }
+
+      return [
+        `"${q.id}"`,
+        `"${q.date}"`,
+        `"${q.source || 'Website'}"`,
+        `"${(q.name || '').replace(/"/g, '""')}"`,
+        `"${q.phone || ''}"`,
+        `"${q.email || ''}"`,
+        `"${q.city || ''}"`,
+        `"${q.branch || 'Tirunelveli Head Office'}"`,
+        `"${q.course || ''}"`,
+        `"${q.country || ''}"`,
+        `"${(q.uni || '').replace(/"/g, '""')}"`,
+        `"${tot}"`,
+        `"${pd}"`,
+        `"${bal}"`,
+        `"${feeStatus}"`,
+        `"${q.stage || ''}"`,
+        `"${(q.currentPosition || '').replace(/"/g, '""')}"`,
+        `"${(q.reqs || '').replace(/"/g, '""')}"`,
+        `"${(q.remarks || '').replace(/"/g, '""')}"`
+      ];
+    });
 
     const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", `PARK_Education_Queries_${new Date().toISOString().slice(0, 10)}.csv`);
+    link.setAttribute("download", `PARK_Education_Students_Report_${new Date().toISOString().slice(0, 10)}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -3166,6 +3693,7 @@
 
   // Initialize Entire Page
   function init() {
+    initSupabaseClient();
     renderNav();
     renderCourses();
     renderCountries();
@@ -3177,6 +3705,7 @@
     // Language toggle removed
     initMobileDrawer();
     initHeaderScroll();
+    initBackToTop();
 
     // Setup both form instances with university selects
     setupForm("apply-form", "apply-name", "apply-phone", "course-select", "neet-select", "country-select", "apply-uni-select", "branch-select", "apply-error");
