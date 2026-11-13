@@ -1,0 +1,21 @@
+# ========================================================
+# robots.txt for PARK International Education
+# Official Website: https://www.parkabroad.com/
+# ========================================================
+
+User-agent: *
+Allow: /
+
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# XML Sitemap Location
+Sitemap: https://www.parkabroad.com/sitemap.xml
