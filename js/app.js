@@ -3031,10 +3031,38 @@
     filterAdminQueries();
   };
 
+  let adminViewMode = localStorage.getItem("park_admin_view_mode") || "slides";
+
+  window.setAdminViewMode = function(mode) {
+    adminViewMode = mode;
+    localStorage.setItem("park_admin_view_mode", mode);
+
+    const slidesEl = $("admin-queries-slides");
+    const tableWrap = $("admin-table-wrapper");
+    const btnSlides = $("btn-view-slides");
+    const btnTable = $("btn-view-table");
+
+    if (mode === "slides") {
+      if (slidesEl) slidesEl.style.display = "flex";
+      if (tableWrap) tableWrap.style.display = "none";
+      if (btnSlides) btnSlides.classList.add("active");
+      if (btnTable) btnTable.classList.remove("active");
+    } else {
+      if (slidesEl) slidesEl.style.display = "none";
+      if (tableWrap) tableWrap.style.display = "block";
+      if (btnSlides) btnSlides.classList.remove("active");
+      if (btnTable) btnTable.classList.add("active");
+    }
+  };
+
   window.filterAdminQueries = function() {
     const list = getQueriesFromStorage();
     const tbody = $("admin-queries-tbody");
-    if (!tbody) return;
+    const slidesContainer = $("admin-queries-slides");
+    const countEl = $("admin-records-count");
+
+    // Sync active view mode tabs & containers
+    setAdminViewMode(adminViewMode);
 
     const queryInput = $("admin-search-query");
     const filterStatus = $("admin-filter-status");
@@ -3058,97 +3086,225 @@
       return true;
     });
 
+    if (countEl) {
+      countEl.textContent = `Showing ${filtered.length} student record${filtered.length === 1 ? '' : 's'}`;
+    }
+
     if (filtered.length === 0) {
-      tbody.innerHTML = `
-        <tr>
-          <td colspan="7" style="text-align: center; padding: 48px 16px; color: var(--color-text-muted);">
-            <div style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">No student records found</div>
-            <div style="font-size: 13px;">Click <strong>+ Add Student</strong> above to log a new inquiry or student admission.</div>
-          </td>
-        </tr>
-      `;
+      if (slidesContainer) {
+        slidesContainer.innerHTML = `
+          <div class="admin-slides-empty">
+            <div style="font-size: 16px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">No student records found</div>
+            <div style="font-size: 13.5px; color: var(--color-text-muted); margin-bottom: 14px;">Try clearing filters or click <strong>+ Add Student</strong> above to log a new inquiry.</div>
+            <button type="button" class="btn btn-sm btn-primary" onclick="openAdminAddModal()">+ Add New Student</button>
+          </div>
+        `;
+      }
+      if (tbody) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" style="text-align: center; padding: 48px 16px; color: var(--color-text-muted);">
+              <div style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">No student records found</div>
+              <div style="font-size: 13px;">Click <strong>+ Add Student</strong> above to log a new inquiry or student admission.</div>
+            </td>
+          </tr>
+        `;
+      }
       return;
     }
 
-    tbody.innerHTML = filtered.map(item => {
-      const badgeCls = getStageBadgeClass(item.stage);
-      const cleanPhone = (item.phone || '').replace(/\D/g, "");
-      const waLink = `https://wa.me/91${cleanPhone}?text=Hello%20${encodeURIComponent(item.name || 'Student')}%2C%20greetings%20from%20PARK%20International%20Education%20Admissions%20Desk.`;
-      const tot = Number(item.totalFees) || 0;
-      const pd = Number(item.paidFees) || 0;
-      const bal = (item.balanceFees !== undefined) ? Number(item.balanceFees) : Math.max(0, tot - pd);
+    // 1. Render Separate Slides (Each student on their own slide, Actions visible at top right)
+    if (slidesContainer) {
+      slidesContainer.innerHTML = filtered.map(item => {
+        const badgeCls = getStageBadgeClass(item.stage);
+        const cleanPhone = (item.phone || '').replace(/\D/g, "");
+        const waLink = `https://wa.me/91${cleanPhone}?text=Hello%20${encodeURIComponent(item.name || 'Student')}%2C%20greetings%20from%20PARK%20International%20Education%20Admissions%20Desk.`;
+        const tot = Number(item.totalFees) || 0;
+        const pd = Number(item.paidFees) || 0;
+        const bal = (item.balanceFees !== undefined) ? Number(item.balanceFees) : Math.max(0, tot - pd);
 
-      return `
-        <tr id="query-row-${item.id}">
-          <td>
-            <div style="font-weight: 700; color: var(--color-primary);">${item.id}</div>
-            <div style="font-size: 11.5px; color: var(--color-text-muted); margin-top: 2px;">${item.date}</div>
-            <span style="display: inline-block; font-size: 11px; background: #EDF4FA; color: var(--color-secondary); padding: 2px 6px; border-radius: 4px; margin-top: 4px;">${item.source || 'Website'}</span>
-          </td>
-          <td>
-            <div class="admin-student-name">${item.name}</div>
-            <div class="admin-student-contact">
-              <div>📞 <a href="tel:+91${cleanPhone}" style="color: var(--color-primary); font-weight: 600;">+91 ${item.phone}</a></div>
-              ${item.email ? `<div>✉️ ${item.email}</div>` : ''}
-              <div>📍 ${item.city || 'Tamil Nadu'} · <span style="color:#64748B;">${item.branch || 'Tirunelveli HO'}</span></div>
+        return `
+          <div class="admin-student-slide" id="query-slide-${item.id}">
+            <!-- Slide Top Header: Student info & Actions directly visible without scroll -->
+            <div class="admin-slide-header">
+              <div class="admin-slide-id-wrap">
+                <div class="admin-slide-badge-row">
+                  <span class="admin-slide-id">${item.id}</span>
+                  <span class="admin-slide-date">${item.date}</span>
+                  <span class="admin-slide-source">${item.source || 'Website'}</span>
+                  <span class="admin-position-badge ${badgeCls}">${item.stage}</span>
+                </div>
+                <h3 class="admin-slide-name">${item.name}</h3>
+              </div>
+
+              <!-- Top Right Actions: 100% visible, no horizontal scroll needed! -->
+              <div class="admin-slide-actions">
+                <a href="tel:+91${cleanPhone}" class="admin-action-btn call" title="Call Student">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <span>Call</span>
+                </a>
+                <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="admin-action-btn wa" title="WhatsApp Chat">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.35.06-.53.27-.19.21-.71.7-.71 1.7 0 1 .73 1.97.83 2.11.1.14 1.43 2.19 3.47 3.07.49.21.87.33 1.17.43.49.16.94.13 1.29.08.4-.06 1.22-.5 1.39-.98.17-.49.17-.9.12-.98-.05-.09-.19-.14-.4-.24s-1.22-.6-1.41-.67c-.19-.07-.33-.1-.47.1-.14.21-.55.7-.67.84-.12.14-.24.16-.45.05s-.89-.33-1.69-1.05c-.63-.56-1.05-1.26-1.17-1.47-.12-.21-.01-.33.09-.43.09-.09.21-.24.31-.36.1-.12.14-.21.21-.35.07-.14.03-.26-.02-.36s-.47-1.14-.65-1.56c-.17-.42-.35-.36-.48-.37l-.41-.01z"/></svg>
+                  <span>WhatsApp</span>
+                </a>
+                <button type="button" class="admin-action-btn edit" onclick="openAdminEditModal('${item.id}')" title="Edit Student & Fees">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                  <span>Edit &amp; Fees</span>
+                </button>
+                <button type="button" class="admin-action-btn delete" onclick="deleteAdminQuery('${item.id}')" title="Delete Student Record">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                  <span>Delete</span>
+                </button>
+              </div>
             </div>
-          </td>
-          <td>
-            <div class="admin-req-box">
-              <div class="admin-req-course">${item.course}</div>
-              <div class="admin-req-uni"><strong>${item.country}:</strong> ${item.uni || 'Any Approved'}</div>
-              ${item.reqs ? `<div class="admin-req-notes">📝 ${item.reqs}</div>` : ''}
+
+            <!-- Slide Body Grid: 4 clean boxes -->
+            <div class="admin-slide-grid">
+              <!-- Box 1: Contact & Branch -->
+              <div class="admin-slide-card">
+                <div class="admin-slide-card-label">📞 Contact &amp; Location</div>
+                <div class="admin-slide-phone">
+                  <a href="tel:+91${cleanPhone}">+91 ${item.phone}</a>
+                </div>
+                ${item.email ? `<div class="admin-slide-email">✉️ ${item.email}</div>` : ''}
+                <div class="admin-slide-loc">📍 ${item.city || 'Tamil Nadu'} · <strong>${item.branch || 'Tirunelveli HO'}</strong></div>
+              </div>
+
+              <!-- Box 2: Target Course & University -->
+              <div class="admin-slide-card">
+                <div class="admin-slide-card-label">🎓 Course &amp; College</div>
+                <div class="admin-slide-course">${item.course}</div>
+                <div class="admin-slide-uni">🌍 <strong>${item.country}:</strong> ${item.uni || 'Any Approved'}</div>
+                ${item.reqs ? `<div class="admin-req-notes">📝 ${item.reqs}</div>` : ''}
+              </div>
+
+              <!-- Box 3: College Fees & Balance -->
+              <div class="admin-slide-card fee-card">
+                <div class="admin-slide-card-label">💰 College Fees &amp; Balance</div>
+                <div class="admin-slide-fee-row">
+                  <span>Total Fees:</span>
+                  <strong style="color: var(--color-primary); font-size: 14.5px;">₹${tot.toLocaleString('en-IN')}</strong>
+                </div>
+                <div class="admin-slide-fee-row">
+                  <span>Fees Paid:</span>
+                  <strong style="color: #16A34A;">₹${pd.toLocaleString('en-IN')}</strong>
+                </div>
+                <div class="admin-slide-fee-row">
+                  <span>Balance Due:</span>
+                  <strong style="color: ${bal > 0 ? '#DC2626' : '#16A34A'}; font-size: 14px;">₹${bal.toLocaleString('en-IN')}</strong>
+                </div>
+                <div style="margin-top: 6px;">
+                  ${tot > 0 ? (pd >= tot ? '<span class="admin-fee-pill paid">✓ FULLY PAID</span>' : '<span class="admin-fee-pill pending">⏳ BALANCE DUE</span>') : '<span style="font-size:11px; color:#94A3B8;">Quote pending</span>'}
+                </div>
+              </div>
+
+              <!-- Box 4: Stage & Current Milestone -->
+              <div class="admin-slide-card">
+                <div class="admin-slide-card-label">📌 Admission Milestone</div>
+                <div style="margin-bottom: 6px;">
+                  <label style="font-size: 11px; color: var(--color-text-muted); font-weight: 600; display:block; margin-bottom: 2px;">Change Stage:</label>
+                  <select class="admin-quick-stage-select" onchange="updateQueryStage('${item.id}', this.value)" aria-label="Change stage for ${item.name}">
+                    <option value="New Enquiry" ${item.stage === 'New Enquiry' ? 'selected' : ''}>New Enquiry</option>
+                    <option value="Call Scheduled" ${item.stage === 'Call Scheduled' ? 'selected' : ''}>Call Scheduled</option>
+                    <option value="NEET Counselling" ${item.stage === 'NEET Counselling' ? 'selected' : ''}>NEET Counselling</option>
+                    <option value="Document Verification" ${item.stage === 'Document Verification' ? 'selected' : ''}>Document Verification</option>
+                    <option value="Seat Booked" ${item.stage === 'Seat Booked' ? 'selected' : ''}>Seat Booked</option>
+                    <option value="Visa & Processing" ${item.stage === 'Visa & Processing' ? 'selected' : ''}>Visa & Processing</option>
+                    <option value="Admitted" ${item.stage === 'Admitted' ? 'selected' : ''}>Admitted</option>
+                    <option value="Dropped" ${item.stage === 'Dropped' ? 'selected' : ''}>Dropped</option>
+                  </select>
+                </div>
+                <div class="admin-position-detail">${item.currentPosition || 'Initial inquiry stage.'}</div>
+                ${item.remarks ? `<div style="font-size: 11.5px; color: #64748B; margin-top: 4px;"><em>Counsellor: ${item.remarks}</em></div>` : ''}
+              </div>
             </div>
-          </td>
-          <td>
-            <div style="font-size: 13.5px; font-weight: 700; color: var(--color-primary);">
-              ₹${tot.toLocaleString('en-IN')}
-            </div>
-            <div style="font-size: 12px; color: #16A34A; font-weight: 600; margin-top: 2px;">
-              Paid: ₹${pd.toLocaleString('en-IN')}
-            </div>
-            <div style="font-size: 12px; font-weight: 700; margin-top: 2px; color: ${bal > 0 ? '#DC2626' : '#16A34A'};">
-              Due: ₹${bal.toLocaleString('en-IN')}
-            </div>
-            ${tot > 0 ? (pd >= tot ? '<span style="display:inline-block; font-size:10px; background:#DCFCE7; color:#15803D; padding:1px 6px; border-radius:3px; margin-top:3px; font-weight:600;">✓ FULLY PAID</span>' : '<span style="display:inline-block; font-size:10px; background:#FEF3C7; color:#B45309; padding:1px 6px; border-radius:3px; margin-top:3px; font-weight:600;">⏳ PENDING DUE</span>') : '<span style="font-size:11px; color:#94A3B8;">Quote pending</span>'}
-          </td>
-          <td style="min-width: 140px;">
-            <span class="admin-position-badge ${badgeCls}">${item.stage}</span>
-            <select class="admin-quick-stage-select" onchange="updateQueryStage('${item.id}', this.value)" aria-label="Change stage for ${item.name}">
-              <option value="New Enquiry" ${item.stage === 'New Enquiry' ? 'selected' : ''}>New Enquiry</option>
-              <option value="Call Scheduled" ${item.stage === 'Call Scheduled' ? 'selected' : ''}>Call Scheduled</option>
-              <option value="NEET Counselling" ${item.stage === 'NEET Counselling' ? 'selected' : ''}>NEET Counselling</option>
-              <option value="Document Verification" ${item.stage === 'Document Verification' ? 'selected' : ''}>Document Verification</option>
-              <option value="Seat Booked" ${item.stage === 'Seat Booked' ? 'selected' : ''}>Seat Booked</option>
-              <option value="Visa & Processing" ${item.stage === 'Visa & Processing' ? 'selected' : ''}>Visa & Processing</option>
-              <option value="Admitted" ${item.stage === 'Admitted' ? 'selected' : ''}>Admitted</option>
-              <option value="Dropped" ${item.stage === 'Dropped' ? 'selected' : ''}>Dropped</option>
-            </select>
-          </td>
-          <td style="max-width: 220px;">
-            <div class="admin-position-detail">${item.currentPosition || 'Initial inquiry stage.'}</div>
-            ${item.remarks ? `<div style="font-size: 11.5px; color: #64748B; margin-top: 4px;"><em>Counsellor: ${item.remarks}</em></div>` : ''}
-          </td>
-          <td style="text-align: right;">
-            <div class="admin-actions-cell" style="justify-content: flex-end;">
-              <a href="tel:+91${cleanPhone}" class="admin-mini-btn" title="Call Student">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              </a>
-              <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="admin-mini-btn wa" title="WhatsApp Chat">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.35.06-.53.27-.19.21-.71.7-.71 1.7 0 1 .73 1.97.83 2.11.1.14 1.43 2.19 3.47 3.07.49.21.87.33 1.17.43.49.16.94.13 1.29.08.4-.06 1.22-.5 1.39-.98.17-.49.17-.9.12-.98-.05-.09-.19-.14-.4-.24s-1.22-.6-1.41-.67c-.19-.07-.33-.1-.47.1-.14.21-.55.7-.67.84-.12.14-.24.16-.45.05s-.89-.33-1.69-1.05c-.63-.56-1.05-1.26-1.17-1.47-.12-.21-.01-.33.09-.43.09-.09.21-.24.31-.36.1-.12.14-.21.21-.35.07-.14.03-.26-.02-.36s-.47-1.14-.65-1.56c-.17-.42-.35-.36-.48-.37l-.41-.01z"/></svg>
-              </a>
-              <button type="button" class="admin-mini-btn" onclick="openAdminEditModal('${item.id}')" title="Edit Requirements, Stage & Fees">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
-                <span>Edit</span>
-              </button>
-              <button type="button" class="admin-mini-btn danger" onclick="deleteAdminQuery('${item.id}')" title="Delete">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
-              </button>
-            </div>
-          </td>
-        </tr>
-      `;
-    }).join("");
+          </div>
+        `;
+      }).join("");
+    }
+
+    // 2. Render Table View (With sticky actions cell)
+    if (tbody) {
+      tbody.innerHTML = filtered.map(item => {
+        const badgeCls = getStageBadgeClass(item.stage);
+        const cleanPhone = (item.phone || '').replace(/\D/g, "");
+        const waLink = `https://wa.me/91${cleanPhone}?text=Hello%20${encodeURIComponent(item.name || 'Student')}%2C%20greetings%20from%20PARK%20International%20Education%20Admissions%20Desk.`;
+        const tot = Number(item.totalFees) || 0;
+        const pd = Number(item.paidFees) || 0;
+        const bal = (item.balanceFees !== undefined) ? Number(item.balanceFees) : Math.max(0, tot - pd);
+
+        return `
+          <tr id="query-row-${item.id}">
+            <td>
+              <div style="font-weight: 700; color: var(--color-primary);">${item.id}</div>
+              <div style="font-size: 11.5px; color: var(--color-text-muted); margin-top: 2px;">${item.date}</div>
+              <span style="display: inline-block; font-size: 11px; background: #EDF4FA; color: var(--color-secondary); padding: 2px 6px; border-radius: 4px; margin-top: 4px;">${item.source || 'Website'}</span>
+            </td>
+            <td>
+              <div class="admin-student-name">${item.name}</div>
+              <div class="admin-student-contact">
+                <div>📞 <a href="tel:+91${cleanPhone}" style="color: var(--color-primary); font-weight: 600;">+91 ${item.phone}</a></div>
+                ${item.email ? `<div>✉️ ${item.email}</div>` : ''}
+                <div>📍 ${item.city || 'Tamil Nadu'} · <span style="color:#64748B;">${item.branch || 'Tirunelveli HO'}</span></div>
+              </div>
+            </td>
+            <td>
+              <div class="admin-req-box">
+                <div class="admin-req-course">${item.course}</div>
+                <div class="admin-req-uni"><strong>${item.country}:</strong> ${item.uni || 'Any Approved'}</div>
+                ${item.reqs ? `<div class="admin-req-notes">📝 ${item.reqs}</div>` : ''}
+              </div>
+            </td>
+            <td>
+              <div style="font-size: 13.5px; font-weight: 700; color: var(--color-primary);">
+                ₹${tot.toLocaleString('en-IN')}
+              </div>
+              <div style="font-size: 12px; color: #16A34A; font-weight: 600; margin-top: 2px;">
+                Paid: ₹${pd.toLocaleString('en-IN')}
+              </div>
+              <div style="font-size: 12px; font-weight: 700; margin-top: 2px; color: ${bal > 0 ? '#DC2626' : '#16A34A'};">
+                Due: ₹${bal.toLocaleString('en-IN')}
+              </div>
+              ${tot > 0 ? (pd >= tot ? '<span style="display:inline-block; font-size:10px; background:#DCFCE7; color:#15803D; padding:1px 6px; border-radius:3px; margin-top:3px; font-weight:600;">✓ FULLY PAID</span>' : '<span style="display:inline-block; font-size:10px; background:#FEF3C7; color:#B45309; padding:1px 6px; border-radius:3px; margin-top:3px; font-weight:600;">⏳ PENDING DUE</span>') : '<span style="font-size:11px; color:#94A3B8;">Quote pending</span>'}
+            </td>
+            <td style="min-width: 140px;">
+              <span class="admin-position-badge ${badgeCls}">${item.stage}</span>
+              <select class="admin-quick-stage-select" onchange="updateQueryStage('${item.id}', this.value)" aria-label="Change stage for ${item.name}">
+                <option value="New Enquiry" ${item.stage === 'New Enquiry' ? 'selected' : ''}>New Enquiry</option>
+                <option value="Call Scheduled" ${item.stage === 'Call Scheduled' ? 'selected' : ''}>Call Scheduled</option>
+                <option value="NEET Counselling" ${item.stage === 'NEET Counselling' ? 'selected' : ''}>NEET Counselling</option>
+                <option value="Document Verification" ${item.stage === 'Document Verification' ? 'selected' : ''}>Document Verification</option>
+                <option value="Seat Booked" ${item.stage === 'Seat Booked' ? 'selected' : ''}>Seat Booked</option>
+                <option value="Visa & Processing" ${item.stage === 'Visa & Processing' ? 'selected' : ''}>Visa & Processing</option>
+                <option value="Admitted" ${item.stage === 'Admitted' ? 'selected' : ''}>Admitted</option>
+                <option value="Dropped" ${item.stage === 'Dropped' ? 'selected' : ''}>Dropped</option>
+              </select>
+            </td>
+            <td style="max-width: 220px;">
+              <div class="admin-position-detail">${item.currentPosition || 'Initial inquiry stage.'}</div>
+              ${item.remarks ? `<div style="font-size: 11.5px; color: #64748B; margin-top: 4px;"><em>Counsellor: ${item.remarks}</em></div>` : ''}
+            </td>
+            <td style="text-align: right;">
+              <div class="admin-actions-cell" style="justify-content: flex-end;">
+                <a href="tel:+91${cleanPhone}" class="admin-mini-btn" title="Call Student">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </a>
+                <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="admin-mini-btn wa" title="WhatsApp Chat">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.35.06-.53.27-.19.21-.71.7-.71 1.7 0 1 .73 1.97.83 2.11.1.14 1.43 2.19 3.47 3.07.49.21.87.33 1.17.43.49.16.94.13 1.29.08.4-.06 1.22-.5 1.39-.98.17-.49.17-.9.12-.98-.05-.09-.19-.14-.4-.24s-1.22-.6-1.41-.67c-.19-.07-.33-.1-.47.1-.14.21-.55.7-.67.84-.12.14-.24.16-.45.05s-.89-.33-1.69-1.05c-.63-.56-1.05-1.26-1.17-1.47-.12-.21-.01-.33.09-.43.09-.09.21-.24.31-.36.1-.12.14-.21.21-.35.07-.14.03-.26-.02-.36s-.47-1.14-.65-1.56c-.17-.42-.35-.36-.48-.37l-.41-.01z"/></svg>
+                </a>
+                <button type="button" class="admin-mini-btn" onclick="openAdminEditModal('${item.id}')" title="Edit Requirements, Stage & Fees">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                  <span>Edit</span>
+                </button>
+                <button type="button" class="admin-mini-btn danger" onclick="deleteAdminQuery('${item.id}')" title="Delete">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
   };
 
   window.clearSampleQueries = function() {

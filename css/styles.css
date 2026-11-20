@@ -2749,6 +2749,336 @@ summary:focus-visible {
   cursor: pointer;
 }
 
+/* View Controls & Switcher */
+.admin-view-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.admin-view-switcher {
+  display: inline-flex;
+  background: #E2E8F0;
+  border-radius: 8px;
+  padding: 3px;
+  gap: 3px;
+}
+
+.admin-view-btn {
+  padding: 7px 14px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 160ms ease;
+}
+
+.admin-view-btn:hover {
+  color: var(--color-primary);
+}
+
+.admin-view-btn.active {
+  background: #FFFFFF;
+  color: var(--color-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.admin-view-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+/* 1. Separate Slides View (Individual Slide per Student) */
+.admin-slides-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.admin-student-slide {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+  overflow: hidden;
+}
+
+.admin-student-slide:hover {
+  border-color: #CBD5E1;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+}
+
+.admin-slide-header {
+  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+  padding: 14px 18px;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.admin-slide-id-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-slide-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.admin-slide-id {
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--color-primary);
+  background: #E2E8F0;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+}
+
+.admin-slide-date {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.admin-slide-source {
+  font-size: 11px;
+  background: #EDF4FA;
+  color: var(--color-secondary);
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.admin-slide-name {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-slide-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.admin-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #CBD5E1;
+  background: #FFFFFF;
+  color: #1E293B;
+  text-decoration: none;
+  transition: all 140ms ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.admin-action-btn:hover {
+  transform: translateY(-1px);
+}
+
+.admin-action-btn.call {
+  background: #EFF6FF;
+  border-color: #BFDBFE;
+  color: #1D4ED8;
+}
+.admin-action-btn.call:hover {
+  background: #DBEAFE;
+}
+
+.admin-action-btn.wa {
+  background: #ECFDF5;
+  border-color: #A7F3D0;
+  color: #047857;
+}
+.admin-action-btn.wa:hover {
+  background: #D1FAE5;
+}
+
+.admin-action-btn.edit {
+  background: #F8FAFC;
+  border-color: #CBD5E1;
+  color: #334155;
+}
+.admin-action-btn.edit:hover {
+  background: #F1F5F9;
+  border-color: #94A3B8;
+}
+
+.admin-action-btn.delete {
+  background: #FFF;
+  border-color: #FECACA;
+  color: #DC2626;
+}
+.admin-action-btn.delete:hover {
+  background: #FEF2F2;
+  border-color: #F87171;
+}
+
+.admin-slide-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 16px 18px;
+}
+
+@media (max-width: 1024px) {
+  .admin-slide-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-slide-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-slide-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-slide-card.fee-card {
+  background: #FCFDFB;
+  border-color: #E2E8F0;
+}
+
+.admin-slide-card-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748B;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #E2E8F0;
+  padding-bottom: 4px;
+}
+
+.admin-slide-phone a {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.admin-slide-phone a:hover {
+  text-decoration: underline;
+}
+
+.admin-slide-email {
+  font-size: 12px;
+  color: #475569;
+  margin-top: 4px;
+  word-break: break-all;
+}
+
+.admin-slide-loc {
+  font-size: 12px;
+  color: #64748B;
+  margin-top: 4px;
+}
+
+.admin-slide-course {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.admin-slide-uni {
+  font-size: 12.5px;
+  color: var(--color-text-main);
+  margin-top: 3px;
+}
+
+.admin-slide-fee-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  padding: 2px 0;
+}
+
+.admin-fee-pill {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+.admin-fee-pill.paid {
+  background: #DCFCE7;
+  color: #15803D;
+}
+
+.admin-fee-pill.pending {
+  background: #FEF3C7;
+  color: #B45309;
+}
+
+.admin-slides-empty {
+  background: #FFFFFF;
+  border: 1px dashed var(--color-border);
+  border-radius: 12px;
+  padding: 48px 20px;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+/* Sticky Right Column for Table View so actions never hide behind horizontal scroll */
+.admin-table th:last-child,
+.admin-table td:last-child {
+  position: sticky;
+  right: 0;
+  background-color: var(--color-white);
+  z-index: 2;
+  box-shadow: -6px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.admin-table th:last-child {
+  background-color: var(--color-bg-alt);
+}
+
+.admin-table tr:hover td:last-child {
+  background-color: #F8FAFC;
+}
+
 /* Data Table */
 .admin-table-container {
   background-color: var(--color-white);

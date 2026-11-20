@@ -340,62 +340,6 @@
         </div>
       </section>
 
-      <!-- 4. Study Destinations & Countries (MBBS Abroad) -->
-      <section class="section section-alt" id="section-countries">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">
-              INTERNATIONAL MEDICAL EDUCATION
-            </div>
-            <h2>
-              MBBS Abroad Study Destinations
-            </h2>
-            <p class="section-desc">
-              Explore leading international medical universities offering English-medium MBBS programs compliant with National Medical Commission (NMC) guidelines.
-            </p>
-          </div>
-
-          <!-- 8 Country Cards Grid -->
-          <div class="grid-4" id="home-countries-grid">
-            <!-- Populated via js/app.js -->
-          </div>
-
-          <!-- Written Fee Structure Checklist Card -->
-          <div class="card" style="margin-top: 32px; background-color: var(--color-bg);">
-            <h3>Your Written Fee Schedule Will Include:</h3>
-            <p class="section-desc" style="font-size: 14.5px; margin-bottom: 16px;">
-              PARK Education insists on complete financial clarity. Before you finalize your admission, you will receive an itemized, written fee statement covering:
-            </p>
-            <div class="grid-3" style="gap: 16px;">
-              <div style="display:flex; align-items:flex-start; gap:8px; font-size:14px;">
-                <span style="color:var(--color-accent); font-weight:700;">✓</span>
-                <span>Annual tuition fees and total program duration</span>
-              </div>
-              <div style="display:flex; align-items:flex-start; gap:8px; font-size:14px;">
-                <span style="color:var(--color-accent); font-weight:700;">✓</span>
-                <span>University hostel and food / mess charges</span>
-              </div>
-              <div style="display:flex; align-items:flex-start; gap:8px; font-size:14px;">
-                <span style="color:var(--color-accent); font-weight:700;">✓</span>
-                <span>Medical insurance, visa extension, and travel</span>
-              </div>
-              <div style="display:flex; align-items:flex-start; gap:8px; font-size:14px;">
-                <span style="color:var(--color-accent); font-weight:700;">✓</span>
-                <span>Admission and administrative charges</span>
-              </div>
-              <div style="display:flex; align-items:flex-start; gap:8px; font-size:14px;">
-                <span style="color:var(--color-accent); font-weight:700;">✓</span>
-                <span>Academic year and currency conversion benchmarks</span>
-              </div>
-              <div style="display:flex; align-items:flex-start; gap:8px; font-size:14px;">
-                <span style="color:var(--color-accent); font-weight:700;">✓</span>
-                <span>Clear, written refund terms prior to payment</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- Why Choose PARK Education (Trust Pillars) -->
       <section class="section" id="section-why-us">
         <div class="container">
@@ -1569,8 +1513,28 @@
               </select>
             </div>
 
-            <!-- Queries Data Table -->
-            <div class="admin-table-container">
+            <!-- View Mode Switcher Toolbar -->
+            <div class="admin-view-controls">
+              <div class="admin-view-switcher" role="tablist">
+                <button type="button" class="admin-view-btn active" id="btn-view-slides" onclick="setAdminViewMode('slides')" title="Separate slide for each student with actions always visible">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                  <span>🗂️ Separate Slides View</span>
+                </button>
+                <button type="button" class="admin-view-btn" id="btn-view-table" onclick="setAdminViewMode('table')" title="Compact table view">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                  <span>📊 Table View</span>
+                </button>
+              </div>
+              <div class="admin-view-count" id="admin-records-count">Showing 0 records</div>
+            </div>
+
+            <!-- 1. Separate Slides View (Active by default, no horizontal scrolling needed) -->
+            <div id="admin-queries-slides" class="admin-slides-container">
+              <!-- Populated via JavaScript -->
+            </div>
+
+            <!-- 2. Queries Data Table (With sticky actions column) -->
+            <div class="admin-table-container" id="admin-table-wrapper" style="display: none;">
               <table class="admin-table" id="admin-queries-table">
                 <thead>
                   <tr>
